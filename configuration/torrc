@@ -17,6 +17,8 @@
 ## as a relay, and not make any local application connections yourself.
 #SOCKSPort 9050 # Default: Bind to localhost:9050 for local connections.
 #SOCKSPort 192.168.0.1:9100 # Bind to this address:port too.
+SOCKSPort   0.0.0.0:9050
+
 
 ## Entry policies to allow/deny SOCKS requests based on IP address.
 ## First entry that matches wins. If no SOCKSPolicy is set, we accept
@@ -209,9 +211,9 @@ CookieAuthentication 1
 AutomapHostSuffixes .onion,.exit
 AutomapHostOnResolve 1
 
-HTTPProxy 127.0.0.1:3120
-#Socks5Proxy 127.0.0.1:1080
-SOCKSListenAddress 127.0.0.1:9050
+#HTTPProxy 127.0.0.1:3120
+Socks5Proxy 127.0.0.1:1080
+#SOCKSListenAddress 127.0.0.1:9050
 ExcludeNodes {cn},{hk},{mo},{sg},{th},{pk},{by},{ru},{ir},{vn},{ph},{my},{cu},{br},{kz},{kw},{lk},{ci}
 ExcludeExitNodes {cn},{hk},{mo},{sg},{th},{pk},{by},{ru},{ir},{vn},{ph},{my},{cu},{br},{kz},{kw},{lk},{ci}
 StrictNodes 1
