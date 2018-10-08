@@ -7,5 +7,5 @@
 #   Blog: https://www.donote.tk https://6donote4.github.io
 #========================================
 echo "docker run -it network=container:container_id image"
-docker run -it network=container:$1 $2
+docker run -it --network=container:$1 $2
 exit 0 
