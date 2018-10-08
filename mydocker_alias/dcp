@@ -6,6 +6,6 @@
 #   Version: 0.0.1
 #   Blog: https://www.donote.tk https://6donote4.github.io
 #========================================
- 
+echo "docker cp SRC_PATH DST_CONTAINER_ID_PATH or docker cp SRC_CONTAINER_ID_PATH DST_PATH" 
 docker cp $1 $2
 exit 0

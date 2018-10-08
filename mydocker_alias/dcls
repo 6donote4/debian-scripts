@@ -6,6 +6,7 @@
 #	Version: 0.0.1
 #	Blog: https://www.donote.tk	https://6donote4.github.io
 #========================================
-    docker container ls
+echo "docker container ls"   
+docker container ls
 exit 0
 
