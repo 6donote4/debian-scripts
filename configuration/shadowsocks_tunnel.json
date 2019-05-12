@@ -1,0 +1,14 @@
+        {
+            "method": "aes-256-cfb",
+            "password": "xijinpingSB",
+            "server": "45.77.36.35",
+            "server_port": 1991 ,
+	    "local_address": "0.0.0.0" ,
+	    "timeout" : 300 ,
+	    "fast_open": true ,
+	    "reuse_port": true ,
+	    "mode": "tcp_and_udp" ,
+	    "nameserver": "8.8.8.8" ,
+	    "tunnel_address": "8.8.8.8:53" ,
+            "local_port": 5300
+        }
