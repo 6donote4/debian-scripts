@@ -60,6 +60,28 @@ $IPT -A LIBVIRT_INP -i virbr1 -p udp -m udp --dport 67 -j ACCEPT
 $IPT -A LIBVIRT_INP -i virbr1 -p tcp -m tcp --dport 67 -j ACCEPT
 $IPT -A LIBVIRT_OUT -o virbr2 -p udp -m udp --dport 68 -j ACCEPT
 $IPT -A LIBVIRT_OUT -o virbr1 -p udp -m udp --dport 68 -j ACCEPT
+$IPT -t mangle -N LIBVIRT_PRT
+$IPT -t mangle -A POSTROUTING -j LIBVIRT_PRT
+$IPT -t mangle -A LIBVIRT_PRT -o virbr1 -p udp -m udp --dport 68 -j CHECKSUM --checksum-fill
+$IPT -t mangle -A LIBVIRT_PRT -o virbr2 -p udp -m udp --dport 68 -j CHECKSUM --checksum-fill
+$IPT -t nat -N LIBVIRT_PRT
+$IPT -t nat -A POSTROUTING -j LIBVIRT_PRT
+$IPT -t nat -A LIBVIRT_PRT -s 192.168.10.0/24 -d 224.0.0.0/24 -o wlp4s0 -j RETURN
+$IPT -t nat -A LIBVIRT_PRT -s 192.168.10.0/24 -d 255.255.255.255/32 -o wlp4s0 -j RETURN
+$IPT -t nat -A LIBVIRT_PRT -s 192.168.10.0/24 ! -d 192.168.10.0/24 -o wlp4s0 -p tcp -j MASQUERADE --to-ports 1024-65535
+$IPT -t nat -A LIBVIRT_PRT -s 192.168.10.0/24 ! -d 192.168.10.0/24 -o wlp4s0 -p udp -j MASQUERADE --to-ports 1024-65535
+$IPT -t nat -A LIBVIRT_PRT -s 192.168.10.0/24 ! -d 192.168.10.0/24 -o wlp4s0 -j MASQUERADE
+$IPT -t mangle  -N ROUTER_PRT
+$IPT -t mangle -A POSTROUTING -j ROUTER_PRT
+$IPT -t mangle -A ROUTER_PRT -o $NETIF0 -p udp -m udp --dport 68 -j CHECKSUM --checksum-fill
+$IPT -t mangle -N ROUTER_PRT
+$IPT -t nat -A POSTROUTING -j ROUTER_PRT
+$IPT -t nat -A ROUTER_PRT -s $LANIP -d 224.0.0.0/24 -o $NETIF1 -j RETURN
+$IPT -t nat -A ROUTER_PRT -s $LANIP -d 255.255.255.255/32 -o $NETIF1 -j RETURN
+$IPT -t nat -A ROUTER_PRT -s $LANIP ! -d $LANIP -o $NETIF1 -p tcp -j MASQUERADE --to-ports 1024-65535
+$IPT -t nat -A ROUTER_PRT -s $LANIP ! -d $LANIP -o $NETIF1 -p udp -j MASQUERADE --to-ports 1024-65535
+$IPT -t nat -A ROUTER_PRT -s $LANIP ! -d $LANIP -o $NETIF1 -j MASQUERADE 
+
 #My Router settings Beg#
 $IPT -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 $IPT -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
@@ -83,19 +105,6 @@ $IPT -A ROUTER_INP -i $NETIF0 -p tcp -m tcp --dport 53 -j ACCEPT
 $IPT -A ROUTER_INP -i $NETIF0 -p udp -m udp --dport 67 -j ACCEPT
 $IPT -A ROUTER_INP -i $NETIF0 -p tcp -m tcp --dport 67 -j ACCEPT
 $IPT -A ROUTER_OUT -o $NETIF0 -p udp -m udp --dport 68 -j ACCEPT
-$IPT -t mangle -N LIBVIRT_PRT
-$IPT -t mangle -A POSTROUTING -j LIBVIRT_PRT
-$IPT -t mangle -A LIBVIRT_PRT -o virbr1 -p udp -m udp --dport 68 -j CHECKSUM --checksum-fill
-$IPT -t mangle -A LIBVIRT_PRT -o virbr2 -p udp -m udp --dport 68 -j CHECKSUM --checksum-fill
-$IPT -t nat -N LIBVIRT_PRT
-$IPT -t nat -A POSTROUTING -j LIBVIRT_PRT
-$IPT -t nat -A LIBVIRT_PRT -s 192.168.10.0/24 -d 224.0.0.0/24 -o wlp4s0 -j RETURN
-$IPT -t nat -A LIBVIRT_PRT -s 192.168.10.0/24 -d 255.255.255.255/32 -o wlp4s0 -j RETURN
-$IPT -t nat -A LIBVIRT_PRT -s 192.168.10.0/24 ! -d 192.168.10.0/24 -o wlp4s0 -p tcp -j MASQUERADE --to-ports 1024-65535
-$IPT -t nat -A LIBVIRT_PRT -s 192.168.10.0/24 ! -d 192.168.10.0/24 -o wlp4s0 -p udp -j MASQUERADE --to-ports 1024-65535
-$IPT -t nat -A LIBVIRT_PRT -s 192.168.10.0/24 ! -d 192.168.10.0/24 -o wlp4s0 -j MASQUERADE
-$IPT -t mangle  -N ROUTER_PRT
-$IPT -t mangle -A POSTROUTING -j ROUTER_PRT
 $IPT -t mangle -A ROUTER_PRT -o $NETIF0 -p udp -m udp --dport 68 -j CHECKSUM --checksum-fill
 $IPT -t mangle -N ROUTER_PRT
 $IPT -t nat -A POSTROUTING -j ROUTER_PRT
@@ -105,6 +114,7 @@ $IPT -t nat -A ROUTER_PRT -s $LANIP ! -d $LANIP -o $NETIF1 -p tcp -j MASQUERADE 
 $IPT -t nat -A ROUTER_PRT -s $LANIP ! -d $LANIP -o $NETIF1 -p udp -j MASQUERADE --to-ports 1024-65535
 $IPT -t nat -A ROUTER_PRT -s $LANIP ! -d $LANIP -o $NETIF1 -j MASQUERADE
 #My router seting End#
+
 iptables-save
 systemctl restart NetworkManager
 exit 0
