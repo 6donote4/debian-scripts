@@ -20,7 +20,8 @@ do
                         read -p "Please input file size:" FILESIZE
                         echo "filesize = $FILESIZE "
                         echo
-                        find . -size -$FILESIZE -type f -iname $FILENAME -delete
+			find . -size $FILESIZE -type f -iname $FILENAME -exec ls {} \;
+                        find . -size $FILESIZE -type f -iname $FILENAME -delete
 	                echo "done"
 			;;
 		2)  
