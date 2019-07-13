@@ -5,40 +5,71 @@
 #Please input your vps ip in hosts,
 #Example: 
 #127.0.0.1 myhost
-while true
+VERSION=0.0.2
+PROGNAME="$(basename $0)"
+
+export LC_ALL=C
+
+SCRIPT_UMASK=0122
+umask $SCRIPT_UMASK
+
+usage() {
+cat << EOF
+$PROGNAME $VERSION
+
+Usage:
+./$PROGNAME [option]
+Options
+-s --server SSH to my debian server
+-m --home SSH to debian machine in my parents
+-a --asusbox SSH to my asusbox 
+-p --pi SSH to my raspberry
+--version  Show version
+-h --help  Show this usage
+EOF
+}
+
+if [[ "$1" == ""  ]];then
+    usage
+    exit 0
+fi
+
+connect() {
+proxychains ssh -p $PORT ${USERNAME}@myhost
+}
+
+ARGS=( "$@" )
+
+while [[ -n "$1" ]]; 
 do
-    echo "1)Debian Server"
-    echo "2)Debian Home"
-    echo "3)Manjaro AsusBox"
-    echo "4)Raspberry Pi"
-    read -p "Please select a host:" HOSTNUM
-    echo "Selected $HOSTNUM "
-    case $HOSTNUM in 
-        1)
+	case "$1" in
+        -s|--server)
             USERNAME="User"
             PORT="22"
             ;;
-        2)
+        -m|--home)
             USERNAME="dzc"
             PORT="7001"
             ;;
-        3)
+        -a|--asusbox)
             USERNAME="dzc"
             PORT="2000"
             ;;
-        4)
+        -p|--pi)
             USERNAME="pi"
             PORT="6000"
             ;;
-        *)  
+        -h|--help)
+            usage
+            exit 0
+                ;;
+        --version)
+            echo $VERSION
+            exit 0
             ;;
-    esac
-    proxychains ssh -p $PORT ${USERNAME}@myhost
-    read -p "Does continue ?(y,n):" RESPONSE
-    if [ $RESPONSE = "n" ] ; then
-        break
-    fi
+        *)
+            echo  "Invalid parameter $1" 1>&2
+            exit 1
+            ;;
+	esac
 done
-echo "done"
-exit 0
-

@@ -1,19 +1,43 @@
 #!/bin/bash
 # This script is used to delete selected files in Linux
+VERSION=0.0.2
+PROGNAME="$(basename $0)"
+
+export LC_ALL=C
+
+SCRIPT_UMASK=0122
+umask $SCRIPT_UMASK
+
+usage() {
+cat << EOF
+delfiles $VERSION
+
+Usage:
+./$PROGNAME [option]
+Options
+-s  Delete specified files in specified size
+-e  Delete empty directory
+--version  Show version
+-h --help  Show this usage
+EOF
+}
 
 red='\033[0;31m'
 green='\033[0;32m'
 yellow='\033[0;33m'
 plain='\033[0m'
 
-while true
+if [[ "$1" == ""  ]];then
+    usage
+    exit 0
+fi
+
+ARGS=( "$@" )
+
+while [[ -n "$1" ]]; 
 do
-	echo "1)delete specified size files"
-	echo "2)delete empty directory"
-    read -p "Please select a operation:" OPERATION
-	echo "selected $OPERATION "
-	case $OPERATION in
-		1)
+	case "$1" in
+           -s)
 			read -p "Please input file name:" FILENAME
 			echo "filename = $FILENAME "
 			echo
@@ -23,18 +47,25 @@ do
 			find . -size $FILESIZE -type f -iname $FILENAME -exec ls {} \;
                         find . -size $FILESIZE -type f -iname $FILENAME -delete
 	                echo "done"
+	                exit 0
 			;;
-		2)  
+	    -e)  
 			find . -empty -delete
 			echo "done"
+			exit 0
+			;;
+	    -h|--help)
+			usage
+			exit 0
+			;;
+	    --version)
+			echo $VERSION
+			exit 0
+			;;
+	
+	    *)
+			echo  "Invalid parameter $1" 1>&2
+			exit 1
 			;;
 	esac
-        read -p "Does continue ?(y,n)" RESPONSE
-        echo "confirm = $RESPONSE "
-        echo
-        if [ $RESPONSE = "n" ];then
-	break
-        fi
-        echo "done"
 done
-exit 0
