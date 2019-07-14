@@ -1,4 +1,11 @@
-#!/bin/bash
+#!/bin/sh
+#========================================
+#   Linux Distribution: Manjaro/Debian 8+/
+#   Author: 6donote4 <mailto:do_note@hotmail.com>
+#   Dscription: Update Linux/GNU Packages 
+#   Version: 0.0.2
+#   Blog: https://www.donote.tk https://6donote4.github.io
+#========================================
 #This shell script is used to update and upgrade Linux release system
 VERSION=0.0.2
 PROGNAME="$(basename $0)"

@@ -1,5 +1,12 @@
-#A simple shell script - let's call it index-html.sh - to turn a list of file names into html links:
 #!/bin/sh
+#========================================
+#   Linux Distribution: Manjaro/Debian 8+/
+#   Author: 6donote4 <mailto:do_note@hotmail.com>
+#   Dscription: Creating MarkDown code for pictre,video,mp3,etc.
+#   Version: 0.0.2
+#   Blog: https://www.donote.tk https://6donote4.github.io
+#========================================
+#A simple shell script - let's call it index-html.sh - to turn a list of file names into html links:
 #Example use:
 #ls | ../index-html.sh > index.html
 VERSION=0.0.1

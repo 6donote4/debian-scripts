@@ -1,4 +1,11 @@
-#!/bin/bash
+#!/bin/sh
+#========================================
+#   Linux Distribution: Manjaro/Debian 8+/
+#   Author: 6donote4 <mailto:do_note@hotmail.com>
+#   Dscription: Connect to my host by remote machine
+#   Version: 0.0.2
+#   Blog: https://www.donote.tk https://6donote4.github.io
+#========================================
 #Connect to MyHost
 #You should configure your hosts file(/etc/hosts),frpserver and frpclient 
 #if you want to use this scripts.

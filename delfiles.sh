@@ -1,4 +1,11 @@
-#!/bin/bash
+#!/bin/sh
+#========================================
+#   Linux Distribution: Manjaro/Debian 8+/
+#   Author: 6donote4 <mailto:do_note@hotmail.com>
+#   Dscription: Delete some files in Linux
+#   Version: 0.0.2
+#   Blog: https://www.donote.tk https://6donote4.github.io
+#========================================
 # This script is used to delete selected files in Linux
 VERSION=0.0.2
 PROGNAME="$(basename $0)"
