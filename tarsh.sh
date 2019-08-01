@@ -45,11 +45,11 @@ while [[ -n "$1" ]]; do
             exit 0
             ;;
         -c)
-           tar -cjvf $1.tar.bz2 $2
+           tar -cjvf $2.tar.bz2 $3
             exit 0
             ;;
         -d)
-           tar -xjvf $1 
+           tar -xjvf $2 
            exit 0
            ;;
        *)
