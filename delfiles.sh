@@ -54,9 +54,9 @@ do
                         read -p "Please input max directory depth:" DEPTH
                         echo "filesize = $DEPTH "
                         echo
-			find . -maxdepth $DEPTH -size -$FILESIZE  -iname "*.*" -exec ls {} \;
+			find . -maxdepth $DEPTH -size -$FILESIZE ! -iname '*.sh' -type f -exec ls {} \;
 		       # find . -maxdepth $DEPTH -size -$FILESIZE  -iname "$FILENAME" -exec ls {} \;
-                        find . -maxdepth $DEPTH -size -$FILESIZE  -iname "*.!{sh}" -delete 
+                        find . -maxdepth $DEPTH -size -$FILESIZE ! -iname '*.sh' -type f -delete 
                        # find . -maxdepth $DEPTH -size -$FILESIZE  -iname "$FILENAME" -delete
 	                echo "done"
 	                exit 0
