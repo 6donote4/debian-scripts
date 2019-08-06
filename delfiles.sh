@@ -45,14 +45,19 @@ while [[ -n "$1" ]];
 do
 	case "$1" in
            -s)
-			read -p "Please input file name:" FILENAME
-			echo "filename = $FILENAME "
+#			read -p "Please input file name:" FILENAME
+#			echo "filename = $FILENAME "
 			echo
                         read -p "Please input file size:" FILESIZE
                         echo "filesize = $FILESIZE "
                         echo
-			find . -size $FILESIZE -type f -iname $FILENAME -exec ls {} \;
-                        find . -size $FILESIZE -type f -iname $FILENAME -delete
+                        read -p "Please input max directory depth:" DEPTH
+                        echo "filesize = $DEPTH "
+                        echo
+			find . -maxdepth $DEPTH -size -$FILESIZE  -iname "*.*" -exec ls {} \;
+		       # find . -maxdepth $DEPTH -size -$FILESIZE  -iname "$FILENAME" -exec ls {} \;
+                        find . -maxdepth $DEPTH -size -$FILESIZE  -iname "*.!{sh}" -delete 
+                       # find . -maxdepth $DEPTH -size -$FILESIZE  -iname "$FILENAME" -delete
 	                echo "done"
 	                exit 0
 			;;
