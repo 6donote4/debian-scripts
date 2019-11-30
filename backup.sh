@@ -21,7 +21,7 @@ $PROGNAME $VERSION
 Usage:
 ./$PROGNAME [option] SRC DST
 Options
--s 增量备份，从源目录备份到目标目录，目录名称不可包含目录符号
+-s 增量备份，从源目录备份到目标目录，源目录包含/,则复制目录内容到目标目录，不创建同名目录；反之，创建同名目录
 --version  Show version
 -h --help  Show this usage
       
@@ -35,11 +35,9 @@ fi
  
 ARGS=( "$@" )
 
-while [[ -n "$1" ]]; 
-do
 	case "$1" in
 	    -s)
-	    	rsync -av --delete $2 $3
+	    	rsync --progrerss  -avvv --delete $2 $3
 	    	echo "done"
 	    	exit 0
 		;;
@@ -56,4 +54,3 @@ do
 		exit 1
 		;;
 	esac
-    done  
