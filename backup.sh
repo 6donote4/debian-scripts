@@ -23,7 +23,7 @@ Usage:
 Options
 -s 增量备份，从源目录备份到目标目录,目标目录删除源目录不存在的文件，源目录包含/,则复制目录内容到目标目录，不创建同名目录；反之，创建同名目录
 -c 增量备份，备份源目录文件到目标目录，目标目录保留源目录不存在的文件目标目录删除源目录不存在的文件.  
--r 首参数指定ssh端口，备份文件到远程服务器
+-r ssh端口可在脚本中修改，备份文件到远程服务器
 --version  Show version
 -h --help  Show this usage
       
@@ -53,7 +53,7 @@ ARGS=( "$@" )
 	    	exit 0
 		;;
 	    -r)
-	    	rsync --progress -avze ssh -p $2 $3 $4
+	    	rsync --progress -avze 'ssh -p 2000' $2 $3
 	    	echo "done"
 	    	exit 0
 		;;
