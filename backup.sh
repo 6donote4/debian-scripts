@@ -39,7 +39,7 @@ ARGS=( "$@" )
 
 	case "$1" in
 	    -s)
-	    	rsync --progress  -avvv --delete $2 $3
+	    	rsync --progress  -av --delete $2 $3
 	    	echo "done"
 	    	exit 0
 		;;
@@ -48,7 +48,7 @@ ARGS=( "$@" )
 		exit 0
 		;;
 	    -c)
-	    	rsync --progress -avvv $2/ $3
+	    	rsync --progress -av $2/ $3
 	    	echo "done"
 	    	exit 0
 		;;
