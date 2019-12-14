@@ -24,6 +24,7 @@ Usage:
 Options
 -s  Delete specified files in specified size
 -e  Delete empty directory
+-n  Delete files of specified name in limited size 
 --version  Show version
 -h --help  Show this usage
 EOF
