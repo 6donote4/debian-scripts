@@ -52,7 +52,7 @@ do
                         echo "filesize = $FILESIZE "
                         echo
                         read -p "Please input max directory depth:" DEPTH
-                        echo "filesize = $DEPTH "
+                        echo "filedepth = $DEPTH "
                         echo
 			find . -maxdepth $DEPTH -size -$FILESIZE ! -iname '*.sh' -type f -exec ls {} \;
 		       # find . -maxdepth $DEPTH -size -$FILESIZE  -iname "$FILENAME" -exec ls {} \;
@@ -61,6 +61,23 @@ do
 	                echo "done"
 	                exit 0
 			;;
+          -n)
+			read -p "Please input file name:" FILENAME
+			echo "filename = $FILENAME "
+			echo
+                        read -p "Please input file size:" FILESIZE
+                        echo "filesize = $FILESIZE "
+                        echo
+                        read -p "Please input max directory depth:" DEPTH
+                        echo "filedepth = $DEPTH "
+                        echo
+			find . -maxdepth $DEPTH -size -$FILESIZE -iname "$FILENAME" ! -iname '*.sh' -type f -exec ls {} \;
+                        find . -maxdepth $DEPTH -size -$FILESIZE -iname "$FILENAME" ! -iname '*.sh' -type f -delete 
+	                echo "done"
+	                exit 0
+			;;
+ 
+
 	    -e)  
 			find . -empty -delete
 			echo "done"
