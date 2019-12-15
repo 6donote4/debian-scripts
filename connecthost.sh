@@ -47,24 +47,26 @@ proxychains ssh -p $PORT ${USERNAME}@myhost
 
 ARGS=( "$@" )
 
-while [[ -n "$1" ]]; 
-do
 	case "$1" in
         -s|--server)
             USERNAME="User"
             PORT="22"
+            connect
             ;;
         -m|--home)
             USERNAME="dzc"
             PORT="7001"
+            connect
             ;;
         -a|--asusbox)
             USERNAME="dzc"
             PORT="2000"
+            connect
             ;;
         -p|--pi)
             USERNAME="pi"
             PORT="6000"
+            connect
             ;;
         -h|--help)
             usage
@@ -79,4 +81,3 @@ do
             exit 1
             ;;
 	esac
-done
