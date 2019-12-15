@@ -88,7 +88,7 @@ do
                         echo "filedepth = $DEPTH "
 			echo 
 			find . -maxdepth $DEPTH  ! -iname '*.sh' -type f -print0 | xargs -0 md5sum | sort > ./allfiles;
-                        cat .//allfiles | uniq -w 32 > .//uniqfiles;
+                        cat ./allfiles | uniq -w 32 > ./uniqfiles;
 			comm ./allfiles .//uniqfiles -2 -3 | cut -c 35- | tr '\n' '\0' | xargs -0 rm;
 			rm ./allfiles ./uniqfiles;
 			echo "done"
