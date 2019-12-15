@@ -3,11 +3,11 @@
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
 #   Dscription: Delete some files in Linux
-#   Version: 0.0.4
+#   Version: 0.0.5
 #   Blog: https://www.donote.tk https://6donote4.github.io
 #========================================
 # This script is used to delete selected files in Linux
-VERSION=0.0.4
+VERSION=0.0.5
 PROGNAME="$(basename $0)"
 
 export LC_ALL=C
@@ -25,6 +25,7 @@ Options
 -s  Delete specified files in specified size
 -e  Delete empty directory
 -n  Delete files of specified name in limited size 
+-g  Delete fils of the greater than specified size 
 -r  Delete duplicated files
 --version  Show version
 -h --help  Show this usage
@@ -47,9 +48,6 @@ while [[ -n "$1" ]];
 do
 	case "$1" in
            -s)
-#			read -p "Please input file name:" FILENAME
-#			echo "filename = $FILENAME "
-			echo
                         read -p "Please input file size:" FILESIZE
                         echo "filesize = $FILESIZE "
                         echo
@@ -61,7 +59,7 @@ do
 	                echo "done"
 	                exit 0
 			;;
-          -n)
+	    -n)
 			read -p "Please input file name:" FILENAME
 			echo "filename = $FILENAME "
 			echo
@@ -76,8 +74,21 @@ do
 	                echo "done"
 	                exit 0
 			;;
- 
-
+	    -g)
+			read -p "Please input file name:" FILENAME
+			echo "filename = $FILENAME "
+			echo
+                        read -p "Please input file size:" FILESIZE
+                        echo "filesize = $FILESIZE "
+                        echo
+                        read -p "Please input max directory depth:" DEPTH
+                        echo "filedepth = $DEPTH "
+                        echo
+			find . -maxdepth $DEPTH -size +$FILESIZE -iname "$FILENAME" ! -iname '*.sh' -type f -exec ls {} \;
+                        find . -maxdepth $DEPTH -size +$FILESIZE -iname "$FILENAME" ! -iname '*.sh' -type f -delete 
+	                echo "done"
+	                exit 0
+			;;
 	    -e)  
 			find . -empty -delete
 			echo "done"
