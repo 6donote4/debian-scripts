@@ -3,11 +3,11 @@
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
 #   Dscription: Delete some files in Linux
-#   Version: 0.0.3
+#   Version: 0.0.4
 #   Blog: https://www.donote.tk https://6donote4.github.io
 #========================================
 # This script is used to delete selected files in Linux
-VERSION=0.0.3
+VERSION=0.0.4
 PROGNAME="$(basename $0)"
 
 export LC_ALL=C
@@ -25,6 +25,7 @@ Options
 -s  Delete specified files in specified size
 -e  Delete empty directory
 -n  Delete files of specified name in limited size 
+-r  Delete duplicated files
 --version  Show version
 -h --help  Show this usage
 EOF
@@ -56,9 +57,7 @@ do
                         echo "filedepth = $DEPTH "
                         echo
 			find . -maxdepth $DEPTH -size -$FILESIZE ! -iname '*.sh' -type f -exec ls {} \;
-		       # find . -maxdepth $DEPTH -size -$FILESIZE  -iname "$FILENAME" -exec ls {} \;
                         find . -maxdepth $DEPTH -size -$FILESIZE ! -iname '*.sh' -type f -delete 
-                       # find . -maxdepth $DEPTH -size -$FILESIZE  -iname "$FILENAME" -delete
 	                echo "done"
 	                exit 0
 			;;
@@ -81,6 +80,17 @@ do
 
 	    -e)  
 			find . -empty -delete
+			echo "done"
+			exit 0
+			;;
+	    -r)
+			read -p "Please input max directory depth:" DEPTH
+                        echo "filedepth = $DEPTH "
+			echo 
+			find . -maxdepth $DEPTH  ! -iname '*.sh' -type f -print0 | xargs -0 md5sum | sort > ./allfiles;
+                        cat .//allfiles | uniq -w 32 > .//uniqfiles;
+			comm ./allfiles .//uniqfiles -2 -3 | cut -c 35- | tr '\n' '\0' | xargs -0 rm;
+			rm ./allfiles ./uniqfiles;
 			echo "done"
 			exit 0
 			;;
