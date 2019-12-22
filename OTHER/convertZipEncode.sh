@@ -20,7 +20,7 @@ cat << EOF
 delfiles $VERSION
 
 Usage:
-./$PROGNAME [option]
+./$PROGNAME [option] FILE
 Options
 -c  Convert file encode
 --version  Show version
@@ -38,26 +38,23 @@ if [[ "$1" == ""  ]];then
     exit 0
 fi
 
-converts() {
-    LANG=C 7za x $FILENAME;
-    convmv -f GBK -t utf8 --notest -r .;
-}
-
 preparation() {
     sudo pacman -S 7z convmv ;
 }
 
+converts() {
+
+    LANG=C 7za x  \.\/$2;
+    convmv -f GBK -t utf8 --notest -r .;  
+		       }
 ARGS=( "$@" )
 
 while [[ -n "$1" ]]; 
 do
 	case "$1" in
            -c)
-                        read -p "Please input file name:" FILENAME
-                        echo "filename = $FILENAME "
-                        echo
-                        if [[ -e "/usr/bin/convmv" -a -f "/usr/bin/7za"  ]] ; then
-                           convert
+			if [[ -e "/usr/bin/convmv"  &&  -e "/usr/bin/7za" ]] ; then
+			    converts
 		        else
 		            preparation
 			fi
