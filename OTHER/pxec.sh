@@ -149,6 +149,8 @@ nfs_server_settings () {
     cat >> /etc/exports <<EOF
 /mnt	*(ro,all_squash,insecure,sync)
 EOF
+/etc/init.d/nfsd restart
+
 }
 main() {
        pxeboot
