@@ -2,11 +2,11 @@
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
-#   Dscription: Convert GBK to utf8 in zip format archive.
+#   Dscription: Sync local time from ntp server.
 #   Version: 0.0.1
 #   Blog: https://www.donote.tk https://6donote4.github.io
 #========================================
-# This script is used to convert file encode in zip archive.
+# This script is used to sync local time from ntp server 
 VERSION=0.0.1
 PROGNAME="$(basename $0)"
 
@@ -20,9 +20,9 @@ cat << EOF
 delfiles $VERSION
 
 Usage:
-./$PROGNAME [option] FILE
+./$PROGNAME [option] 
 Options
--c  Convert file encode
+-s  Sync time 
 --version  Show version
 -h --help  Show this usage
 EOF
@@ -38,27 +38,17 @@ if [[ "$1" == ""  ]];then
     exit 0
 fi
 
-preparation() {
-    sudo pacman -S 7z convmv ;
-}
-
-converts() {
-
-    LANG=C 7za x  \.\/$2;
-    convmv -f GBK -t utf8 --notest -r .;  
+synctime() {
+    sudo ntpdate 0.cn.pool.ntp.org
 		       }
 ARGS=( "$@" )
 
 while [[ -n "$1" ]]; 
 do
 	case "$1" in
-           -c)
-			if [[ -e "/usr/bin/convmv"  &&  -e "/usr/bin/7za" ]] ; then
-			    converts
-		        else
-		            preparation
-			fi
-	                echo "done"
+           -s)
+			synctime
+			echo "done"
 	                exit 0
 			;;
 	    -h|--help)
