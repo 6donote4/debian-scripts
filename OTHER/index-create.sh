@@ -3,13 +3,13 @@
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
 #   Dscription: Creating MarkDown code for pictre,video,mp3,etc.
-#   Version: 0.0.2
+#   Version: 0.0.3
 #   Blog: https://www.donote.tk https://6donote4.github.io
 #========================================
 #A simple shell script - let's call it index-html.sh - to turn a list of file names into html links:
 #Example use:
 #ls | ../index-html.sh > index.html
-VERSION=0.0.1
+VERSION=0.0.3
 PROGNAME="$(basename $0)"
 
 export LC_ALL=C
@@ -30,6 +30,14 @@ Options
     -a,--audio     Create a index about audio html tag
 EOF
 }
+recursive() {
+   read -p "does list  all sub-directory?(y|n) " RESPONE
+   if [[ $RESPONE == "yes" || $RESPONE == "Y" || $RESPONE == "y" || $RESPONE == "YES" ]] ; then
+      OPSYM="-R"
+   else
+      OPSYM=""
+   fi
+}
 
 if [[ "$1" == "" ]];then
     usage
@@ -49,21 +57,22 @@ while [[ -n "$1" ]]; do
             exit 0
             ;;
         -i|--image)
-            ls $2|sed 's/^.*/<img width=\"600\" src="\\'$2'\\&">/'>$3 
+            ls "$2"|sed 's#^.*#<img width=\"600\" src="\/'$2'&">#'>$3 
             exit 0
             ;;
         -m|--html)
+            recursive
             echo '<html><body>'>>$3
-            ls $2|sed 's/^.*/<a href="\\'$2'\\&">&<\/a><br\/>/'>>$3
+            ls $OPSYM "$2"|sed 's#^.*#<a href="\/'$2'&">&<\/a><br\/>#'>>$3
             echo '</body></html>'>>$3
             exit 0
             ;;
         -a|--audio)
-           ls $2 sed  's/^.*/<audio controls="controls" name="media" style='width:264px' autoplay loop=true> <source src="&&\\'$2'\\&"> </audio>/'>$3
+           ls "$2"|sed 's#^.*#<audio controls="controls" name="media" style='width:264px' autoplay loop=true> <source src="\/'$2'&"> </audio>#'>$3
            exit 0
            ;;
         -v|--video)
-           ls $2|sed 's/^.*/<video width="600" height="450" controls> <source src="\\'$2'\\&" type="video/mp4"> <source src="\\'$2'\\&" type="video/ogg"> 您的浏览器不支持Video标签。</video>'                                                                                            
+           ls "$2"|sed 's#^.*#<video width="600" height="450" controls> <source src="\/'$2'&" type="video/mp4"> <source src="\/'$2'&" type="video/ogg"> 您的浏览器不支持Video标签。</video>#'>$3 
            exit 0
            ;;
            
@@ -73,9 +82,3 @@ while [[ -n "$1" ]]; do
            ;;
    esac
 done
-
-
-
-
-           
-
