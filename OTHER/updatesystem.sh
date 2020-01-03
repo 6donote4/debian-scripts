@@ -40,40 +40,40 @@ fi
 ARGS=( "$@" )
 
 while [[ -n "$1" ]]; 
-do
-	case "$1" in
-		-d|--debian)
-		proxychains apt-get update -y ;
-		proxychains apt-get upgrade -y ;
-		echo "done"
-		exit 0
-		;;
+	do
+		case "$1" in
+			-d|--debian)
+			proxychains apt-get update -y ;
+			proxychains apt-get upgrade -y ;
+			echo "done"
+			exit 0
+			;;
 		-a|--archlinux)
-		yes| proxychains pacman -Syuu ;
-		echo "done"
-		exit 0
-		;;
-		-c|--centos)
-		yes| proxychains yum update ;
-		echo "done"
-		exit 0
-		;;
+			yes| proxychains pacman -Syuu ;
+			echo "done"
+			exit 0
+			;;
+			-c|--centos)
+			yes| proxychains yum update ;
+			echo "done"
+			exit 0
+			;;
 		-f|--fedora)
-		yes| proxychains dnf upgrade ;
-		echo "done"
-		exit 0
-		;;
+			yes| proxychains dnf upgrade ;
+			echo "done"
+			exit 0
+			;;
 		-h|--help)
-		usage
-		exit 0
-		;;
+			usage
+			exit 0
+			;;
 		--version)
-		echo $VERSION
-		exit 0
-		;;
+			echo $VERSION
+			exit 0
+			;;
 		*)
-		echo  "Invalid parameter $1" 1>&2
-		exit 1
-		;;
-	esac
-    done
+			echo  "Invalid parameter $1" 1>&2
+			exit 1
+			;;
+		esac
+done

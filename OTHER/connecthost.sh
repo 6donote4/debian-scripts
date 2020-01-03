@@ -47,37 +47,37 @@ proxychains ssh -p $PORT ${USERNAME}@myhost
 
 ARGS=( "$@" )
 
-	case "$1" in
-        -s|--server)
-            USERNAME="User"
-            PORT="22"
-            connect
-            ;;
-        -m|--home)
-            USERNAME="dzc"
-            PORT="7001"
-            connect
-            ;;
-        -a|--asusbox)
-            USERNAME="dzc"
-            PORT="2000"
-            connect
-            ;;
-        -p|--pi)
-            USERNAME="pi"
-            PORT="6000"
-            connect
-            ;;
-        -h|--help)
-            usage
-            exit 0
-                ;;
-        --version)
-            echo $VERSION
-            exit 0
-            ;;
-        *)
-            echo  "Invalid parameter $1" 1>&2
-            exit 1
-            ;;
-	esac
+case "$1" in
+	-s|--server)
+		USERNAME="User"
+		PORT="22"
+		connect
+		;;
+	-m|--home)
+		USERNAME="dzc"
+		PORT="7001"
+		connect
+		;;
+	-a|--asusbox)
+		USERNAME="dzc"
+		PORT="2000"
+		connect
+		;;
+	-p|--pi)
+		USERNAME="pi"
+		PORT="6000"
+		connect
+		;;
+	-h|--help)
+		usage
+		exit 0
+		;;
+	--version)
+		echo $VERSION
+		exit 0
+		;;
+	*)
+		echo  "Invalid parameter $1" 1>&2
+		exit 1
+		;;
+esac
