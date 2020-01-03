@@ -53,31 +53,24 @@ ARGS=( "$@" )
             case "$KVMNUM" in
                 1)
                     KVMDOMAIN="DNS"
-                    exit 0
                     ;;
                 2)
                     KVMDOMAIN="MikroTIk6_2"
-                    exit 0
                     ;;
                 3)
                     KVMDOMAIN="centos8"
-                    exit 0
                     ;;
                 4)
                     KVMDOMAIN="OpenWRT"
-                    exit 0
                     ;;
                 5)
                     KVMDOMAIN="Slitaz"
-                    exit 0
                     ;;
                 6)
                     KVMDOMAIN="ubuntu14.04"
-                    exit 0 
                     ;;
                 7)
                     KVMDOMAIN="vmLeanWRT"
-                    exit 0
                     ;;
                 *)
                     echo  "Invalid parameter $1" 1>&2
