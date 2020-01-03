@@ -43,7 +43,7 @@ ARGS=( "$@" )
         -s|--start)
             echo "1) DNS"
             echo "2) MikroTik6_2"
-            echo "3) node1"
+            echo "3) centos8"
             echo "4) OpenWRT"
             echo "5) Slitaz"
             echo "6) ubuntu14.04"
@@ -53,32 +53,38 @@ ARGS=( "$@" )
             case "$KVMNUM" in
                 1)
                     KVMDOMAIN="DNS"
+                    exit 0
                     ;;
                 2)
                     KVMDOMAIN="MikroTIk6_2"
+                    exit 0
                     ;;
                 3)
-                    KVMDOMAIN="node1"
+                    KVMDOMAIN="centos8"
+                    exit 0
                     ;;
                 4)
                     KVMDOMAIN="OpenWRT"
+                    exit 0
                     ;;
                 5)
                     KVMDOMAIN="Slitaz"
+                    exit 0
                     ;;
                 6)
                     KVMDOMAIN="ubuntu14.04"
+                    exit 0 
                     ;;
                 7)
                     KVMDOMAIN="vmLeanWRT"
+                    exit 0
                     ;;
-                9)  
-                    KVMDOMAIN="centos8"
                 *)
                     echo  "Invalid parameter $1" 1>&2
                     exit 1
                     esac
             startkvm
+            exit 0
             ;;
         -h|--help)
             usage
