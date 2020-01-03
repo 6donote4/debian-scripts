@@ -30,14 +30,6 @@ Options
     -a,--audio     Create a index about audio html tag
 EOF
 }
-recursive() {
-   read -p "does list  all sub-directory?(y|n) " RESPONE
-   if [[ $RESPONE == "yes" || $RESPONE == "Y" || $RESPONE == "y" || $RESPONE == "YES" ]] ; then
-      OPSYM="-R"
-   else
-      OPSYM=""
-   fi
-}
 
 if [[ "$1" == "" ]];then
     usage
@@ -57,15 +49,21 @@ while [[ -n "$1" ]]; do
             exit 0
             ;;
         -i|--image)
-            ls "$2"|sed 's#^.*#<img width=\"600\" src="\/'$2'&">#'>$3 
+            ls "$2"|sed 's#^.*#<img width=\"600\" src="\/'$2'&" \/>#'>$3 
             exit 0
             ;;
         -m|--html)
-            recursive
+         read -p "does list  all sub-directory?(y|n) " RESPONE
+            if [[ $RESPONE == "yes" || $RESPONE == "Y" || $RESPONE == "y" || $RESPONE == "YES" ]] ; then
             echo '<html><body>'>>$3
-            ls $OPSYM "$2"|sed 's#^.*#<a href="\/'$2'&">&<\/a><br\/>#'>>$3
+            ls  "$2"|sed 's#^.*#<a href="\/'$2'&">&<\/a><br\/>#'>>$3
             echo '</body></html>'>>$3
-            exit 0
+            else
+            echo '<html><body>'>>$3
+            ls  "$2"|sed 's#^.*#<a href="\/'$2'&">&<\/a><br\/>#'>>$3
+            echo '</body></html>'>>$3
+            fi
+           exit 0
             ;;
         -a|--audio)
            ls "$2"|sed 's#^.*#<audio controls="controls" name="media" style='width:264px' autoplay loop=true> <source src="\/'$2'&"> </audio>#'>$3
