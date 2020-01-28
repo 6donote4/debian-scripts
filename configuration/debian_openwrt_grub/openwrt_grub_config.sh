@@ -60,7 +60,7 @@ init() {
 
 write_image() {
     gzip -d openwrt-x86-64-rootfs-ext4*
-    mv -rf ./openwrt-x86-64-vmlinuz /boot
+    mv -f ./openwrt-x86-64-vmlinuz /boot
     OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: ")
     print_fun $OPENWRT_ROOT_PATH
     dd if=./openwrt-x86-64-rootfs-ext4.img of=$OPENWRT_ROOT_PATH
@@ -71,17 +71,17 @@ write_image() {
 }
 
 recovery_openwrt() {
-    tar xvpf ./backup_OpenWrt* -C ./my_openwrt
-    umount ./my_openwrt
+    tar xvf ./backup-OpenWrt*.tar.gz -C ./my_openwrt
+    #umount ./my_openwrt
     echo "recovery done"
 }
 
 add_boot_menu() {
     OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: ")
     print_fun $OPENWRT_ROOT_PATH
-    OPENWRT_PARTUUID=$(blkid $OPENWRT_ROOT_PATH|sed 's/^.*PARTUUID=//g')
+    OPENWRT_PARTUUID=$(/sbin/blkid $OPENWRT_ROOT_PATH|sed 's/^.*PARTUUID=//g')
     cat grub.d/40_custom | sed "s/OPENWRT_ID/$OPENWRT_PARTUUID/1" >./40_custom
-    mv -rf 40_custom /etc/grub.d/
+    mv -f 40_custom /etc/grub.d/
     echo "add_boot_menu done"
 }
 
@@ -90,12 +90,13 @@ default_boot() {
     print_fun $OPENWRT_ORD
     let OPENWRT_ORD-=1
     cat grub.d/00_header | sed "s/OPENWRT_DEFAULT/$OPENWRT_ORD/1" >./00_header
-    mv -rf 00_header /etc/grub.d/
+    mv -f 00_header /etc/grub.d/
     echo "default_boot done"
 }
 
 main() {
     init
+    write_image
     add_boot_menu
     default_boot
     recovery_openwrt
