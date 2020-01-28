@@ -17,13 +17,14 @@ umask $SCRIPT_UMASK
 
 usage() {
 cat << EOF
-pxec.sh $VERSION
+$PROGNAME $VERSION
 
 Usage:
 ./$PROGNAME [option]
 Options
 -m Configuire All
 -d Change boot order
+-u Update Openwrt
 -r Recover openwrt configuration
 --version  Show version
 -h --help  Show this usage
@@ -82,6 +83,7 @@ add_boot_menu() {
     OPENWRT_PARTUUID=$(/sbin/blkid $OPENWRT_ROOT_PATH|sed 's/^.*PARTUUID=//g')
     cat grub.d/40_custom | sed "s/OPENWRT_ID/$OPENWRT_PARTUUID/1" >./40_custom
     mv -f 40_custom /etc/grub.d/
+    /sbin/update-grub2
     echo "add_boot_menu done"
 }
 
@@ -91,6 +93,7 @@ default_boot() {
     let OPENWRT_ORD-=1
     cat grub.d/00_header | sed "s/OPENWRT_DEFAULT/$OPENWRT_ORD/1" >./00_header
     mv -f 00_header /etc/grub.d/
+    /sbin/update-grub2
     echo "default_boot done"
 }
 
@@ -122,6 +125,10 @@ ARGS=( "$@" )
             main
             exit 0
             ;;
+	    -u)
+	    write_image
+	    recovery
+	    ;;
 	    -h|--help)
 			usage
 			exit 0
