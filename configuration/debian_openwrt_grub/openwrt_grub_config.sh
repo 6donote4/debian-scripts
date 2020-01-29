@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
@@ -53,18 +53,18 @@ print_fun() {
 init() {
     DEBIAN_PATH=$(read_fun "Please input block device path of Debian Distribution DVD: ")
     print_fun $DEBIAN_PATH
-    mount $DEBIAN_PATH /mnt
-    apt-cdrom -m -d /mnt add
+    mount $DEBIAN_PATH /media/cdrom
+    apt-cdrom -m -d /media/cdrom add
+    apt-get update -y
     apt-get install -y vim parted
     echo "init done"
 }
 
 write_image() {
-    gzip -d openwrt-x86-64-rootfs-ext4*
     mv -f ./openwrt-x86-64-vmlinuz /boot
     OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: ")
     print_fun $OPENWRT_ROOT_PATH
-    dd if=./openwrt-x86-64-rootfs-ext4.img of=$OPENWRT_ROOT_PATH
+    gzip -d openwrt-x86-64-rootfs-ext4*|dd of=$OPENWRT_ROOT_PATH
     rm -rf ./openwrt-x86-64-rootfs-ext4.img
     mkdir ./my_openwrt
     mount $OPENWRT_ROOT_PATH ./my_openwrt
@@ -73,7 +73,8 @@ write_image() {
 
 recovery_openwrt() {
     tar xvf ./backup-OpenWrt*.tar.gz -C ./my_openwrt
-    #umount ./my_openwrt
+    umount ./my_openwrt
+    rm -rf my_openwrt
     echo "recovery done"
 }
 
@@ -82,7 +83,10 @@ add_boot_menu() {
     print_fun $OPENWRT_ROOT_PATH
     OPENWRT_PARTUUID=$(/sbin/blkid $OPENWRT_ROOT_PATH|sed 's/^.*PARTUUID=//g')
     cat grub.d/40_custom | sed "s/OPENWRT_ID/$OPENWRT_PARTUUID/1" >./40_custom
+    chmod +x ./40_custom
     mv -f 40_custom /etc/grub.d/
+    /sbin/grub-install /dev/sda
+    /sbin/grub-mkconfig -o /boot/grub/grub.cfg
     /sbin/update-grub2
     echo "add_boot_menu done"
 }
@@ -92,7 +96,10 @@ default_boot() {
     print_fun $OPENWRT_ORD
     let OPENWRT_ORD-=1
     cat grub.d/00_header | sed "s/OPENWRT_DEFAULT/$OPENWRT_ORD/1" >./00_header
+    chmod +x ./00_header
     mv -f 00_header /etc/grub.d/
+    /sbin/grub-install /dev/sda
+    /sbin/grub-mkconfig -o /boot/grub/grub.cfg
     /sbin/update-grub2
     echo "default_boot done"
 }
