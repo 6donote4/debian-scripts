@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
@@ -36,16 +36,33 @@ usage
 exit 0
 fi
 
+read_fun() {
+    read -p "$1" RESPON
+    echo $RESPON
+}
+
+print_fun() {
+    echo "You inputed :" >&1
+    echo $1 >&1
+    echo "print done"
+}
 _mount() {
+	MOUNTPATH=$(read_fun "Please input NFS server address (127.0.0.1:/test):")
+	print_fun $MOUNTPATH
+	MOUNTFILE=$(read_fun "Please input local mounted destination directory name :")
+	print_fun $MOUNTFILE
 mount.nfs $MOUNTPATH $MOUNTFILE
 }
 
 _umount() {
-umount.nfs $MOUNTPATH $MOUNTFILE
+	MOUNTFILE=$(read_fun "Please input local mounted destination directory name :")
+	print_fun $MOUNTFILE
+umount  $MOUNTFILE
 }
 
 _query() {
-read -p "Please input a host to query a file path:" HOSTIP
+	HOSTIP=$(read_fun "Please input NFS server address to query shared directory name: ")
+	print_fun $HOSTIP
 showmount -e $HOSTIP
 }
 
@@ -77,4 +94,3 @@ case "$1" in
 		exit 1
 		;;
 esac
-

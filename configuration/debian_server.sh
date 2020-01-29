@@ -45,11 +45,13 @@ print_fun() {
     echo $1 >&1
     echo "print done"
 }
+
 installation() {
     apt-get install -y vim parted nmap net-tools git netcat tor dnsmasq ntp sntp \
-    samba nfs-common w3m curl wget xz-utils unrar-free zip screen ncdu htop rtorrent \
-    cmus cmus-plugin-ffmpeg aumix-common wireless-tools iw pulseaudio-utils \
-    pulseaudio ntfs-3g p7zip-full iotop aria2 emacs-nox 
+    samba nfs-common w3m curl wget xz-utils unrar-free zip screen ncdu htop \
+    wireless-tools iw pulseaudio-utils pulseaudio ntfs-3g p7zip-full iotop aria2 \
+    emacs-nox emacs-common emacs-bin-common aumix-common oss-compat cmus libopusfile0 \
+    libcephfs2 librados2 rtorrent libxmlrpc-core-c3
 }
 
 
