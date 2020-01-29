@@ -61,12 +61,10 @@ init() {
 }
 
 write_image() {
-    gzip -d openwrt-x86-64-rootfs-ext4*
-    mv -f ./openwrt-x86-64-vmlinuz /boot
+    cp -rf ./openwrt-x86-64-vmlinuz /boot
     OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: ")
     print_fun $OPENWRT_ROOT_PATH
-    dd if=./openwrt-x86-64-rootfs-ext4.img of=$OPENWRT_ROOT_PATH
-    rm -rf ./openwrt-x86-64-rootfs-ext4.img
+    gzip -dc openwrt-x86-64-rootfs-ext4* | dd of=$OPENWRT_ROOT_PATH
     mkdir ./my_openwrt
     mount $OPENWRT_ROOT_PATH ./my_openwrt
     echo "write_image done"
