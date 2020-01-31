@@ -1,6 +1,6 @@
 #!/bin/bash
 #========================================
-#   Linux Distribution: Manjaro/Debian 8+/
+#   Linux Distribution: Debian 10
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
 #   Dscription: Config grub2 boot file for openwrt on debian10.
 #   Version: 0.0.1
@@ -51,10 +51,10 @@ print_fun() {
     echo "print done"
 }
 init() {
-    DEBIAN_PATH=$(read_fun "Please input block device path of Debian Distribution DVD: ")
-    print_fun $DEBIAN_PATH
-    mount $DEBIAN_PATH /media/cdrom
-    apt-cdrom -m -d /media/cdrom add
+#    DEBIAN_PATH=$(read_fun "Please input block device path of Debian Distribution DVD: ")
+#    print_fun $DEBIAN_PATH
+#    mount $DEBIAN_PATH /media/cdrom
+#    apt-cdrom -m -d /media/cdrom add
     apt-get update -y
     apt-get install -y vim parted
     echo "init done"
@@ -64,7 +64,11 @@ write_image() {
     cp -rf ./openwrt-x86-64-vmlinuz /boot
     OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: ")
     print_fun $OPENWRT_ROOT_PATH
+    ROOT_NEW_SIZE=$(read_fun "Please input new size(M,G) of OpenWRT root partition file system: ")
+    print_fun $ROOT_NEW_SIZE
     gzip -dc openwrt-x86-64-rootfs-ext4* | dd of=$OPENWRT_ROOT_PATH
+    e2fsck -f $OPENWRT_ROOT_PATH
+    resize2fs $OPENWRT_ROOT_PATH $ROOT_NEW_SIZE
     mkdir ./my_openwrt
     mount $OPENWRT_ROOT_PATH ./my_openwrt
     echo "write_image done"
@@ -104,14 +108,13 @@ default_boot() {
 }
 
 main() {
+    export PATH=$PATH:/sbin
     init
     write_image
     add_boot_menu
     default_boot
     recovery_openwrt
     echo "main done"
-    echo "Please use [parted] to extend your openwrt root partition:"
-    echo "Example: parted /dev/sda; resizepart 4 -1s;check "
 }
 
 ARGS=( "$@" )
