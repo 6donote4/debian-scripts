@@ -1,4 +1,6 @@
 #!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
@@ -47,32 +49,31 @@ print_fun() {
 }
 
 installation() {
-    apt-get install -y vim parted nmap net-tools git netcat tor dnsmasq ntp sntp \
-    samba nfs-common w3m curl wget xz-utils unrar-free zip screen ncdu htop \
-    wireless-tools iw pulseaudio-utils pulseaudio ntfs-3g p7zip-full iotop aria2 \
-    emacs-nox emacs-common emacs-bin-common aumix-common oss-compat cmus libopusfile0 \
-    libcephfs2 librados2 rtorrent libxmlrpc-core-c3
+    apt-get install -y \
+        vim parted nmap net-tools git netcat tor dnsmasq ntp sntp \
+        samba nfs-common w3m curl wget xz-utils unrar-free zip screen ncdu htop \
+        wireless-tools iw pulseaudio-utils pulseaudio ntfs-3g p7zip-full iotop aria2 \
+        emacs-nox emacs-common emacs-bin-common aumix-common oss-compat cmus libopusfile0 \
+        libcephfs2 librados2 rtorrent libxmlrpc-core-c3
 }
 
 
 ARGS=( "$@" )
-
 	case "$1" in
-        -i)
-            installation
-            exit 0
-            ;;
-	    -h|--help)
-			usage
-			exit 0
-			;;
-	    --version)
-			echo $VERSION
-			exit 0
-			;;
-
-	    *)
-			echo  "Invalid parameter $1" 1>&2
-			exit 1
-			;;
-	esac
+	-i)
+		installation
+		exit 0
+		;;
+	-h|--help)
+		usage
+		exit 0
+		;;
+	--version)
+		echo $VERSION
+		exit 0
+		;;
+	*)
+		echo  "Invalid parameter $1" 1>&2
+		exit 1
+		;;
+		esac

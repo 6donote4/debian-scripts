@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
@@ -24,8 +26,8 @@ Usage:
 Options
 -s  Delete specified files in specified size
 -e  Delete empty directory
--n  Delete files of specified name in limited size 
--g  Delete fils of the greater than specified size 
+-n  Delete files of specified name in limited size
+-g  Delete fils of the greater than specified size
 -r  Delete duplicated files
 --version  Show version
 -h --help  Show this usage
@@ -44,7 +46,7 @@ fi
 
 ARGS=( "$@" )
 
-while [[ -n "$1" ]]; 
+while [[ -n "$1" ]];
 do
 	case "$1" in
            -s)
@@ -55,7 +57,7 @@ do
                         echo "filedepth = $DEPTH "
                         echo
 			find . -maxdepth $DEPTH -size -$FILESIZE ! -iname '*.sh' -type f -exec ls {} \;
-                        find . -maxdepth $DEPTH -size -$FILESIZE ! -iname '*.sh' -type f -delete 
+                        find . -maxdepth $DEPTH -size -$FILESIZE ! -iname '*.sh' -type f -delete
 	                echo "done"
 	                exit 0
 			;;
@@ -70,7 +72,7 @@ do
                         echo "filedepth = $DEPTH "
                         echo
 			find . -maxdepth $DEPTH -size -$FILESIZE -iname "$FILENAME" ! -iname '*.sh' -type f -exec ls {} \;
-                        find . -maxdepth $DEPTH -size -$FILESIZE -iname "$FILENAME" ! -iname '*.sh' -type f -delete 
+                        find . -maxdepth $DEPTH -size -$FILESIZE -iname "$FILENAME" ! -iname '*.sh' -type f -delete
 	                echo "done"
 	                exit 0
 			;;
@@ -85,11 +87,11 @@ do
                         echo "filedepth = $DEPTH "
                         echo
 			find . -maxdepth $DEPTH -size +$FILESIZE -iname "$FILENAME" ! -iname '*.sh' -type f -exec ls {} \;
-                        find . -maxdepth $DEPTH -size +$FILESIZE -iname "$FILENAME" ! -iname '*.sh' -type f -delete 
+                        find . -maxdepth $DEPTH -size +$FILESIZE -iname "$FILENAME" ! -iname '*.sh' -type f -delete
 	                echo "done"
 	                exit 0
 			;;
-	    -e)  
+	    -e)
 			find . -empty -delete
 			echo "done"
 			exit 0
@@ -97,7 +99,7 @@ do
 	    -r)
 			read -p "Please input max directory depth:" DEPTH
                         echo "filedepth = $DEPTH "
-			echo 
+			echo
 			find . -maxdepth $DEPTH  ! -iname '*.sh' -type f -print0 | xargs -0 md5sum | sort > ./allfiles;
                         cat ./allfiles | uniq -w 32 > ./uniqfiles;
 			comm ./allfiles ./uniqfiles -2 -3 | cut -c 35- | tr '\n' '\0' | xargs -0 rm;
@@ -113,7 +115,7 @@ do
 			echo $VERSION
 			exit 0
 			;;
-	
+
 	    *)
 			echo  "Invalid parameter $1" 1>&2
 			exit 1

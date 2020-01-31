@@ -1,5 +1,7 @@
 #!/bin/bash
-pacman -S brctl 
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
+pacman -S brctl
 net_interface1="enp1s0"
 net_interface2="enp2s0"
 ip addr del 192.168.1.111/24 dev $net_interface1

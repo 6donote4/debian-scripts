@@ -1,4 +1,6 @@
  #/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
  #========================================
  # Distribution: Manjaro
  # Description: Configure Manjaro distribution environment

@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
@@ -49,7 +51,7 @@ while [[ -n "$1" ]]; do
             exit 0
             ;;
         -d)
-           tar -xjvf $2 
+           tar -xjvf $2
            exit 0
            ;;
        *)
@@ -62,5 +64,5 @@ done
 
 
 
-           
+
 

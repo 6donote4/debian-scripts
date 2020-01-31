@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
@@ -6,7 +8,7 @@
 #   Version: 0.0.1
 #   Blog: https://www.donote.tk https://6donote4.github.io
 #========================================
-# This script is used to sync local time from ntp server 
+# This script is used to sync local time from ntp server
 VERSION=0.0.1
 PROGNAME="$(basename $0)"
 
@@ -20,9 +22,9 @@ cat << EOF
 delfiles $VERSION
 
 Usage:
-./$PROGNAME [option] 
+./$PROGNAME [option]
 Options
--s  Sync time 
+-s  Sync time
 --version  Show version
 -h --help  Show this usage
 EOF
@@ -43,7 +45,7 @@ synctime() {
 		       }
 ARGS=( "$@" )
 
-while [[ -n "$1" ]]; 
+while [[ -n "$1" ]];
 do
 	case "$1" in
            -s)
@@ -59,7 +61,7 @@ do
 			echo $VERSION
 			exit 0
 			;;
-	
+
 	    *)
 			echo  "Invalid parameter $1" 1>&2
 			exit 1

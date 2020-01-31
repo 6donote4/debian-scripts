@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
@@ -7,10 +9,10 @@
 #   Blog: https://www.donote.tk https://6donote4.github.io
 #========================================
 #Connect to MyHost
-#You should configure your hosts file(/etc/hosts),frpserver and frpclient 
+#You should configure your hosts file(/etc/hosts),frpserver and frpclient
 #if you want to use this scripts.
 #Please input your vps ip in hosts,
-#Example: 
+#Example:
 #127.0.0.1 myhost
 VERSION=0.0.2
 PROGNAME="$(basename $0)"
@@ -29,7 +31,7 @@ Usage:
 Options
 -s --server SSH to my debian server
 -m --home SSH to debian machine in my parents
--a --asusbox SSH to my asusbox 
+-a --asusbox SSH to my asusbox
 -p --pi SSH to my raspberry
 --version  Show version
 -h --help  Show this usage

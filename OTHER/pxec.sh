@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
@@ -20,7 +22,7 @@ cat << EOF
 pxec.sh $VERSION
 
 Usage:
-./$PROGNAME [option] 
+./$PROGNAME [option]
 Options
 -i Initialization
 -s Start configuartion
@@ -47,7 +49,7 @@ Init() {
         read -p "Please input nfs server address:" NFS_ADDR
         echo "nfs server address: $NFS_ADDR"
         showmount -e $NFS_ADDR   #nfs-server nfs-client nfs-utils
-	read -p "Please input nfs path:" NFS_PATH 
+	read -p "Please input nfs path:" NFS_PATH
 	echo "nfs path:$NFS_PATH"
        # mount.nfs $NFS_ADDR:$NFS_PATH /mnt/media
 	mount.nfs $NFS_ADDR:$NFS_PATH /mnt/PXEboot/OS/linux
@@ -91,12 +93,12 @@ cfgfile() {
         read -p "Please input OS initrd name: " INAME
         read -p "Please input PXE server address: " PADDR
 	read -p "Please input boot initrd name:" INITRDB
-        echo "label:$LABEL" 
+        echo "label:$LABEL"
         echo "kernel root/name:$ROOT_DIR/$KNAME"
         echo "initrd root/name:$ROOT_DIR/$INAME"
         echo "PXE server address:$PADDR"
 	echo "boot initrd name: $INITRDB"
-	cat <<EOF  > /mnt/PXEboot/pxelinux.cfg/default 
+	cat <<EOF  > /mnt/PXEboot/pxelinux.cfg/default
 	# 新建文件，写入以下内容
 
 	DEFAULT vesamenu.c32
@@ -109,15 +111,15 @@ cfgfile() {
 	INITRD OS/linux/$ROOT_DIR/$INAME
 	APPEND netboot=nfs nfsroot=$PADDR:/mnt/PXEboot/OS/linux/$ROOT_DIR boot=$INITRDB quiet splash --
 EOF
-	
+
 	cd /mnt/PXEboot/bios
 	ln -s ../pxelinux.cfg/
 	ln -s ../OS/
-	cd - 
+	cd -
 	cd /mnt/PXEboot/uefi
 	ln -s ../pxelinux.cfg/
 	ln -s ../OS/
-	
+
 
 }
 
@@ -125,7 +127,7 @@ dhcpsettings() {
     cat >> /etc/dnsmasq.conf <<EOF
 # filename： /etc/dnsmasq.conf
 # 在最后添加以下几行，这里会根据client类型自动选择镜像
- 
+
 enable-tftp
 tftp-root=/mnt/PXEboot
 dhcp-boot=bios/pxelinux.0
@@ -136,7 +138,7 @@ dhcp-boot=tag:efi-x86_64,uefi/syslinux.efi
 # dhcp-range=192.168.2.10,192.168.2.200,12h
 # dhcp-option=3,192.168.2.254
 # dhcp-option=option:dns-server,114.114.114.114,119.29.29.29
- 
+
 # disable dns
 port=0
 
@@ -174,8 +176,8 @@ ARGS=( "$@" )
 			dhcpsettings
 			echo "done"
 			;;
-	    -n)         
-			nfs_server_settings 
+	    -n)
+			nfs_server_settings
 			echo "done"
 			;;
 	    -h|--help)
@@ -186,7 +188,7 @@ ARGS=( "$@" )
 			echo $VERSION
 			exit 0
 			;;
-	
+
 	    *)
 			echo  "Invalid parameter $1" 1>&2
 			exit 1

@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
@@ -45,11 +47,11 @@ preparation() {
 converts() {
 
     LANG=C 7za x  \.\/$2;
-    convmv -f GBK -t utf8 --notest -r .;  
+    convmv -f GBK -t utf8 --notest -r .;
 		       }
 ARGS=( "$@" )
 
-while [[ -n "$1" ]]; 
+while [[ -n "$1" ]];
 do
 	case "$1" in
            -c)
@@ -69,7 +71,7 @@ do
 			echo $VERSION
 			exit 0
 			;;
-	
+
 	    *)
 			echo  "Invalid parameter $1" 1>&2
 			exit 1

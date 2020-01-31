@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
@@ -24,7 +26,7 @@ index-create $VERSION
 Usage:
 ./$PROGNAME [option] [Dir] [Filename]
 Options
-    -i,--image    Create a index about Markdown image URL 
+    -i,--image    Create a index about Markdown image URL
     -m,--html     Create a index about html
     -v,--video    Create a index about Markdown video URL
     -a,--audio     Create a index about audio html tag
@@ -49,7 +51,7 @@ while [[ -n "$1" ]]; do
             exit 0
             ;;
         -i|--image)
-            ls "$2"|sed 's#^.*#<img width=\"600\" src="\/'$2'&" \/>#'>$3 
+            ls "$2"|sed 's#^.*#<img width=\"600\" src="\/'$2'&" \/>#'>$3
             exit 0
             ;;
         -m|--html)
@@ -70,10 +72,10 @@ while [[ -n "$1" ]]; do
            exit 0
            ;;
         -v|--video)
-           ls "$2"|sed 's#^.*#<video width="600" height="450" controls> <source src="\/'$2'&" type="video/mp4"> <source src="\/'$2'&" type="video/ogg"> 您的浏览器不支持Video标签。</video>#'>$3 
+           ls "$2"|sed 's#^.*#<video width="600" height="450" controls> <source src="\/'$2'&" type="video/mp4"> <source src="\/'$2'&" type="video/ogg"> 您的浏览器不支持Video标签。</video>#'>$3
            exit 0
            ;;
-           
+
        *)
            echo "Invalid parammeter: $1" 1>&2
            exit 1

@@ -1,8 +1,10 @@
-#!/bin/sh
+#!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
-#   Dscription: Update Linux/GNU Packages 
+#   Dscription: Update Linux/GNU Packages
 #   Version: 0.0.2
 #   Blog: https://www.donote.tk https://6donote4.github.io
 #========================================
@@ -22,13 +24,13 @@ $PROGNAME $VERSION
 Usage:
 ./$PROGNAME [option]
 Options
--d --debian Update Debian/GNU APT 
+-d --debian Update Debian/GNU APT
 -a --archlinux Update ArchLinux/GNU PACMAN
 -c --centos Update CentOS/GNU YUM
 -f --fedora Update Fedora/GNU DNF
 --version  Show version
 -h --help  Show this usage
-      
+
 EOF
 }
 
@@ -36,10 +38,10 @@ if [[ "$1" == ""  ]];then
     usage
     exit 0
 fi
- 
+
 ARGS=( "$@" )
 
-while [[ -n "$1" ]]; 
+while [[ -n "$1" ]];
 	do
 		case "$1" in
 			-d|--debian)
