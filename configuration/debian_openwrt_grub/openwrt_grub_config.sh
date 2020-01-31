@@ -111,7 +111,7 @@ main() {
     recovery_openwrt
     echo "main done"
     echo "Please use [parted] to extend your openwrt root partition:"
-    echo "Example: parted /dev/sda; resizepart 4 -1 "
+    echo "Example: parted /dev/sda; resizepart 4 -1s;check "
 }
 
 ARGS=( "$@" )
