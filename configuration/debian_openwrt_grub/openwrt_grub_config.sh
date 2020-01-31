@@ -66,7 +66,7 @@ write_image() {
     cp -rf ./openwrt-x86-64-vmlinuz /boot
     OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: ")
     print_fun $OPENWRT_ROOT_PATH
-    ROOT_NEW_SIZE=$(read_fun "Please input new size(M,G) of OpenWRT root partition file system: ")
+    ROOT_NEW_SIZE=$(read_fun "Please input new size(M) of OpenWRT root partition file system(Not out of range in device!): ")
     print_fun $ROOT_NEW_SIZE
     gzip -dc openwrt-x86-64-rootfs-ext4* | dd of=$OPENWRT_ROOT_PATH
     e2fsck -f $OPENWRT_ROOT_PATH
@@ -90,9 +90,9 @@ add_boot_menu() {
     cat grub.d/40_custom | sed "s/OPENWRT_ID/$OPENWRT_PARTUUID/1" >./40_custom
     chmod +x ./40_custom
     mv -f 40_custom /etc/grub.d/
-    /sbin/grub-install /dev/sda
-    /sbin/grub-mkconfig -o /boot/grub/grub.cfg
-    /sbin/update-grub2
+    grub-install /dev/sda
+    grub-mkconfig -o /boot/grub/grub.cfg
+    update-grub2
     echo "add_boot_menu done"
 }
 
@@ -103,9 +103,9 @@ default_boot() {
     cat grub.d/00_header | sed "s/OPENWRT_DEFAULT/$OPENWRT_ORD/1" >./00_header
     chmod +x ./00_header
     mv -f 00_header /etc/grub.d/
-    /sbin/grub-install /dev/sda
-    /sbin/grub-mkconfig -o /boot/grub/grub.cfg
-    /sbin/update-grub2
+    grub-install /dev/sda
+    grub-mkconfig -o /boot/grub/grub.cfg
+    update-grub2
     echo "default_boot done"
 }
 
@@ -140,7 +140,7 @@ ARGS=( "$@" )
             ;;
 	    -u)
 	    write_image
-	    recovery
+	    recovery_openwrt
 	    ;;
 	    -h|--help)
 			usage
