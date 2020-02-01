@@ -28,6 +28,7 @@ Options
 -d Change boot order
 -u Update Openwrt
 -r Recover openwrt configuration
+-s Resize root partition
 --version  Show version
 -h --help  Show this usage
 EOF
@@ -42,6 +43,7 @@ if [[ "$1" == ""  ]];then
     usage
     exit 0
 fi
+
 read_fun() {
     read -p "$1" RESPON
     echo $RESPON
@@ -52,10 +54,10 @@ print_fun() {
     echo $1 >&1
     echo "print done"
 }
+
 init() {
-#    DEBIAN_PATH=$(read_fun "Please input block device path of Debian Distribution DVD: ")
-#    print_fun $DEBIAN_PATH
-#    mount $DEBIAN_PATH /media/cdrom
+    #    print_fun $(DEBIAN_PATH=$(read_fun "Please input block device path of Debian Distribution DVD: "))
+    #    mount $DEBIAN_PATH /media/cdrom
 #    apt-cdrom -m -d /media/cdrom add
     apt-get update -y
     apt-get install -y vim parted
@@ -64,10 +66,8 @@ init() {
 
 write_image() {
     cp -rf ./openwrt-x86-64-vmlinuz /boot
-    OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: ")
-    print_fun $OPENWRT_ROOT_PATH
-    ROOT_NEW_SIZE=$(read_fun "Please input new size(M) of OpenWRT root partition file system(Not out of range in device!): ")
-    print_fun $ROOT_NEW_SIZE
+    print_fun $(OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: "))
+    print_fun $(ROOT_NEW_SIZE=$(read_fun "Please input new size(M) of OpenWRT root partition file system(Not out of range in device!): "))
     gzip -dc openwrt-x86-64-rootfs-ext4* | dd of=$OPENWRT_ROOT_PATH
     e2fsck -f $OPENWRT_ROOT_PATH
     resize2fs $OPENWRT_ROOT_PATH $ROOT_NEW_SIZE
@@ -84,9 +84,8 @@ recovery_openwrt() {
 }
 
 add_boot_menu() {
-    OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: ")
-    print_fun $OPENWRT_ROOT_PATH
-    OPENWRT_PARTUUID=$(/sbin/blkid $OPENWRT_ROOT_PATH|sed 's/^.*PARTUUID=//g')
+    print_fun $(OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: "))
+    print_fun $(OPENWRT_PARTUUID=$(/sbin/blkid $OPENWRT_ROOT_PATH|sed 's/^.*PARTUUID=//g'))
     cat grub.d/40_custom | sed "s/OPENWRT_ID/$OPENWRT_PARTUUID/1" >./40_custom
     chmod +x ./40_custom
     mv -f 40_custom /etc/grub.d/
@@ -97,8 +96,7 @@ add_boot_menu() {
 }
 
 default_boot() {
-    OPENWRT_ORD=$(read_fun "Please input boot menu order of OPENWRT: ")
-    print_fun $OPENWRT_ORD
+    print_fun $(OPENWRT_ORD=$(read_fun "Please input boot menu order of OPENWRT: "))
     let OPENWRT_ORD-=1
     cat grub.d/00_header | sed "s/OPENWRT_DEFAULT/$OPENWRT_ORD/1" >./00_header
     chmod +x ./00_header
@@ -108,6 +106,15 @@ default_boot() {
     update-grub2
     echo "default_boot done"
 }
+
+resize_root() {
+    print_fun $(OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: "))
+    print_fun $(ROOT_NEW_SIZE=$(read_fun "Please input new size(M) of OpenWRT root partition file system(Not out of range in device!): "))
+    e2fsck -f $OPENWRT_ROOT_PATH
+    resize2fs $OPENWRT_ROOT_PATH $ROOT_NEW_SIZE
+    echo "resize_root done"
+}
+
 
 main() {
     export PATH=$PATH:/sbin
@@ -124,6 +131,10 @@ ARGS=( "$@" )
 	case "$1" in
         -test)
             add_boot_menu
+            exit 0
+            ;;
+        -s)
+            resize_root
             exit 0
             ;;
         -r)
