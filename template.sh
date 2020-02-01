@@ -53,11 +53,77 @@ test_fun() {
     echo -e "${green}test done${plain}"
 }
 
+function os_init (){
+    select option in "Arch/pacman" "Debian/apt" "CentOS/yum"  "Fedora/dnf" "Exit"
+    do
+        case $option in
+            "Arch/pacman")
+                yes|pacman -S dialog ;;
+            "Debian/apt")
+                apt-get install -y dialog ;;
+            "CentOS/yum")
+                yum install -y dialog ;;
+            "Fedora/dnf")
+                dnf install -y dialog ;;
+            "Exit")
+                clear
+                break ;;
+            *)
+                echo -e "${red}Invalid parameter $1 ${plain}" 1>&2
+                exit 1
+        esac
+    done
+    clear
+}
+
+#msg title message height width
+function msg(){
+    dialog --title $1 --msgbox $2 $3 $4
+}
+
+#yesno title yesno_question height width
+function yesno()
+{
+    dialog --title $1 --yesno $2 $3 $4
+    echo $?
+}
+
+#input message height width fileOroutput
+function input()
+{
+    dialog --inputbox $1 $2 $3 > $4
+    $?
+}
+
+#text textfile height width
+function text()
+{
+    dialog --textbox $1 $2 $3
+}
+#menu title height width item_sum 1 "item_one" ....
+function menu()
+{
+    dialog --menu "$@"
+}
+#fselect title height width
+function fselect(){
+    dialog --title $1 --fselect $HOME/ $2 $3
+}
+
+function main(){
+    if command -v dialo >/dev/null 2>&1; then
+        sleep 4
+    else
+        os_init
+    fi
+}
+
+
 ARGS=( "$@" )
 
 	case "$1" in
         -t)
-            test_fun
+            fselect "Selectafile:" 40 50
             exit 0
             ;;
         -h|--help)
