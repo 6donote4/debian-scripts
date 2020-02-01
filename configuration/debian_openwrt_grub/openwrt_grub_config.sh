@@ -50,9 +50,9 @@ read_fun() {
 }
 
 print_fun() {
-    echo "You inputed :" >&1
+    echo -e "${yellow}You inputed :${plain} >&1"
     echo $1 >&1
-    echo "print done"
+    echo -e "${green}print done${plain}"
 }
 
 init() {
@@ -61,26 +61,26 @@ init() {
 #    apt-cdrom -m -d /media/cdrom add
     apt-get update -y
     apt-get install -y vim parted
-    echo "init done"
+    echo -e "${green}init done${plain}"
 }
 
 write_image() {
     cp -rf ./openwrt-x86-64-vmlinuz /boot
-    print_fun $(OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: "))
-    print_fun $(ROOT_NEW_SIZE=$(read_fun "Please input new size(M) of OpenWRT root partition file system(Not out of range in device!): "))
+    print_fun ${OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: ")}
+    print_fun ${ROOT_NEW_SIZE=$(read_fun "Please input new size(M) of OpenWRT root partition file system(Not out of range in device!): ")}
     gzip -dc openwrt-x86-64-rootfs-ext4* | dd of=$OPENWRT_ROOT_PATH
     e2fsck -f $OPENWRT_ROOT_PATH
     resize2fs $OPENWRT_ROOT_PATH $ROOT_NEW_SIZE
     mkdir ./my_openwrt
     mount $OPENWRT_ROOT_PATH ./my_openwrt
-    echo "write_image done"
+    echo -e "${green}write_image done${plain}"
 }
 
 recovery_openwrt() {
     tar xvf ./backup-OpenWrt*.tar.gz -C ./my_openwrt
     umount ./my_openwrt
     rm -rf my_openwrt
-    echo "recovery done"
+    echo -e "${green}recovery done${plain}"
 }
 
 add_boot_menu() {
@@ -92,7 +92,7 @@ add_boot_menu() {
     grub-install /dev/sda
     grub-mkconfig -o /boot/grub/grub.cfg
     update-grub2
-    echo "add_boot_menu done"
+    echo -e "${green}add_boot_menu done${plain}"
 }
 
 default_boot() {
@@ -104,7 +104,7 @@ default_boot() {
     grub-install /dev/sda
     grub-mkconfig -o /boot/grub/grub.cfg
     update-grub2
-    echo "default_boot done"
+    echo -e "${green}default_boot done${plain}"
 }
 
 resize_root() {
@@ -112,18 +112,17 @@ resize_root() {
     print_fun $(ROOT_NEW_SIZE=$(read_fun "Please input new size(M) of OpenWRT root partition file system(Not out of range in device!): "))
     e2fsck -f $OPENWRT_ROOT_PATH
     resize2fs $OPENWRT_ROOT_PATH $ROOT_NEW_SIZE
-    echo "resize_root done"
+    echo -e "${green}resize_root done${plain}"
 }
 
 
 main() {
-    export PATH=$PATH:/sbin
     init
     write_image
     add_boot_menu
     default_boot
     recovery_openwrt
-    echo "main done"
+    echo -e "${green}main done${plain}"
 }
 
 ARGS=( "$@" )
