@@ -50,7 +50,7 @@ read_fun() {
 }
 
 print_fun() {
-    echo -e "${yellow}You inputed :${plain} >&1"
+    echo -e "${yellow}You inputed :${plain}"
     echo $1 >&1
     echo -e "${green}print done${plain}"
 }
@@ -84,8 +84,8 @@ recovery_openwrt() {
 }
 
 add_boot_menu() {
-    print_fun $(OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: "))
-    print_fun $(OPENWRT_PARTUUID=$(/sbin/blkid $OPENWRT_ROOT_PATH|sed 's/^.*PARTUUID=//g'))
+    print_fun ${OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: ")}
+    print_fun ${OPENWRT_PARTUUID=$(/sbin/blkid $OPENWRT_ROOT_PATH|sed 's/^.*PARTUUID=//g')}
     cat grub.d/40_custom | sed "s/OPENWRT_ID/$OPENWRT_PARTUUID/1" >./40_custom
     chmod +x ./40_custom
     mv -f 40_custom /etc/grub.d/
@@ -96,7 +96,7 @@ add_boot_menu() {
 }
 
 default_boot() {
-    print_fun $(OPENWRT_ORD=$(read_fun "Please input boot menu order of OPENWRT: "))
+    print_fun ${OPENWRT_ORD=$(read_fun "Please input boot menu order of OPENWRT: ")}
     let OPENWRT_ORD-=1
     cat grub.d/00_header | sed "s/OPENWRT_DEFAULT/$OPENWRT_ORD/1" >./00_header
     chmod +x ./00_header
@@ -108,8 +108,8 @@ default_boot() {
 }
 
 resize_root() {
-    print_fun $(OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: "))
-    print_fun $(ROOT_NEW_SIZE=$(read_fun "Please input new size(M) of OpenWRT root partition file system(Not out of range in device!): "))
+    print_fun ${OPENWRT_ROOT_PATH=$(read_fun "Please input installed block device path of OpenWRT: ")}
+    print_fun ${ROOT_NEW_SIZE=$(read_fun "Please input new size(M) of OpenWRT root partition file system(Not out of range in device!): ")}
     e2fsck -f $OPENWRT_ROOT_PATH
     resize2fs $OPENWRT_ROOT_PATH $ROOT_NEW_SIZE
     echo -e "${green}resize_root done${plain}"
@@ -162,7 +162,7 @@ ARGS=( "$@" )
 			;;
 
 	    *)
-			echo  "Invalid parameter $1" 1>&2
+			echo -e "${red}Invalid parameter $1 ${plain}" 1>&2
 			exit 1
 			;;
 	esac
