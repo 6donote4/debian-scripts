@@ -4,17 +4,17 @@ export PATH
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
-#   Dscription:
+#   Dscription: Connect to my host by remote machine
 #   Version: 0.0.1
 #   Blog: https://www.donote.tk https://6donote4.github.io
 #========================================
-#
+#Start kvm machine in local machine
 VERSION=0.0.1
 PROGNAME="$(basename $0)"
 export LC_ALL=C
 SCRIPT_UMASK=0122
 umask $SCRIPT_UMASK
-args=($(getopt -o stvh -l help,version -- "$@"))
+args=($(getopt -o stvh -l start,help,version -- "$@"))
 set -- "$args";
 red='\033[0;31m'
 green='\033[0;32m'
@@ -26,15 +26,11 @@ $PROGNAME $VERSION
 Usage:
 ./$PROGNAME [option]
 Options
--s --
+-s --Start a kvm machine
 --version  Show version
 -h --help  Show this usage
 EOF
 }
-if [[ "$1" == ""  ]];then
-    usage
-    exit 0
-fi
 read_fun() {
         read -p "$1" RESPON
 
@@ -50,6 +46,32 @@ print_fun() {
 test_fun() {
     print_fun ${ARG=$(read_fun "read_print_test:" )}
     echo -e "${green}test done${plain}"
+}
+
+mycommand()
+{
+    echo "$1";
+}
+
+
+inter_ui(){
+    fun=$1
+    shift 1
+    select option in $@
+    do
+    case  $option in
+        $@)
+        mycommand $fun  $1
+    echo $fun>&1
+    ;;
+    "Exit")
+    clear
+    break
+    ;;
+    esac
+    done
+    clear
+
 }
 
 os_init (){
@@ -68,7 +90,7 @@ os_init (){
                 clear
                 break ;;
             *)
-                echo -e "${red}Invalid parameter $1 ${plain}" 1>&2
+               echo -e "${red}Invalid parameter $1 ${plain}" 1>&2
                 break ;;
                    esac
     done
@@ -78,6 +100,12 @@ os_init (){
 #msg box_title message_title height width
 msg(){
     dialog --title "$1" --msgbox "$2" $3 $4
+    result=$?
+    if [ $result -eq 1 ] ; then
+        exit 1;
+    elif [ $result -eq 255 ] ; then
+        exit 255;
+    fi
 }
 
 
@@ -85,29 +113,48 @@ msg(){
 yesno()
 {
     dialog --title "$1" --no-shadow --yesno "$2" $3 $4
-}
-
-#input box_title message height width fileORoutput
-input()
-{
-    dialog --title "$1" --inputbox "$2" $3 $4 2> $5
-}
-
-#text title textfile height width
-text()
-{
-    dialog --title "$1" --textbox "$2" $3 $4
-}
-#menu box_title height width item_sum 1 "item_one" ....
-menu()
-{
-    dialog --menu "$@"
     result=$?
     if [ $result -eq 1 ] ; then
         exit 1;
     elif [ $result -eq 255 ] ; then
         exit 255;
     fi
+}
+
+#input box_title message height width fileORoutput
+input()
+{
+    dialog --title "$1" --inputbox "$2" $3 $4 2> $5
+    result=$?
+    if [ $result -eq 1 ] ; then
+        exit 1;
+    elif [ $result -eq 255 ] ; then
+        exit 255;
+    fi
+}
+
+#text title textfile height width
+text()
+{
+    dialog --title "$1" --textbox "$2" $3 $4
+    result=$?
+    if [ $result -eq 1 ] ; then
+        exit 1;
+    elif [ $result -eq 255 ] ; then
+        exit 255;
+    fi
+}
+#menu backtitle output-fd box_title height width menu-height output-fd [ tab_str_out item_str_one ....]
+menu()
+{
+    one=${1}
+    two=${2}
+    three=${3}
+    four=${4}
+    five=${5}
+    six=${6}
+    shift 6
+    dialog --backtitle "${one}" --output-fd ${two} --menu "${three}" ${four} ${five} ${six} "$@"
 }
 #fselect title height width
 fselect(){
@@ -116,12 +163,6 @@ fselect(){
     three=${3}
     shift 3
     dialog --title "${one}" --fselect $HOME/ ${two} ${three}
-    result=$?
-    if [ $result -eq 1 ] ; then
-        exit 1;
-    elif [ $result -eq 255 ] ; then
-        exit 255;
-    fi
 }
 #passkey title promopt height width
 passkey(){
@@ -132,12 +173,6 @@ passkey(){
     shift 4
     dialog --title "${one}" --insecure  --passwordbox \
         "${two}" ${three} ${four} $@
-    result=$?
-    if [ $result -eq 1 ] ; then
-        exit 1;
-    elif [ $result -eq 255 ] ; then
-        exit 255;
-    fi
 }
 #checklist backtitle checklist_title height width menu_height tag1_str item1_str item1_posnum......
 checklist(){
@@ -148,12 +183,6 @@ checklist(){
     five=${5}
     shift 5
     dialog --backtitle "${one}" --checklist "${two}" ${three} ${four} ${five} "$@"
-    result=$?
-    if [ $result -eq 1 ] ; then
-        exit 1;
-    elif [ $result -eq 255 ] ; then
-        exit 255;
-    fi
 }
 #calc_show height width day month year
 calc_show()
@@ -162,13 +191,6 @@ calc_show()
     two=${2}
     shift 2
     dialog --title "Calendar" --calendar "Date" ${one} ${two} $@
-    result=$?
-    if [ $result -eq 1 ] ; then
-        exit 1;
-    elif [ $result -eq 255 ] ; then
-        exit 255;
-    fi
-
 }
 #pro_watch title gauge_info height width [percent]
 pro_watch(){
@@ -179,12 +201,6 @@ pro_watch(){
     five=${5}
     shift 5
     dialog --title "${one}" --gauge "${two}" ${three} ${four} ${five} $@
-    result=$?
-    if [ $result -eq 1 ] ; then
-        exit 1;
-    elif [ $result -eq 255 ] ; then
-        exit 255;
-    fi
 }
 #form title form_title height width formheight \
 # [label y x item y x fieldlen inputlen]
@@ -196,12 +212,6 @@ form(){
     five=${5}
     shift 5
     dialog --title "${one}" --form "${two}" ${three} ${four} ${five} "$@"
-    result=$?
-    if [ $result -eq 1 ] ; then
-        exit 1;
-    elif [ $result -eq 255 ] ; then
-        exit 255;
-    fi
 }
 
 
@@ -219,21 +229,38 @@ pro_watching(){
     )|pro_watch "installation" "installing..." 10 20 0
 }
 
+startkvm() {
+    sudo virsh start $1
+}
 main(){
     if command -v dialog >/dev/null 2>&1; then
-        sleep 4
+            vm=$(menu "Boot the local kvm by visrh" 1 "Please select a kvm machine to boot:" 20 70 6  \
+            DNS dns  \
+            MikroTik6_2 mikrotik \
+            OpenWRT openwrt \
+            Slitaz slitaz \
+            ubuntu14.04 ubuntu \
+            vmLeanWRT vmleanwrt
+            )
+            startkvm $vm
     else
         os_init
     fi
 }
-
-
 while [ -n "$1" ]
 do
 	case "$1" in
-        -t)
-            os_init
-            ;;
+         -s|--start)
+             inter_ui \
+                 "sudo virsh start" \
+                 "DNS" \
+                 "MikroTik6_2" \
+                 "OpenWRT" \
+                 "Slitaz" \
+                 "ubuntu14.04" \
+                 "vmLeanWRT" \
+                 "Exit"
+             ;;
         -h|--help)
             usage
                 ;;
@@ -241,7 +268,7 @@ do
             echo $VERSION
             ;;
         --)
-            usage
+            main
             ;;
         *)
             echo -e "${red}Invalid parameter $1 ${plain}" 1>&2
