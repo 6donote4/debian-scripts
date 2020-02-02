@@ -245,12 +245,17 @@ pro_watching(){
 
 main(){
     if command -v dialog >/dev/null 2>&1; then
-        sleep 4
+            form "Add a user" "Please input the infomation of new user:" 12 40 4 \
+                  "Username:" 1  1 "" 1  15  15  0  \
+                    "Full name:" 2  1 "" 2  15  15  0  \
+                      "Home Dir:" 3  1 "" 3  15  15  0  \
+                        "Shell:"    4   1 "" 4  15  15  0
     else
         os_init
     fi
 }
 
+main
 
 while [ -n "$1" ]
 do
