@@ -1,40 +1,5 @@
-#!/bin/bash
-PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
-export PATH
-#========================================
-#   Linux Distribution: Manjaro/Debian 8+/
-#   Author: 6donote4 <mailto:do_note@hotmail.com>
-#   Dscription:
-#   Version: 0.0.1
-#   Blog: https://www.donote.tk https://6donote4.github.io
-#========================================
-#
-VERSION=0.0.1
-PROGNAME="$(basename $0)"
-export LC_ALL=C
-SCRIPT_UMASK=0122
-umask $SCRIPT_UMASK
 args=($(getopt -o stvh -l help,version -- "$@"))
 set -- "$args";
-red='\033[0;31m'
-green='\033[0;32m'
-yellow='\033[0;33m'
-plain='\033[0m'
-usage() {
-cat << EOF
-$PROGNAME $VERSION
-Usage:
-./$PROGNAME [option]
-Options
--s --
---version  Show version
--h --help  Show this usage
-EOF
-}
-if [[ "$1" == ""  ]];then
-    usage
-    exit 0
-fi
 read_fun() {
         read -p "$1" RESPON
 
@@ -167,7 +132,7 @@ calc_show()
     dialog --title "Calendar" --calendar "Date" ${one} ${two} $@
 
 }
-#pro_watch boxtitle input-fd gauge_info height width [percent]
+#pro_watch boxtitle output-fd title gauge_info height width [percent]
 pro_watch(){
     one=${1}
     two=${2}
@@ -175,7 +140,7 @@ pro_watch(){
     four=${4}
     five=${5}
     shift 5
-    dialog --title "${one}" --input-fd ${two} --gauge "${three}" ${four} ${five} $@
+    dialog --title "${one}" --output-fd ${two} --gauge "${three}" ${four} ${five} $@
 }
 #form boxtitle output-fd form_title height width formheight \
 # [label y x item y x fieldlen inputlen]
@@ -236,3 +201,4 @@ do
 	esac
     shift
 done
+

@@ -4,7 +4,7 @@ export PATH
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
-#   Dscription: Start kvm machine in local machine
+#   Dscription: Connect to my host by remote machine
 #   Version: 0.0.1
 #   Blog: https://www.donote.tk https://6donote4.github.io
 #========================================
@@ -45,7 +45,7 @@ ARGS=( "$@" )
         -s|--start)
             echo "1) DNS"
             echo "2) MikroTik6_2"
-            echo "3) node1"
+            echo "3) centos8"
             echo "4) OpenWRT"
             echo "5) Slitaz"
             echo "6) ubuntu14.04"
@@ -60,7 +60,7 @@ ARGS=( "$@" )
                     KVMDOMAIN="MikroTIk6_2"
                     ;;
                 3)
-                    KVMDOMAIN="node1"
+                    KVMDOMAIN="centos8"
                     ;;
                 4)
                     KVMDOMAIN="OpenWRT"
@@ -79,6 +79,7 @@ ARGS=( "$@" )
                     exit 1
                     esac
             startkvm
+            exit 0
             ;;
         -h|--help)
             usage
