@@ -4,54 +4,42 @@ export PATH
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
-#   Dscription:
+#   Dscription: Mount network file by nfs
 #   Version: 0.0.1
 #   Blog: https://www.donote.tk https://6donote4.github.io
 #========================================
-#
+# Mount network file by nfs
 VERSION=0.0.1
 PROGNAME="$(basename $0)"
+MOUNTPATH="127.0.0.1:/home"
+MOUNTFILE="asusbox"
 export LC_ALL=C
+args=($(getopt -o muqvh -l help,version -- "$@"))
+set -- "$args";
 SCRIPT_UMASK=0122
 umask $SCRIPT_UMASK
-args=($(getopt -o stvh -l help,version -- "$@"))
-set -- "$args";
-red='\033[0;31m'
-green='\033[0;32m'
-yellow='\033[0;33m'
-plain='\033[0m'
 usage() {
 cat << EOF
 $PROGNAME $VERSION
 Usage:
 ./$PROGNAME [option]
 Options
--s --
+-m Mount network file
+-u Unmount network file
+-q Query network file
 --version  Show version
 -h --help  Show this usage
 EOF
 }
-if [[ "$1" == ""  ]];then
-    usage
-    exit 0
-fi
 read_fun() {
         read -p "$1" RESPON
-
             echo $RESPON
         }
-
 print_fun() {
         echo -e "${yellow}You inputed :${plain}"
         echo $1 >&1
         echo -e "${green}print done${plain}"
         }
-
-test_fun() {
-    print_fun ${ARG=$(read_fun "read_print_test:" )}
-    echo -e "${green}test done${plain}"
-}
-
 os_init (){
     select option in "Arch/pacman" "Debian/apt" "CentOS/yum"  "Fedora/dnf" "Exit"
     do
@@ -85,8 +73,6 @@ msg(){
     shift 5
     dialog --title "${one}" --output-fd ${two} --msgbox "${three}" ${four} ${five} $@
 }
-
-
 #yesno box_title output_fd yesno_question height width
 yesno()
 {
@@ -207,18 +193,43 @@ pro_watching(){
 
 main(){
     if command -v dialog >/dev/null 2>&1; then
-        sleep 4
+        hostip=$(input "NFS mounted script" 1 "Please input NFS Server address:" 30 90)
+    msg "NFS shared directories:" 2 "$(showmount -e $hostip)" 30 90
+    netdir=$(input "NFS mounted script" 1 "Please input NFS Server address and directory(Ex:127.0.0.1:/test)" 30 90 )
+    localdir=$(fselect "Please select a local directory to be mounted:" 1 30 90)
+    clear
+    mount.nfs $netdir $localdir
     else
         os_init
     fi
 }
-
-
+_mount() {
+	print_fun ${MOUNTPATH=$(read_fun "Please input NFS server address (127.0.0.1:/test):")}
+	print_fun ${MOUNTFILE=$(read_fun "Please input local mounted destination directory name :")}
+    mount.nfs $MOUNTPATH $MOUNTFILE
+}
+_umount() {
+	print_fun ${MOUNTFILE=$(read_fun "Please input local mounted destination directory name :")}
+    umount  $MOUNTFILE
+}
+_query() {
+    print_fun ${HOSTIP=$(read_fun "Please input NFS server address to query shared directory name: ")}
+    showmount -e $HOSTIP
+}
 while [ -n "$1" ]
 do
 	case "$1" in
         -t)
             os_init
+            ;;
+        -m)
+            mount
+            ;;
+        -u)
+            umount
+            ;;
+        -q)
+            _query
             ;;
         -h|--help)
             usage
