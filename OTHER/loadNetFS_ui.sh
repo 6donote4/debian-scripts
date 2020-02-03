@@ -196,7 +196,7 @@ main(){
         hostip=$(input "NFS mounted script" 1 "Please input NFS Server address:" 30 90)
     msg "NFS shared directories:" 2 "$(showmount -e $hostip)" 30 90
     netdir=$(input "NFS mounted script" 1 "Please input NFS Server address and directory(Ex:127.0.0.1:/test)" 30 90 )
-    localdir=$(fselect "Please select a local directory to be mounted:" 1 30 90)
+    localdir=$(fselect "Please select a local directory to be mounted:" 1 10 110)
     clear
     mount.nfs $netdir $localdir
     else
