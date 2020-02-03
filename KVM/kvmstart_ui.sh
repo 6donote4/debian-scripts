@@ -144,7 +144,7 @@ text()
         exit 255;
     fi
 }
-#menu backtitle output-fd box_title height width menu-height output-fd [ tab_str_out item_str_one ....]
+#menu backtitle output-fd box_title height width menu-height [ tab_str_out item_str_one ....]
 menu()
 {
     one=${1}
@@ -243,6 +243,7 @@ main(){
             vmLeanWRT vmleanwrt
             )
             startkvm $vm
+            clear
     else
         os_init
     fi

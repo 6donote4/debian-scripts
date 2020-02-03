@@ -75,85 +75,94 @@ os_init (){
     clear
 }
 
-#msg box_title message_title height width
+#msg box_title output_fd message_title height width
 msg(){
-    dialog --title "$1" --msgbox "$2" $3 $4
-}
-
-
-#yesno box_title yesno_question height width
-yesno()
-{
-    dialog --title "$1" --no-shadow --yesno "$2" $3 $4
-}
-
-#input box_title message height width fileORoutput
-input()
-{
-    dialog --title "$1" --inputbox "$2" $3 $4 2> $5
-}
-
-#text title textfile height width
-text()
-{
-    dialog --title "$1" --textbox "$2" $3 $4
-}
-#menu box_title height width item_sum 1 "item_one" ....
-menu()
-{
-    dialog --menu "$@"
-    result=$?
-    if [ $result -eq 1 ] ; then
-        exit 1;
-    elif [ $result -eq 255 ] ; then
-        exit 255;
-    fi
-}
-#fselect title height width
-fselect(){
-    one=${1}
-    two=${2}
-    three=${3}
-    shift 3
-    dialog --title "${one}" --fselect $HOME/ ${two} ${three}
-    result=$?
-    if [ $result -eq 1 ] ; then
-        exit 1;
-    elif [ $result -eq 255 ] ; then
-        exit 255;
-    fi
-}
-#passkey title promopt height width
-passkey(){
-    one=${1}
-    two=${2}
-    three=${3}
-    four=${4}
-    shift 4
-    dialog --title "${one}" --insecure  --passwordbox \
-        "${two}" ${three} ${four} $@
-    result=$?
-    if [ $result -eq 1 ] ; then
-        exit 1;
-    elif [ $result -eq 255 ] ; then
-        exit 255;
-    fi
-}
-#checklist backtitle checklist_title height width menu_height tag1_str item1_str item1_posnum......
-checklist(){
     one=${1}
     two=${2}
     three=${3}
     four=${4}
     five=${5}
     shift 5
-    dialog --backtitle "${one}" --checklist "${two}" ${three} ${four} ${five} "$@"
+    dialog --title "${one}" --output-fd ${two} --msgbox "${three}" ${four} ${five} $@
+}
+
+
+#yesno box_title output_fd yesno_question height width
+yesno()
+{
+    one=${1}
+    two=${2}
+    three=${3}
+    four=${4}
+    five=${5}
+    shift 5
+    dialog --title "${one}" --output-fd ${two} --no-shadow --yesno "${three}" ${four} ${five} $@
+}
+
+#input box_title --output-fd message height width fileORoutput
+input()
+{
+    one=${1}
+    two=${2}
+    three=${3}
+    four=${4}
+    five=${5}
+    shift 5
+    dialog --title "${one}" --output-fd ${two} --inputbox "${three}" ${four} ${five} 2> $6
+
+#text title output-fd textfile height width
+text()
+{
+    one=${1}
+    two=${2}
+    three=${3}
+    four=${4}
+    five=${5}
+    shift 5
+    dialog --title "${one}" --output-fd "${two}" --textbox ${three} ${four} $@
+}
+#menu backtitle output_fd box_title height width [tab_str_prt item_tab_one ...]
+menu()
+{
+    one=${1}
+    two=${2}
+    three=${3}
+    four=${4}
+    five=${5}
+    shift 5
+    dialog --backtitle "${one}" --output-fd ${two} --menu "${three}" ${four} ${five} "$@"
     result=$?
     if [ $result -eq 1 ] ; then
         exit 1;
     elif [ $result -eq 255 ] ; then
         exit 255;
     fi
+}
+#fselect title output_fd height width
+fselect(){
+    one=${1}
+    two=${2}
+    shift 2
+    dialog --title "${one}" --output ${two} --fselect $HOME/ $@
+}
+#passkey title output_fd promopt height width
+passkey(){
+    one=${1}
+    two=${2}
+    three=${3}
+    shift 3
+    dialog --title "${one}" --output-fd ${two} --insecure  --passwordbox "${three}" $@
+}
+#checklist backtitle output_fd checklist_title height width menu_height [tag1_str item1_str item1_posnum......]
+checklist(){
+    one=${1}
+    two=${2}
+    three=${3}
+    four=${4}
+    five=${5}
+    six=${6}
+    shift 6
+    dialog --backtitle "${one}" --output-fd ${two}  --checklist "${three}" ${four} ${five} ${six} "$@"
 }
 #calc_show height width day month year
 calc_show()
@@ -162,15 +171,9 @@ calc_show()
     two=${2}
     shift 2
     dialog --title "Calendar" --calendar "Date" ${one} ${two} $@
-    result=$?
-    if [ $result -eq 1 ] ; then
-        exit 1;
-    elif [ $result -eq 255 ] ; then
-        exit 255;
-    fi
 
 }
-#pro_watch title gauge_info height width [percent]
+#pro_watch boxtitle output-fd title gauge_info height width [percent]
 pro_watch(){
     one=${1}
     two=${2}
@@ -178,15 +181,9 @@ pro_watch(){
     four=${4}
     five=${5}
     shift 5
-    dialog --title "${one}" --gauge "${two}" ${three} ${four} ${five} $@
-    result=$?
-    if [ $result -eq 1 ] ; then
-        exit 1;
-    elif [ $result -eq 255 ] ; then
-        exit 255;
-    fi
+    dialog --title "${one}" --output-fd ${two} --gauge "${three}" ${four} ${five} $@
 }
-#form title form_title height width formheight \
+#form boxtitle output-fd form_title height width formheight \
 # [label y x item y x fieldlen inputlen]
 form(){
     one=${1}
@@ -194,14 +191,9 @@ form(){
     three=${3}
     four=${4}
     five=${5}
-    shift 5
-    dialog --title "${one}" --form "${two}" ${three} ${four} ${five} "$@"
-    result=$?
-    if [ $result -eq 1 ] ; then
-        exit 1;
-    elif [ $result -eq 255 ] ; then
-        exit 255;
-    fi
+    six=${6}
+    shift 6
+    dialog --title "${one}" --output-fd ${two} --form "${three}" ${four} ${five} ${six} "$@"
 }
 
 
@@ -241,7 +233,7 @@ do
             echo $VERSION
             ;;
         --)
-            usage
+            main
             ;;
         *)
             echo -e "${red}Invalid parameter $1 ${plain}" 1>&2
