@@ -57,13 +57,13 @@ os_init (){
     do
         case $option in
             "Arch/pacman")
-                yes|pacman -S whiptail ;;
+                yes|pacman -S dialog ;;
             "Debian/apt")
-                apt-get install -y whiptail ;;
+                apt-get install -y dialog ;;
             "CentOS/yum")
-                yum install -y whiptail ;;
+                yum install -y dialog ;;
             "Fedora/dnf")
-                dnf install -y whiptail ;;
+                dnf install -y dialog ;;
             "Exit")
                 clear
                 break ;;
@@ -83,7 +83,7 @@ msg(){
     four=${4}
     five=${5}
     shift 5
-    whiptail --title "${one}" --output-fd ${two} --msgbox "${three}" ${four} ${five} $@
+    dialog --title "${one}" --output-fd ${two} --msgbox "${three}" ${four} ${five} $@
 }
 
 
@@ -96,7 +96,7 @@ yesno()
     four=${4}
     five=${5}
     shift 5
-    whiptail --title "${one}" --output-fd ${two} --no-shadow --yesno "${three}" ${four} ${five} $@
+    dialog --title "${one}" --output-fd ${two} --no-shadow --yesno "${three}" ${four} ${five} $@
 }
 
 #input box_title --output-fd message height width
@@ -108,7 +108,7 @@ input()
     four=${4}
     five=${5}
     shift 5
-    whiptail --title "${one}" --output-fd ${two} --inputbox "${three}" ${four} ${five}
+    dialog --title "${one}" --output-fd ${two} --inputbox "${three}" ${four} ${five}
 }
 #text title output-fd textfile height width
 text()
@@ -119,7 +119,7 @@ text()
     four=${4}
     five=${5}
     shift 5
-    whiptail --title "${one}" --output-fd "${two}" --textbox ${three} ${four} $@
+    dialog --title "${one}" --output-fd "${two}" --textbox ${three} ${four} $@
 }
 #menu backtitle output_fd box_title height width [tab_str_prt item_tab_one ...]
 menu()
@@ -130,14 +130,14 @@ menu()
     four=${4}
     five=${5}
     shift 5
-    whiptail --backtitle "${one}" --output-fd ${two} --menu "${three}" ${four} ${five} "$@"
+    dialog --backtitle "${one}" --output-fd ${two} --menu "${three}" ${four} ${five} "$@"
 }
 #fselect title output_fd height width
 fselect(){
     one=${1}
     two=${2}
     shift 2
-    whiptail --title "${one}" --output-fd ${two} --fselect $HOME/ $@
+    dialog --title "${one}" --output-fd ${two} --fselect $HOME/ $@
 }
 #passkey title output_fd promopt height width
 passkey(){
@@ -145,7 +145,7 @@ passkey(){
     two=${2}
     three=${3}
     shift 3
-    whiptail --title "${one}" --output-fd ${two} --insecure  --passwordbox "${three}" $@
+    dialog --title "${one}" --output-fd ${two} --insecure  --passwordbox "${three}" $@
 }
 #checklist backtitle output_fd checklist_title height width menu_height [tag1_str item1_str item1_posnum......]
 checklist(){
@@ -156,7 +156,7 @@ checklist(){
     five=${5}
     six=${6}
     shift 6
-    whiptail --backtitle "${one}" --output-fd ${two}  --checklist "${three}" ${four} ${five} ${six} "$@"
+    dialog --backtitle "${one}" --output-fd ${two}  --checklist "${three}" ${four} ${five} ${six} "$@"
 }
 #calc_show height width day month year
 calc_show()
@@ -164,7 +164,7 @@ calc_show()
     one=${1}
     two=${2}
     shift 2
-    whiptail --title "Calendar" --calendar "Date" ${one} ${two} $@
+    dialog --title "Calendar" --calendar "Date" ${one} ${two} $@
 
 }
 #pro_watch boxtitle input-fd gauge_info height width [percent]
@@ -175,7 +175,7 @@ pro_watch(){
     four=${4}
     five=${5}
     shift 5
-    whiptail --title "${one}" --input-fd ${two} --gauge "${three}" ${four} ${five} $@
+    dialog --title "${one}" --input-fd ${two} --gauge "${three}" ${four} ${five} $@
 }
 #form boxtitle output-fd form_title height width formheight \
 # [label y x item y x fieldlen inputlen]
@@ -187,7 +187,7 @@ form(){
     five=${5}
     six=${6}
     shift 6
-    whiptail --title "${one}" --output-fd ${two} --form "${three}" ${four} ${five} ${six} "$@"
+    dialog --title "${one}" --output-fd ${two} --form "${three}" ${four} ${five} ${six} "$@"
 }
 
 
@@ -206,7 +206,7 @@ pro_watching(){
 }
 
 _chroot_(){
-    print_fun ${rootdir=(read_fun "Please input the new root path:")}
+    print_fun ${rootdir=$(read_fun "Please input the new root path:")}
     cp --dereference /etc/resolv.conf ${rootdir}/etc
     mount --types proc /proc ${rootdir}/proc
     mount --rbind /sys ${rootdir}/sys
@@ -217,7 +217,7 @@ _chroot_(){
 }
 
 main(){
-    if command -v whiptail >/dev/null 2>&1; then
+    if command -v dialog >/dev/null 2>&1; then
     rootdir=$(fselect "Please select new root directory path:" 1 10 110)
     cp --dereference /etc/resolv.conf ${rootdir}/etc
     mount --types proc /proc ${rootdir}/proc
