@@ -170,7 +170,7 @@ pro_watch(){
     five=${5}
     six=${6}
     shift 6
-    dialog --title "${one}" --input-fd ${two} --gauge "${three}" ${four} ${five} ${six} 
+    dialog --title "${one}" --input-fd ${two} --gauge "${three}" ${four} ${five} ${six}
 }
 #pro_watching title gauge_info
 pro_watching(){
@@ -277,11 +277,11 @@ main(){
 			    DEVICEB=$(input "OpenWrt installation" 1 "Please input OpenWrt installed device (Ex:/dev/sda):" 30 90)
 			    ROOT_NEW_SIZE=$(input "OpenWrt installation" 1 "Please input OpenWrt root filesystem size(M,Not out of range of your device limit!):" 30 90)
 			    OPENWRT_ORD=$(input "OpenWrt installation" 1 "Please change boot order (OpenWrt,3):" 30 90)
-			    FILE=$(fselect "Please select a OpenWrt rootfs-ext4 image file:" 1 15 110)
-			    CONFILE=$(fselect "Please select a OpenWrt configuration backup file:" 1 15 110)
+			    FILE=$(fselect "Please select a OpenWrt rootfs-ext4 image file:" 1 10 110)
+			    CONFILE=$(fselect "Please select a OpenWrt configuration backup file:" 1 10 110)
 		            OPENWRT_PARTUUID=$(/sbin/blkid $OPENWRT_ROOT_PATH|sed 's/^.*PARTUUID=//g')
 			    cp -rf ./openwrt-x86-64-vmlinuz /boot
-			    gzip -dc $FILE | dd of=$OPENWRT_ROOT_PATH 
+			    gzip -dc $FILE | dd of=$OPENWRT_ROOT_PATH
 			    yes|e2fsck -f $OPENWRT_ROOT_PATH
 			    resize2fs $OPENWRT_ROOT_PATH $ROOT_NEW_SIZE
 			    mkdir ./my_openwrt

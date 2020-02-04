@@ -242,8 +242,8 @@ main(){
             ubuntu14.04 ubuntu \
             vmLeanWRT vmleanwrt
             )
-            startkvm $vm
             clear
+            startkvm $vm
     else
         os_init
     fi
