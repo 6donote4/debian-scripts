@@ -213,6 +213,8 @@ _chroot_(){
     mount --make-rslave ${rootdir}/sys
     mount --rbind /dev ${rootdir}/dev
     mount --make-rslave ${rootdir}/dev
+    mount --rbind /boot ${rootdir}/boot
+    mount --make-rslave ${rootdir}/boot
     chroot ${rootdir}/ /bin/bash
 }
 
