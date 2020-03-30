@@ -239,7 +239,7 @@ main(){
             MikroTik6_2 mikrotik \
             OpenWRT openwrt \
             Slitaz slitaz \
-            ubuntu14.04 ubuntu \
+            ubuntu18.04 ubuntu \
             vmLeanWRT vmleanwrt
             )
             clear
