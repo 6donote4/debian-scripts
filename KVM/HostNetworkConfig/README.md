@@ -16,3 +16,6 @@ cp bridge0 wifi /etc/netctl
 netctl enable bridge0 wifi
 netctl start bridge0 wifi
 ```
+
+4. repaire the bridge network
+change the net_id for ip address
