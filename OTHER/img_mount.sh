@@ -49,7 +49,7 @@ print_fun() {
 _query() {
 	FILENAME=$(read_fun "Please input img file to query information about partition: ")
 	print_fun $FILENAME
-sudo fdisk $FILENAME
+sudo fdisk -l $FILENAME
 }
 
 _mount() {
