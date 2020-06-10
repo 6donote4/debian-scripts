@@ -66,6 +66,10 @@ case "$1" in
 		_query
 		exit 0
 		;;
+    -m)
+        _mount
+        exit 0
+        ;;
 	-h|--help)
 		usage
 		exit 0
