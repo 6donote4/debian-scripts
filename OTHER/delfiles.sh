@@ -14,7 +14,7 @@ PROGNAME="$(basename $0)"
 export LC_ALL=C
 SCRIPT_UMASK=0122
 umask $SCRIPT_UMASK
-args=($(getopt -o snegtrh -l help,version -- "$@"))
+args=($(getopt -o snegtrh -l help,version,test -- "$@"))
 set -- "$args";
 red='\033[0;31m'
 green='\033[0;32m'
@@ -73,7 +73,7 @@ do
             DEPTH=$(read_fun "Please input max directory depth:")
             print_fun $DEPTH
             find . -maxdepth $DEPTH -size +$FILESIZEMIN -size -$FILESIZEMAX ! -iname '*.sh' -type f -exec ls {} \;
-            if [[ $(read_fun "Do you comfirm to delete files?(y|n):") == "y" || "Y" ]] ;then
+            if [[ $(read_fun "Do you comfirm to delete files?(y|n):") == [yY] ]] ;then
                 find . -maxdepth $DEPTH -size +$FILESIZEMIN -size -$FILESIZEMAX ! -iname '*.sh' -type f -delete;
                 echo "done"
             fi
@@ -89,7 +89,7 @@ do
             DEPTH=$(read_fun "Please input max directory depth:")
             print_fun $DEPTH
             find . -maxdepth $DEPTH -size +$FILESIZEMIN -size -$FILESIZEMAX -iname "$FILENAME" ! -iname '*.sh' -type f -exec ls {} \;
-            if [[ $(read_fun "Do you comfirm to delete files?(y|n):") == "y" || "Y" ]] ;then
+            if [[ $(read_fun "Do you comfirm to delete files?(y|n):") == [yY] ]] ;then
                 find . -maxdepth $DEPTH -size +$FILESIZEMIN -size -$FILESIZEMAX -iname "$FILENAME" ! -iname '*.sh' -type f -delete
                 echo "done"
             fi
@@ -103,7 +103,7 @@ do
             DEPTH=$(read_fun "Please input max directory depth:")
             print_fun $DEPTH
             find . -maxdepth $DEPTH -size +$FILESIZE -iname "$FILENAME" ! -iname '*.sh' -type f -exec ls {} \;
-            if [[ $(read_fun "Do you comfirm to delete files?(y|n):") == "y" || "Y" ]] ;then
+            if [[ $(read_fun "Do you comfirm to delete files?(y|n):") == [yY] ]] ;then
                 find . -maxdepth $DEPTH -size +$FILESIZE -iname "$FILENAME" ! -iname '*.sh' -type f -delete
                 echo "done"
             fi
@@ -120,7 +120,7 @@ do
             find . -maxdepth $DEPTH  ! -iname '*.sh' -type f -print0 | xargs -0 md5sum | sort > ./allfiles;
             cat ./allfiles | uniq -w 32 > ./uniqfiles
             cat ./uniqfiles
-            if [[ $(read_fun "Do you comfirm to delete files?(y|n):") == "y" || "Y" ]] ;then
+            if [[ $(read_fun "Do you comfirm to delete files?(y|n):") == [yY] ]] ;then
                 comm ./allfiles ./uniqfiles -2 -3 | cut -c 35- | tr '\n' '\0' | xargs -0 rm;
                 echo "done"
             fi
@@ -129,8 +129,6 @@ do
             exit 0
             ;;
         -t)
-            FILENAME=$(read_fun "Please input file name:")
-            print_fun $FILENAME
             FILESIZEMIN=$(read_fun "Please input file minimum size(b,block;c,bytes;w,two-byte;k,KiB;M,MiB;G,GiB):")
             print_fun $FILESIZEMIN
             FILESIZEMAX=$(read_fun "Please input file maximum size(b,block;c,bytes;w,two-byte;k,KiB;M,MiB;G,GiB):")
@@ -143,16 +141,23 @@ do
             print_fun $FTIMEEND
             touch -t $FTIMESTART t1.timestamp
             touch -t $FTIMEEND t2.timestamp
-            find . -maxdepth $DEPTH -size +$FILESIZEMIN -size -$FILESIZEMAX -iname "$FILENAME" -type f \( -newer ./t1.timestamp -a -not -newer ./t2.timestamp \) -exec ls {} \;
-            if [[ $(read_fun "Do you comfirm to delete files?(y|n):") == "y" || "Y" ]] ;then
-                find . -maxdepth $DEPTH -size +$FILESIZEMIN -size -$FILESIZEMAX -iname "$FILENAME" -iname '*.sh' -type f -newer ./t1.timestamp -a -not -newer ./t2.timestamp -delete
+            find . -maxdepth $DEPTH -size +$FILESIZEMIN -size -$FILESIZEMAX -type f -newer ./t1.timestamp -a ! -newer ./t2.timestamp -exec ls {} \;
+            if [[ $(read_fun "Do you comfirm to delete files?(y|n):") == [yY] ]] ;then
+                find . -maxdepth $DEPTH -size +$FILESIZEMIN -size -$FILESIZEMAX \( ! -iname '*.sh' \) -type f -newer ./t1.timestamp -a ! -newer ./t2.timestamp -delete
                 echo "done"
             fi
-            rm -rf ./*.timestamp
+            rm -f t1.timestamp t2.timestamp
             exit 0
             ;;
         -h|--help)
             usage
+            exit 0
+            ;;
+        --test)
+            if [[ $(read_fun "Do you comfirm to delete files?(y|n):") == [yY] ]] ;then
+                echo "yes"
+            fi
+            echo "no"
             exit 0
             ;;
         -v|--version)
