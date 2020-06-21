@@ -66,12 +66,9 @@ while [ -n "$1" ]
 do
 	case "$1" in
         -s)
-            FILESIZEMIN=$(read_fun "Please input file minimum size(b,block;c,bytes;w,two-byte;k,KiB;M,MiB;G,GiB):")
-            print_fun $FILESIZEMIN
-            FILESIZEMAX=$(read_fun "Please input file maximum size(b,block;c,bytes;w,two-byte;k,KiB;M,MiB;G,GiB):")
-            print_fun $FILESIZEMAX
-            DEPTH=$(read_fun "Please input max directory depth:")
-            print_fun $DEPTH
+            print_fun ${FILESIZEMIN=$(read_fun "Please input file minimum size(b,block;c,bytes;w,two-byte;k,KiB;M,MiB;G,GiB):")}
+            print_fun ${FILESIZEMAX=$(read_fun "Please input file maximum size(b,block;c,bytes;w,two-byte;k,KiB;M,MiB;G,GiB):")}
+            print_fun ${DEPTH=$(read_fun "Please input max directory depth:")}
             find . -maxdepth $DEPTH -size +$FILESIZEMIN -size -$FILESIZEMAX ! -iname '*.sh' -type f -exec ls {} \;
             if [[ $(read_fun "Do you comfirm to delete files?(y|n):") == [yY] ]] ;then
                 find . -maxdepth $DEPTH -size +$FILESIZEMIN -size -$FILESIZEMAX ! -iname '*.sh' -type f -delete;
@@ -80,14 +77,10 @@ do
             exit 0
             ;;
         -n)
-            FILENAME=$(read_fun "Please input file name:")
-            print_fun $FILENAME
-            FILESIZEMIN=$(read_fun "Please input file minimum size(b,block;c,bytes;w,two-byte;k,KiB;M,MiB;G,GiB):")
-            print_fun $FILESIZEMIN
-            FILESIZEMAX=$(read_fun "Please input file maximum size(b,block;c,bytes;w,two-byte;k,KiB;M,MiB;G,GiB):")
-            print_fun $FILESIZEMAX
-            DEPTH=$(read_fun "Please input max directory depth:")
-            print_fun $DEPTH
+            print_fun ${FILENAME=$(read_fun "Please input file name:")}
+            print_fun ${FILESIZEMIN=$(read_fun "Please input file minimum size(b,block;c,bytes;w,two-byte;k,KiB;M,MiB;G,GiB):")}
+            print_fun ${FILESIZEMAX=$(read_fun "Please input file maximum size(b,block;c,bytes;w,two-byte;k,KiB;M,MiB;G,GiB):")}
+            print_fun ${DEPTH=$(read_fun "Please input max directory depth:")}
             find . -maxdepth $DEPTH -size +$FILESIZEMIN -size -$FILESIZEMAX -iname "$FILENAME" ! -iname '*.sh' -type f -exec ls {} \;
             if [[ $(read_fun "Do you comfirm to delete files?(y|n):") == [yY] ]] ;then
                 find . -maxdepth $DEPTH -size +$FILESIZEMIN -size -$FILESIZEMAX -iname "$FILENAME" ! -iname '*.sh' -type f -delete
@@ -96,12 +89,10 @@ do
             exit 0
             ;;
         -g)
-            FILENAME=$(read_fun "Please input file name:")
-            print_fun $FILENAME
-            FILESIZE=$(read_fun "Please input file size(b,block;c,bytes;w,two-byte;k,KiB;M,MiB;G,GiB):")
-            print_fun $FILESIZE
-            DEPTH=$(read_fun "Please input max directory depth:")
-            print_fun $DEPTH
+
+            print_fun ${FILENAME=$(read_fun "Please input file name:")}
+            print_fun ${FILESIZE=$(read_fun "Please input file size(b,block;c,bytes;w,two-byte;k,KiB;M,MiB;G,GiB):")}
+            print_fun ${DEPTH=$(read_fun "Please input max directory depth:")}
             find . -maxdepth $DEPTH -size +$FILESIZE -iname "$FILENAME" ! -iname '*.sh' -type f -exec ls {} \;
             if [[ $(read_fun "Do you comfirm to delete files?(y|n):") == [yY] ]] ;then
                 find . -maxdepth $DEPTH -size +$FILESIZE -iname "$FILENAME" ! -iname '*.sh' -type f -delete
@@ -115,8 +106,7 @@ do
             exit 0
             ;;
         -r)
-            DEPTH=$(read_fun "Please input max directory depth:")
-            print_fun $DEPTH
+            print_fun ${DEPTH=$(read_fun "Please input max directory depth:")}
             find . -maxdepth $DEPTH  ! -iname '*.sh' -type f -print0 | xargs -0 md5sum | sort > ./allfiles;
             cat ./allfiles | uniq -w 32 > ./uniqfiles
             cat ./uniqfiles
@@ -129,16 +119,11 @@ do
             exit 0
             ;;
         -t)
-            FILESIZEMIN=$(read_fun "Please input file minimum size(b,block;c,bytes;w,two-byte;k,KiB;M,MiB;G,GiB):")
-            print_fun $FILESIZEMIN
-            FILESIZEMAX=$(read_fun "Please input file maximum size(b,block;c,bytes;w,two-byte;k,KiB;M,MiB;G,GiB):")
-            print_fun $FILESIZEMAX
-            DEPTH=$(read_fun "Please input max directory depth:")
-            print_fun $DEPTH
-            FTIMESTART=$(read_fun "Please input filetime to modify in begining(198906040101.59):")
-            print_fun $FTIMESTART
-            FTIMEEND=$(read_fun "Please input filetime to modify in end(198906040501.59):")
-            print_fun $FTIMEEND
+            print_fun ${FILESIZEMIN=$(read_fun "Please input file minimum size(b,block;c,bytes;w,two-byte;k,KiB;M,MiB;G,GiB):")}
+            print_fun ${FILESIZEMAX=$(read_fun "Please input file maximum size(b,block;c,bytes;w,two-byte;k,KiB;M,MiB;G,GiB):")}
+            print_fun ${DEPTH=$(read_fun "Please input max directory depth:")}
+            print_fun ${FTIMESTART=$(read_fun "Please input filetime to modify in begining(198906040101.59):")}
+            print_fun ${FTIMEEND=$(read_fun "Please input filetime to modify in end(198906040501.59):")}
             touch -t $FTIMESTART t1.timestamp
             touch -t $FTIMEEND t2.timestamp
             find . -maxdepth $DEPTH -size +$FILESIZEMIN -size -$FILESIZEMAX -type f -newer ./t1.timestamp -a ! -newer ./t2.timestamp -exec ls {} \;

@@ -4,17 +4,17 @@ export PATH
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
-#   Dscription:Sync local time from ntp server.
+#   Dscription:change root directory in Linux
 #   Version: 0.0.1
 #   Blog: https://www.donote.tk https://6donote4.github.io
 #========================================
-#This script is used to sync local time from ntp server.
+#Change root directory in Linux
 VERSION=0.0.1
 PROGNAME="$(basename $0)"
 export LC_ALL=C
 SCRIPT_UMASK=0122
 umask $SCRIPT_UMASK
-args=($(getopt -o vh -l help,version -- "$@"))
+args=($(getopt -o cvh -l help,version -- "$@"))
 set -- "$args";
 red='\033[0;31m'
 green='\033[0;32m'
@@ -26,6 +26,8 @@ $PROGNAME $VERSION
 Usage:
 ./$PROGNAME [option]
 Options
+--
+-c Change new root environment
 -v --version  Show version
 -h --help  Show this usage
 EOF
@@ -51,17 +53,30 @@ test_fun() {
     echo -e "${green}test done${plain}"
 }
 
-synctime() {
-    sudo ntpdate 0.cn.pool.ntp.org
+_chroot_() {
+    print_fun ${rootdir=$(read_fun "Please input the new root path:")}
+    cp --dereference /etc/resolv.conf ${rootdir}/etc
+    mount --types proc /proc ${rootdir}/proc
+    mount --rbind /sys ${rootdir}/sys
+    mount --make-rslave ${rootdir}/sys
+    mount --rbind /dev ${rootdir}/dev
+    mount --make-rslave ${rootdir}/dev
+    mount --rbind /boot ${rootdir}/boot
+    mount --make-rslave ${rootdir}/boot
+    chroot ${rootdir}/ /bin/bash
 }
 
-main(){
-    synctime
+main() {
+    _chroot_
 }
 
 while [ -n "$1" ]
 do
 	case "$1" in
+        -c)
+            _chroot_
+            exit 0
+            ;;
         -h|--help)
             usage
             exit 0
