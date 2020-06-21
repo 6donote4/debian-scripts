@@ -143,7 +143,7 @@ do
             touch -t $FTIMEEND t2.timestamp
             find . -maxdepth $DEPTH -size +$FILESIZEMIN -size -$FILESIZEMAX -type f -newer ./t1.timestamp -a ! -newer ./t2.timestamp -exec ls {} \;
             if [[ $(read_fun "Do you comfirm to delete files?(y|n):") == [yY] ]] ;then
-                find . -maxdepth $DEPTH -size +$FILESIZEMIN -size -$FILESIZEMAX \( ! -iname '*.sh' -o -iname '*.aria2' -o iname '*.torrent' \) -type f -newer ./t1.timestamp -a ! -newer ./t2.timestamp -delete
+                find . -maxdepth $DEPTH -size +$FILESIZEMIN -size -$FILESIZEMAX ! \( -iname '*.sh' -o -iname '*.aria2' -o iname '*.torrent' \) -type f -newer ./t1.timestamp -a ! -newer ./t2.timestamp -delete
                 echo "done"
             fi
             rm -f t1.timestamp t2.timestamp
