@@ -50,6 +50,10 @@ ARGS=( "$@" )
                sudo shutdown -P $OFFTIME
                exit 0
                ;;
+           -c)
+               sudo shutdown -P $2
+               exit 0
+               ;;
          -h|--help)
 			usage
 			exit 0
