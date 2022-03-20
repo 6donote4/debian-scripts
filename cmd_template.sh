@@ -42,18 +42,46 @@ read_fun() {
 
             echo $RESPON
         }
-
 print_fun() {
         echo -e "${yellow}You inputed :${plain}"
         echo $1 >&1
         echo -e "${green}print done${plain}"
         }
-
 test_fun() {
     print_fun ${ARG=$(read_fun "read_print_test:" )}
     echo -e "${green}test done${plain}"
 }
-
+check_sys(){
+	if [[ -f /etc/redhat-release ]]; then
+		release="centos"
+	elif cat /etc/issue | grep -q -E -i "debian"; then
+		release="debian"
+	elif cat /etc/issue | grep -q -E -i "ubuntu"; then
+		release="ubuntu"
+	elif cat /etc/issue | grep -q -E -i "centos|red hat|redhat"; then
+		release="centos"
+	elif cat /proc/version | grep -q -E -i "debian"; then
+		release="debian"
+	elif cat /proc/version | grep -q -E -i "ubuntu"; then
+		release="ubuntu"
+	elif cat /proc/version | grep -q -E -i "centos|red hat|redhat"; then
+		release="centos"
+    fi
+<<EOF
+usage:
+if [[ ${release} == "centos"   ]]; then
+yum install -y debootstrap schroot
+elif [[ ${release} == "debian"  ]];then
+apt-get install -y debootstrap schroot
+else
+pacman -S debootstrap schroot
+fi
+EOF
+	bit=`uname -m`
+}
+check_root(){
+        [[ $EUID != 0  ]] && echo -e " ${red}当前账号非ROOT(或没有ROOT权限)，无法继续操作，请使用sudo su 来获取临时ROOT权限（执行后会提示输入当前账号的密码）。${plain}" && exit 1
+}
 main(){
     usage
 }
