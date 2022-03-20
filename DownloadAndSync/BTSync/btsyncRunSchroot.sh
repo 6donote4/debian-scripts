@@ -14,7 +14,7 @@ PROGNAME="$(basename $0)"
 export LC_ALL=C
 SCRIPT_UMASK=0122
 umask $SCRIPT_UMASK
-args=($(getopt -o irstvh -l help,version -- "$@"))
+args=($(getopt -o irstvhe -l help,version -- "$@"))
 set -- "$args";
 red='\033[0;31m'
 green='\033[0;32m'
@@ -28,6 +28,7 @@ Usage:
 Options
 -i install and configure schroot and debootstrap
 -s Start a Btsync schroot session
+-e Run a btsync
 --
 -t Terminal a Btsync schroot session
 -r Recovery a Btsync schroot session
@@ -136,6 +137,14 @@ recover_btsync_session(){
     sudo schroot -r -c $BtsyncSession
 }
 
+
+run_btsync(){
+    start_btsync_session
+    BtsyncSession=$(cat ./btsync.session)
+    sudo schroot -r -c $BtsyncSession startBtsync.sh
+}
+
+
 main(){
     usage
 }
@@ -149,6 +158,10 @@ do
             ;;
         -s)
             start_btsync_session
+            exit 0
+            ;;
+        -e)
+            run_btsync
             exit 0
             ;;
         -t)
