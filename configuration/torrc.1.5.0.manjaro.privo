@@ -257,7 +257,7 @@ AutomapHostSuffixes .onion,.exit
 AutomapHostOnResolve 1
 
 HTTPSProxy 127.0.0.1:3120
-SOCKSPort   0.0.0.0:9050
+SOCKSPort   9050
 #Socks5Proxy 127.0.0.1:1082
 ExcludeNodes {cn},{hk},{mo},{sg},{th},{pk},{by},{ru},{ir},{vn},{ph},{my},{cu},{br},{kz},{kw},{lk},{ci}
 ExcludeExitNodes {cn},{hk},{mo},{sg},{th},{pk},{by},{ru},{ir},{vn},{ph},{my},{cu},{br},{kz},{kw},{lk},{ci}
