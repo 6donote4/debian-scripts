@@ -1,1 +1,1 @@
-* 12 * * *  cat  /var/log/messages |awk '{print $11}'|sed 's/SRC=//'|sort -n|uniq|xargs -I[] iptables -A INPUT -A INPUT -p tcp -s [] -j DROP
+* 12 * * *  cat  /var/log/messages |awk '{print $11}'|sed 's/SRC=//'|sort -n|uniq|xargs -I[] iptables -A INPUT  -p tcp -s [] -j DROP
