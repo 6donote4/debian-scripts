@@ -1,1 +1,1 @@
-#  The is repo is used to store my iptables rules and shell script
+#  The repo is used to store my iptables rules and shell script
