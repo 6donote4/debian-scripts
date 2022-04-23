@@ -6,7 +6,7 @@ export PATH
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
 #   Dscription:
 #   Version: 0.0.1
-#   Blog: https://www.donote.tk https://6donote4.github.io
+#   Blog: https://www.donote.ml https://6donote4.github.io
 #========================================
 #
 VERSION=0.0.1

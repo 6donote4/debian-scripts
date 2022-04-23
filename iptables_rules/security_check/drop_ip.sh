@@ -1,4 +1,12 @@
 #!/bin/bash
+#========================================
+#   Linux Distribution: Manjaro/Debian 8+/
+#   Author: 6donote4 <mailto:do_note@hotmail.com>
+#   Dscription:
+#   Version: 0.0.1
+#   Blog: https://www.donote.ml https://6donote4.github.io
+#========================================
+#This script is used to detect ip address from attacker ,block and record them.
 #LIMIT is max times of ssh port to access from attacker.
 LIMIT=9
 BAN_IP_DIR="/root/security_check/banip_bak"
@@ -10,7 +18,7 @@ BANIP_LIST=$(lastb |awk '{print $3}' |sort -n|uniq -c|sed '2d'|sort -nr|awk '{pr
 BACKUPFILE=$BLACKLIST
 
 if [ ! -d "$BAN_IP_DIR" ]
-then 
+then
 		mkdir -p $BAN_IP_DIR
 fi
 
@@ -38,10 +46,10 @@ do
 if [ -e "$BLACKLISTFILTER" ]
 then
 		if [ "$(echo $IP_B |awk -F, '{print $1}')" -gt "$LIMIT" ]
-		then 
+		then
 		echo $IP_B |awk -F, '{print $2}' >> $BLACKLISTFILTER
 		fi
-else 
+else
 		touch $BLACKLISTFILTER
 fi
 done
