@@ -1,0 +1,50 @@
+====
+1:28a
+2:29,30c
+  -A LIBVIRT_FWI -d 192.168.10.0/24 -i wlp4s0 -o virbr1 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+  -A LIBVIRT_FWI -o virbr1 -j REJECT --reject-with icmp-port-unreachable
+3:29,32c
+  -A LIBVIRT_FWI -d 192.168.5.0/24 -i wlp4s0 -o virbr3 -j ACCEPT
+  -A LIBVIRT_FWI -o virbr3 -j REJECT --reject-with icmp-port-unreachable
+  -A LIBVIRT_FWI -d 192.168.10.0/24 -i wlp4s0 -o virbr1 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+  -A LIBVIRT_FWI -o virbr1 -j REJECT --reject-with icmp-port-unreachable
+====
+1:29a
+2:32,33c
+  -A LIBVIRT_FWO -s 192.168.10.0/24 -i virbr1 -o wlp4s0 -j ACCEPT
+  -A LIBVIRT_FWO -i virbr1 -j REJECT --reject-with icmp-port-unreachable
+3:34,37c
+  -A LIBVIRT_FWO -s 192.168.5.0/24 -i virbr3 -o wlp4s0 -j ACCEPT
+  -A LIBVIRT_FWO -i virbr3 -j REJECT --reject-with icmp-port-unreachable
+  -A LIBVIRT_FWO -s 192.168.10.0/24 -i virbr1 -o wlp4s0 -j ACCEPT
+  -A LIBVIRT_FWO -i virbr1 -j REJECT --reject-with icmp-port-unreachable
+====
+1:30a
+2:35c
+  -A LIBVIRT_FWX -i virbr1 -o virbr1 -j ACCEPT
+3:39,40c
+  -A LIBVIRT_FWX -i virbr3 -o virbr3 -j ACCEPT
+  -A LIBVIRT_FWX -i virbr1 -o virbr1 -j ACCEPT
+====
+1:31a
+2:37,40c
+  -A LIBVIRT_INP -i virbr1 -p udp -m udp --dport 53 -j ACCEPT
+  -A LIBVIRT_INP -i virbr1 -p tcp -m tcp --dport 53 -j ACCEPT
+  -A LIBVIRT_INP -i virbr1 -p udp -m udp --dport 67 -j ACCEPT
+  -A LIBVIRT_INP -i virbr1 -p tcp -m tcp --dport 67 -j ACCEPT
+3:42,49c
+  -A LIBVIRT_INP -i virbr3 -p udp -m udp --dport 53 -j ACCEPT
+  -A LIBVIRT_INP -i virbr3 -p tcp -m tcp --dport 53 -j ACCEPT
+  -A LIBVIRT_INP -i virbr3 -p udp -m udp --dport 67 -j ACCEPT
+  -A LIBVIRT_INP -i virbr3 -p tcp -m tcp --dport 67 -j ACCEPT
+  -A LIBVIRT_INP -i virbr1 -p udp -m udp --dport 53 -j ACCEPT
+  -A LIBVIRT_INP -i virbr1 -p tcp -m tcp --dport 53 -j ACCEPT
+  -A LIBVIRT_INP -i virbr1 -p udp -m udp --dport 67 -j ACCEPT
+  -A LIBVIRT_INP -i virbr1 -p tcp -m tcp --dport 67 -j ACCEPT
+====
+1:35a
+2:45c
+  -A LIBVIRT_OUT -o virbr1 -p udp -m udp --dport 68 -j ACCEPT
+3:54,55c
+  -A LIBVIRT_OUT -o virbr3 -p udp -m udp --dport 68 -j ACCEPT
+  -A LIBVIRT_OUT -o virbr1 -p udp -m udp --dport 68 -j ACCEPT

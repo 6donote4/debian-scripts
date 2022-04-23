@@ -1,0 +1,36 @@
+-P INPUT ACCEPT
+-P FORWARD DROP
+-P OUTPUT ACCEPT
+-N DOCKER
+-N DOCKER-ISOLATION-STAGE-1
+-N DOCKER-ISOLATION-STAGE-2
+-N DOCKER-USER
+-N LIBVIRT_FWI
+-N LIBVIRT_FWO
+-N LIBVIRT_FWX
+-N LIBVIRT_INP
+-N LIBVIRT_OUT
+-A INPUT -j LIBVIRT_INP
+-A FORWARD -j DOCKER-USER
+-A FORWARD -j DOCKER-ISOLATION-STAGE-1
+-A FORWARD -o docker0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+-A FORWARD -o docker0 -j DOCKER
+-A FORWARD -i docker0 ! -o docker0 -j ACCEPT
+-A FORWARD -i docker0 -o docker0 -j ACCEPT
+-A FORWARD -j LIBVIRT_FWX
+-A FORWARD -j LIBVIRT_FWI
+-A FORWARD -j LIBVIRT_FWO
+-A OUTPUT -j LIBVIRT_OUT
+-A DOCKER-ISOLATION-STAGE-1 -i docker0 ! -o docker0 -j DOCKER-ISOLATION-STAGE-2
+-A DOCKER-ISOLATION-STAGE-1 -j RETURN
+-A DOCKER-ISOLATION-STAGE-2 -o docker0 -j DROP
+-A DOCKER-ISOLATION-STAGE-2 -j RETURN
+-A DOCKER-USER -j RETURN
+-A LIBVIRT_FWI -o virbr2 -j REJECT --reject-with icmp-port-unreachable
+-A LIBVIRT_FWO -i virbr2 -j REJECT --reject-with icmp-port-unreachable
+-A LIBVIRT_FWX -i virbr2 -o virbr2 -j ACCEPT
+-A LIBVIRT_INP -i virbr2 -p udp -m udp --dport 53 -j ACCEPT
+-A LIBVIRT_INP -i virbr2 -p tcp -m tcp --dport 53 -j ACCEPT
+-A LIBVIRT_INP -i virbr2 -p udp -m udp --dport 67 -j ACCEPT
+-A LIBVIRT_INP -i virbr2 -p tcp -m tcp --dport 67 -j ACCEPT
+-A LIBVIRT_OUT -o virbr2 -p udp -m udp --dport 68 -j ACCEPT

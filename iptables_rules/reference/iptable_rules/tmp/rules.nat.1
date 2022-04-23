@@ -1,0 +1,16 @@
+$IPT -t nat -P PREROUTING ACCEPT
+$IPT -t nat -P INPUT ACCEPT
+$IPT -t nat -P OUTPUT ACCEPT
+$IPT -t nat -P POSTROUTING ACCEPT
+$IPT -t nat -N DOCKER
+$IPT -t nat -N LIBVIRT_PRT
+$IPT -t nat -P PREROUTING -m addrtype --dst-type LOCAL -j DOCKER
+$IPT -t nat -P OUTPUT ! -d 127.0.0.0/8 -m addrtype --dst-type LOCAL -j DOCKER
+$IPT -t nat -P POSTROUTING -s 172.17.0.0/16 ! -o docker0 -j MASQUERADE
+$IPT -t nat -P POSTROUTING -j LIBVIRT_PRT
+$IPT -t nat -P DOCKER -i docker0 -j RETURN
+$IPT -t nat -P LIBVIRT_PRT -s 192.168.10.0/24 -d 224.0.0.0/24 -o wlp4s0 -j RETURN
+$IPT -t nat -P LIBVIRT_PRT -s 192.168.10.0/24 -d 255.255.255.255/32 -o wlp4s0 -j RETURN
+$IPT -t nat -P LIBVIRT_PRT -s 192.168.10.0/24 ! -d 192.168.10.0/24 -o wlp4s0 -p tcp -j MASQUERADE --to-ports 1024-65535
+$IPT -t nat -P LIBVIRT_PRT -s 192.168.10.0/24 ! -d 192.168.10.0/24 -o wlp4s0 -p udp -j MASQUERADE --to-ports 1024-65535
+$IPT -t nat -P LIBVIRT_PRT -s 192.168.10.0/24 ! -d 192.168.10.0/24 -o wlp4s0 -j MASQUERADE

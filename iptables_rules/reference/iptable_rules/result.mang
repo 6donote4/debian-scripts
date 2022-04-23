@@ -1,0 +1,7 @@
+====
+1:7a
+2:8c
+  -A LIBVIRT_PRT -o virbr1 -p udp -m udp --dport 68 -j CHECKSUM --checksum-fill
+3:8,9c
+  -A LIBVIRT_PRT -o virbr3 -p udp -m udp --dport 68 -j CHECKSUM --checksum-fill
+  -A LIBVIRT_PRT -o virbr1 -p udp -m udp --dport 68 -j CHECKSUM --checksum-fill
