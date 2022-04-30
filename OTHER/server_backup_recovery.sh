@@ -85,11 +85,11 @@ check_root(){
         [[ $EUID != 0  ]] && echo -e " ${red}当前账号非ROOT(或没有ROOT权限)，无法继续操作，请使用sudo su 来获取临时ROOT权限（执行后会提示输入当前账号的密码）。${plain}" && exit 1
 }
 _backup_fun(){
-    B_TIME=_`date +%Y-%m-%d-%H-%M-%S`
-    tar cvpjf backup$B_TIME.tbz2 --exclude=/proc --exclude=/lost+found --exclude=/backup$B_TIME.tbz2 --exclude=/mnt --exclude=/sys --exclude=/dev --exclude=/home --exclude=/var --exclude=/usr --exclude=/run --exclude=/boot --exclude=/snap
+        BACKUP_FILE="server_backup_`date +%Y-%m-%d-%H-%M-%S`"
+        tar cvpjf ./$BACKUP_FILE.tbz2 --exclude=/proc --exclude=/lost+found --exclude=./$BACKUP_FILE.tbz2 --exclude=/mnt --exclude=/sys --exclude=/dev --exclude=/home --exclude=/var --exclude=/usr --exclude=/run --exclude=/boot --exclude=/snap --exclude=./server_backup_recovery.sh --exclude=/media --exclude=/vmlinuz --exclude=/initrd* --exclude=/lib* --exclude=/root --exclude=/sbin --exclude=/bin
 }
 _recovery_fun(){
-    tar xvpjf ./backup*.tbz2 -C /
+    tar xvpjf ./server_backup*.tbz2 -C /
 }
 
 main(){
