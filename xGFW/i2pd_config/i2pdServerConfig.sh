@@ -376,7 +376,7 @@ do
             exit 0
             ;;
         -c)
-            _build_i2pd_tools
+            _build_i2pd-tools
             exit 0
             ;;
         -i)
