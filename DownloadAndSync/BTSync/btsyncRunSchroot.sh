@@ -5,16 +5,16 @@ export PATH
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
 #   Dscription:This script is used to run Btsybc in schroot
-#   Version: 0.0.1
+#   Version: 0.0.2
 #   Blog: https://www.donote.ml https://6donote4.github.io
 #========================================
 #
-VERSION=0.0.1
+VERSION=0.0.2
 PROGNAME="$(basename $0)"
 export LC_ALL=C
 SCRIPT_UMASK=0122
 umask $SCRIPT_UMASK
-args=($(getopt -o irstvhe -l help,version -- "$@"))
+args=($(getopt -o cirstvhel -l help,version -- "$@"))
 set -- "$args";
 red='\033[0;31m'
 green='\033[0;32m'
@@ -29,11 +29,13 @@ Options
 -i install and configure schroot and debootstrap
 -s Start a Btsync schroot session
 -e Run a btsync
+-l create a symble link to schroot home directory
+-c check Btsync daemon status
 --
 -t Terminal a Btsync schroot session
 -r Recovery a Btsync schroot session
--v --version  Show version
--h --help  Show this usage
+-v|--version  Show version
+-h|--help  Show this usage
 EOF
 }
 if [[ "$1" == ""  ]];then
@@ -119,31 +121,54 @@ protocols
 #networks
 hosts
 EOF
+    touch $HOME/check_8888.log
+    echo "END" > $HOME/check_8888.log
 }
 
 start_btsync_session(){
-    BtsyncSession=$(sudo schroot -b -c bullseye -u root)> ./btsync.session
-    echo $BtsyncSession |cat - > ./btsync.session
+    BtsyncSession=$(sudo schroot -b -c bullseye -u root)> $HOME/btsync.session
+    echo $BtsyncSession |cat - > $HOME/btsync.session
 }
 
 end_btsync_session(){
-    BtsyncSession=$(cat ./btsync.session)
+    BtsyncSession=$(cat $HOME/btsync.session)
     sudo schroot -e -c $BtsyncSession
-    rm -rf ./btsync.session
+    rm -rf $HOME/btsync.session
 }
 
+ln_home(){
+    BtsyncSession=$(cat $HOME/btsync.session)
+    ln -s /var/run/schroot/mount/$BtsyncSession/$HOME
+}
+
+
 recover_btsync_session(){
-    BtsyncSession=$(cat ./btsync.session)
+    BtsyncSession=$(cat $HOME/btsync.session)
     sudo schroot -r -c $BtsyncSession
 }
 
 
 run_btsync(){
     start_btsync_session
-    BtsyncSession=$(cat ./btsync.session)
+    BtsyncSession=$(cat $HOME/btsync.session)
     sudo schroot -r -c $BtsyncSession startBtsync.sh
 }
 
+check_btsync(){
+tstamp=$(date)
+nc -zv 127.0.0.1 8888
+if [ $? == 0 ] ; then
+    RESULT=$(echo $tstamp " " "succeeded!")
+    sed -i '1i'"$RESULT" $HOME/check_8888.log
+    exit 0
+else
+    RESULT=$($tstamp " " "recoveried...!")
+    sed -i '1i'"$RESULT" $HOME/check_8888.log
+    end_btsync_session
+    run_btsync
+    exit 0
+fi
+}
 
 main(){
     usage
@@ -168,8 +193,16 @@ do
             end_btsync_session
             exit 0
             ;;
+        -l)
+            ln_home
+            exit 0
+            ;;
         -r)
             recover_btsync_session
+            exit 0
+            ;;
+        -c)
+            check_btsync
             exit 0
             ;;
         -h|--help)
