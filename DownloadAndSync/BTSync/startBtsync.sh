@@ -1,4 +1,6 @@
 #!/bin/bash
-$(pwd)/loadDisk.sh
-$(pwd)/Btsync/btsync --config $(pwd)/Btsync/btsync.conf
+#HOME=/home/
+#export HOME
+$HOME/loadDisk.sh
+$HOME/Btsync/btsync --config $HOME/Btsync/btsync.conf
 exit 0

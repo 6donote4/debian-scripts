@@ -1,6 +1,7 @@
 #!/bin/bash
+#HOME=/home/
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
-export PATH
+export PATH HOME
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
@@ -151,7 +152,7 @@ recover_btsync_session(){
 run_btsync(){
     start_btsync_session
     BtsyncSession=$(cat $HOME/btsync.session)
-    sudo schroot -r -c $BtsyncSession startBtsync.sh
+    sudo schroot -r -c $BtsyncSession $HOME/startBtsync.sh
 }
 
 check_btsync(){
