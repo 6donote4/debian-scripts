@@ -1,7 +1,9 @@
 #!/bin/bash
 #HOME=/home/
+#USER=username
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
-export PATH HOME
+export PATH
+#export HOME USER
 #========================================
 #   Linux Distribution: Manjaro/Debian 8+/
 #   Author: 6donote4 <mailto:do_note@hotmail.com>
