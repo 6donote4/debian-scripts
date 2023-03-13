@@ -13,7 +13,8 @@ export PATH
      filezilla chromium kodi qmmp vim \
      emacs telegram tightvnc nmap fcitx \
      qbittorent riot utox syncthing \
-     geany stardict 
+     geany stardict
  sudo yaourt -S woeusb cydia-impactor
+ sudo systemctl enable vncserver@3
  exit 0
 
