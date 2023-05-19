@@ -15,3 +15,10 @@ youtube-dl --proxy 127.0.0.1:3120 --playlist-start 10
 youtube-dl --proxy 127.0.0.1:3120 --playlist-start 2 --playlist-end 5
 下载列表指定范围的连续文件
 
+yt-dlp --write-auto-sub --sub-format srt --sub-lang en  url
+
+#字幕嵌入视频
+yt-dlp --write-auto-subs --embed-sub -i   url
+
+汇总
+yt-dlp --write-auto-sub --sub-format srt --sub-lang zh-Hans --embed-sub -i  url
