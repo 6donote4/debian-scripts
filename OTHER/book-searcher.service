@@ -1,0 +1,12 @@
+[Unit]
+description=book-searcher daemon
+After=network.target
+Requires=network.target
+
+[Service]
+ExecStart=/home/User/.local/bin/book-searcher run
+User=user
+Group=user
+
+[Install]
+WantedBy=multi-user.target
