@@ -1,0 +1,13 @@
+[Unit]
+Description=clash daemon
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/clash -d /usr/local/etc/clash
+Restart=on-failure
+RestartPreventExitStatus=23
+
+[Install]
+WantedBy=multi-user.target
+
