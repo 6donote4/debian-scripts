@@ -58,7 +58,7 @@
         "kcpSettings": {},
         "wsSettings": {
           "connectionReuse": true,
-          "path": "/NQ6ecEWA/",
+          "path": "/NQWA/",
           "headers": {
             "Host": "www.qq.com"
           }
@@ -86,7 +86,7 @@
         "kcpSettings": {},
         "wsSettings": {
           "connectionReuse": true,
-          "path": "/HpzDer3b/",
+          "path": "/Hpb/",
           "headers": {
             "Host": "www.baidu.com"
           }
@@ -101,7 +101,7 @@
       "protocol": "shadowsocks",
       "settings": {
         "network": "tcp,udp",
-        "password": "xSB",
+        "password": "x",
         "method": "aes-256-gcm"
       },
       "port": 53761
