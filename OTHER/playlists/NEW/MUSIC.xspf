@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">
+	<title>播放列表</title>
+	<trackList>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2015%E9%93%AD%E6%9D%B0%E5%94%B1%E7%89%87%E6%96%B0%E4%BD%9C%20%E8%B1%AA%E9%A9%BE%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%BF%80%E6%83%85%20%E8%8B%B1%E6%96%87DJ/01.%20%E5%A5%B3%E4%BA%BA%E4%B8%96%E7%95%8C.wav</location>
+			<duration>224933</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>0</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2015%E9%93%AD%E6%9D%B0%E5%94%B1%E7%89%87%E6%96%B0%E4%BD%9C%20%E8%B1%AA%E9%A9%BE%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%BF%80%E6%83%85%20%E8%8B%B1%E6%96%87DJ/02.%20%E8%A7%A3%E9%87%8A.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>1</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2015%E9%93%AD%E6%9D%B0%E5%94%B1%E7%89%87%E6%96%B0%E4%BD%9C%20%E8%B1%AA%E9%A9%BE%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%BF%80%E6%83%85%20%E8%8B%B1%E6%96%87DJ/03.%20%E7%96%AF%E7%8B%82%E7%9A%84%E5%A5%B3%E5%AD%A9.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>2</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2015%E9%93%AD%E6%9D%B0%E5%94%B1%E7%89%87%E6%96%B0%E4%BD%9C%20%E8%B1%AA%E9%A9%BE%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%BF%80%E6%83%85%20%E8%8B%B1%E6%96%87DJ/04.%20%E4%BD%A0%E7%9C%8B%E8%A7%81%E4%BB%80%E4%B9%88.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>3</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2015%E9%93%AD%E6%9D%B0%E5%94%B1%E7%89%87%E6%96%B0%E4%BD%9C%20%E8%B1%AA%E9%A9%BE%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%BF%80%E6%83%85%20%E8%8B%B1%E6%96%87DJ/05.%20%E6%88%91%E5%96%9C%E6%AC%A2%E4%BD%A0.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>4</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2015%E9%93%AD%E6%9D%B0%E5%94%B1%E7%89%87%E6%96%B0%E4%BD%9C%20%E8%B1%AA%E9%A9%BE%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%BF%80%E6%83%85%20%E8%8B%B1%E6%96%87DJ/06.%20%E8%88%9E%E6%9B%B2.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>5</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2015%E9%93%AD%E6%9D%B0%E5%94%B1%E7%89%87%E6%96%B0%E4%BD%9C%20%E8%B1%AA%E9%A9%BE%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%BF%80%E6%83%85%20%E8%8B%B1%E6%96%87DJ/07.%20%E7%83%9F%E7%81%AB.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>6</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2015%E9%93%AD%E6%9D%B0%E5%94%B1%E7%89%87%E6%96%B0%E4%BD%9C%20%E8%B1%AA%E9%A9%BE%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%BF%80%E6%83%85%20%E8%8B%B1%E6%96%87DJ/08.%20%E6%AC%BA%E5%87%8C.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>7</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2015%E9%93%AD%E6%9D%B0%E5%94%B1%E7%89%87%E6%96%B0%E4%BD%9C%20%E8%B1%AA%E9%A9%BE%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%BF%80%E6%83%85%20%E8%8B%B1%E6%96%87DJ/09.%20%E5%8F%8D%E5%BC%B9.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>8</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2015%E9%93%AD%E6%9D%B0%E5%94%B1%E7%89%87%E6%96%B0%E4%BD%9C%20%E8%B1%AA%E9%A9%BE%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%BF%80%E6%83%85%20%E8%8B%B1%E6%96%87DJ/10.%20%E4%BB%8A%E5%A4%9C%E6%88%91%E5%92%8C%E4%BD%A0%E4%B8%80%E8%B5%B7.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>9</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2015%E9%93%AD%E6%9D%B0%E5%94%B1%E7%89%87%E6%96%B0%E4%BD%9C%20%E8%B1%AA%E9%A9%BE%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%BF%80%E6%83%85%20%E8%8B%B1%E6%96%87DJ/11.%20%E9%87%8D%E7%BB%84%E6%88%91%E7%9A%84%E5%BF%83.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>10</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2015%E9%93%AD%E6%9D%B0%E5%94%B1%E7%89%87%E6%96%B0%E4%BD%9C%20%E8%B1%AA%E9%A9%BE%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%BF%80%E6%83%85%20%E8%8B%B1%E6%96%87DJ/12.%20%E4%B8%8D%E5%AE%8C%E5%85%A8%E7%9A%84.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>11</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2015%E9%93%AD%E6%9D%B0%E5%94%B1%E7%89%87%E6%96%B0%E4%BD%9C%20%E8%B1%AA%E9%A9%BE%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%BF%80%E6%83%85%20%E8%8B%B1%E6%96%87DJ/13.%20%E5%B0%BD%E6%83%85%E6%91%87%E6%91%86.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>12</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2015%E9%93%AD%E6%9D%B0%E5%94%B1%E7%89%87%E6%96%B0%E4%BD%9C%20%E8%B1%AA%E9%A9%BE%E9%80%9F%E5%BA%A6%E4%B8%8E%E6%BF%80%E6%83%85%20%E8%8B%B1%E6%96%87DJ/14.%20%E9%92%9B.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>13</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2016%E6%9C%80%E6%96%B0DJ%E8%B6%85%E7%BA%A7%E9%87%8D%E4%BD%8E%E9%9F%B3</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>14</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2016%E6%9C%80%E6%96%B0DJ%E6%B4%92%E5%90%A7%E6%9A%96%E5%9C%BA</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>15</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2016%E6%9C%80%E6%96%B0DJ%E8%8B%B1%E6%96%87%E9%A1%B6%E7%BA%A7%E6%85%A2%E6%91%87</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>16</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2016%E6%9C%80%E6%96%B0DJ%E8%8B%B1%E6%96%87%E9%A1%B6%E7%BA%A7%E6%85%A2%E6%91%872</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>17</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2016%E6%9C%80%E6%96%B0DJ%E8%8B%B1%E6%96%87%E9%A1%B6%E7%BA%A7%E6%85%A2%E6%91%873</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>18</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2016%E6%9C%80%E6%96%B0DJ%E8%8B%B1%E6%96%87%E9%A1%B6%E7%BA%A7%E6%85%A2%E6%91%874</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>19</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2016%E6%9C%80%E6%96%B0DJ%E8%8B%B1%E6%96%87%E9%A1%B6%E7%BA%A7%E6%85%A2%E6%91%875</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>20</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/2016%E6%9C%80%E6%96%B0DJ%E4%B8%BB%E6%89%93%E7%94%B5%E9%9F%B3</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>21</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/%E9%87%8D%E4%BD%8E%E9%9F%B3%E8%88%9E%E6%9B%B2%E4%B8%B2%E7%83%A7%E7%89%882016/DJ%E8%88%9E%E6%9B%B2HiFi%E5%8F%91%E7%83%A7%20%E9%87%8D%E4%BD%8E%E9%9F%B3%E4%B8%B2%E7%83%A7%E7%89%88.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>22</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/DJ%20-%20%E3%80%8A%E6%91%87%E5%90%A79898%E7%8E%B0%E5%9C%BA%E3%80%8B</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>23</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202016/WMC%202017%20%E7%94%B5%E9%9F%B3%20-%203CD</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>24</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-1%E6%9C%80%E6%96%B0DJ%202017</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>25</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/5-4%EF%BC%8FDJ%20%EF%BC%8F%E8%88%9E%E6%9B%B2%EF%BC%8F%E6%85%A2%E6%91%87</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>26</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/17-6%EF%BC%8F%E7%B2%BE%E9%80%89%E5%9B%BD%E5%A4%96%E5%8F%91%E7%83%A7%E5%A4%A9%E7%A2%9F</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>27</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E9%98%BF%E9%BB%9B%E5%B0%94%20%20Adele</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>28</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E9%98%BF%E5%90%89%E4%BB%94%20-%20%E5%8F%B0%E7%81%A3%E5%94%B8%E6%AD%8C%E7%B2%BE%E9%80%89%E5%8D%B7%E4%BA%8C%20XRCD2</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>29</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E9%98%BF%E5%90%89%E4%BB%94%20-%20%E5%8F%B0%E7%81%A3%E5%94%B8%E6%AD%8C%E7%B2%BE%E9%80%89%E5%8D%B7%E4%B8%80%20XRCD2</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>30</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E9%99%88%E9%9B%B7%20-%20%E9%99%B3%E9%9B%B716%E9%A6%96%26%E6%B1%9F%E7%BE%8E%E9%BA%97%20%E5%8F%B0%E8%AA%9E%E7%B2%BE%E9%81%B8%20XRCD</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>31</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E5%A4%A7%E5%9C%B0%E4%B9%8B%E6%A2%A6%20%E5%AE%89%E5%BE%B7%E5%88%97%20%E6%B3%A2%E5%88%87%E5%88%A9Sogno</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>32</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E8%8C%83%E5%90%89%E5%88%A9%E6%96%AF%20%20Vangelis</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>33</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E7%81%8C%E7%AF%AE%E9%AB%98%E6%89%8B%E6%97%A0%E6%8D%9F%E4%B8%93%E8%BE%91%28%E5%85%B110CD%29</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>34</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E6%B5%B7%E6%B4%8B%E6%A2%A6%E5%B9%BB%E9%9F%B3%E4%B9%90%E7%B3%BB%E5%88%97</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>35</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E9%9F%A9%E5%AE%9D%E4%BB%AA%20-%20%E9%BB%84%E9%87%91%E7%BB%8F%E5%85%B8%E4%B8%93%E8%BE%91%2024K%E9%87%91%E7%A2%9F</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>36</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E9%BB%84%E4%B9%99%E7%8E%B2-%E6%88%90%E5%90%8D%E9%87%91%E6%9B%B2%E7%B2%BE%E9%81%B8%28%E5%8F%B0%E8%AA%9E%29.XRCD2</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>37</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E6%B1%9F%E8%95%99-%28%E7%B2%BE%E9%80%89%29%E9%BB%84%E9%87%91%E5%85%B8%E8%97%8F%E7%89%88XRCD2%E7%89%881</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>38</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E6%B1%9F%E8%95%99-%28%E7%B2%BE%E9%80%89%29%E9%BB%84%E9%87%91%E5%85%B8%E8%97%8F%E7%89%88XRCD2%E7%89%882</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>39</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E6%B1%9F%E8%95%99%E3%80%8A%E5%8F%B0%E7%81%A3%E7%B4%85%E6%AD%8C%E3%80%8B%E5%8F%B0%E8%AF%AD.XRCD2</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>40</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E5%87%AF%E6%96%87.%E7%A7%91%E6%81%A9%20%E4%BA%91%E6%B7%A1%E9%A3%8E%E6%B8%85-%E6%92%A9%E4%BA%BA%E7%9A%84%E8%BD%BB%E9%9F%B3%E4%B9%90Embracing%20the%20Wind-Kevin%20Kern</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>41</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E7%BD%97%E7%90%B3%E5%A8%9C%C2%B7%E9%BA%A6%E8%82%AF%E5%B0%BC%E7%89%B9Loreena%20McKennitt</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>42</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E9%97%BD%E5%8D%97%E8%AF%AD%E6%AD%8C%E6%9B%B2</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>43</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E6%97%A5%E9%9F%A9%E9%9F%B3%E4%B9%90%E5%90%88%E9%9B%862</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>44</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E8%8E%8E%E6%8B%89%E5%B8%83%E8%8E%B1%E6%9B%BC%20%20Sarah%20Brightman</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>45</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E4%B8%96%E7%95%8C%E5%8D%81%E5%A4%A7%E6%B0%94%E5%8A%BF%E7%A3%85%E7%A4%B4%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>46</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E5%8F%B0%E6%B9%BE%E5%B7%A8%E6%98%9F%E9%9D%9E%E5%B8%B8%E7%B2%BE%E9%80%89</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>47</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E5%8F%B0%E6%B9%BE%E6%9C%9B%E6%98%A5%E9%A3%8E</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>48</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E5%A4%B4%E6%96%87%E5%AD%97D54CD</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>49</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E6%97%A0%E6%8D%9F%E9%9F%B3%E4%B9%90</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>50</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E9%83%91%E6%80%A1%20%E5%BF%83%E6%83%85%20%20%E5%8F%B0%E6%B9%BE%E5%8E%9F%E7%89%88</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>51</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E4%B8%AD%E5%9B%BD%E8%BD%BB%E9%9F%B3%E4%B9%90%E3%80%8A%E5%8F%A4%E6%97%A9%E8%8C%B6%E3%80%8B%E7%B3%BB%E5%88%97%E4%B8%93%E8%BE%91%E5%85%B16%E7%A2%9F</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>52</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/AGC1000%E9%A6%96WAV%E5%8D%95%E6%9B%B2%2B%E8%A1%A5%E7%BC%BA320K</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>53</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/B130.XRCD2%E8%91%89%E5%95%9F%E7%94%B0-%E5%94%B1%E7%9A%84%E5%A5%BD%E6%AD%8C%E5%85%A8%E5%93%A1%E9%9B%86%E5%90%88</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>54</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/Back%20to%20Earth%20-%20The%20Dawn%20of%20a%20New%20World%202011</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>55</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/Clannad%20-%20Celtic%20Collection</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>56</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/Clannad%20-%20The%20Ultimate%20Collection</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>57</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/Damien%20Dubois%20-%20Evasion%20%282015%29</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>58</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/DJ%E8%88%9E%E6%9B%B2</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>59</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/Martin%20Nonstatic%20-%20Granite%20%282015%29</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>60</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/MV</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>61</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/Ron%20Korb%20-%20%E5%BD%93%E4%BB%A3%E7%AC%AC%E4%B8%80%E9%AD%94%E7%AC%9B</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>62</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/The%20Taliesin%20Orchestra%20-%20Sail%20Away%20The%20Music%20of%20Enya</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>63</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%5B161123%5D%E9%88%B4%E8%8F%AF%E3%82%86%E3%81%86%E5%AD%90%201st%E3%82%BD%E3%83%AD%E3%83%9F%E3%83%8B%E3%82%A2%E3%83%AB%E3%83%90%E3%83%A0%E3%80%8CCRADLE%20OF%20ETERNITY%E3%80%8D%5B320K%5D.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>64</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/60-90%E5%B9%B4%E4%BB%A3%20-%20%E9%A6%99%E6%B8%AF%E7%BB%8F%E5%85%B8%E9%87%91%E6%9B%B2%E7%8F%8D%E8%97%8F%E9%9B%86-04%5BWAV%2BCUE%5D.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>65</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/1994.%E5%BC%A0%E5%AD%A6%E5%8F%8B.%E9%A5%BF%E7%8B%BC%E4%BC%A0%E8%AF%B4%20%E7%BA%AA%E5%BF%B5%E7%89%88.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>66</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/1994.%E5%BC%A0%E5%AD%A6%E5%8F%8B.%E9%9D%9E%E5%B8%B8%E4%BE%A6%E6%8E%A2%E7%94%B5%E5%BD%B1%E5%8E%9F%E5%A3%B0%E5%A4%A7%E7%A2%9F.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>67</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/1998.%E5%BC%A0%E5%AD%A6%E5%8F%8B.%E9%87%8A%E6%94%BE%E8%87%AA%E5%B7%B1%20%E6%B8%AF%E7%89%88.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>68</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/1998.%E5%BC%A0%E5%AD%A6%E5%8F%8B.%E7%A5%9D%E7%A6%8F%2024K%20GOLD.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>69</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E8%94%A1%E6%B7%B3%E4%BD%B3-%5B2010%5D-%E6%B7%B3%E5%89%A7%E4%BD%B3%E6%9B%B2-2010%E5%B9%B4%E4%B8%BB%E9%A2%98%E6%9B%B2%E7%B2%BE%E9%80%89-%5B%E6%96%B0%E5%8A%A0%E5%9D%A1%E7%89%88%5D%5BWAV%2BCUE%5D.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>70</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E9%99%B3%E5%BF%97%E9%81%A0-%E4%B8%AD%E5%9C%8B%E9%9F%B3%E6%A8%82%E4%BA%A4%E9%9F%BF%E8%A9%A91%2890%E9%84%89%E5%9F%8E%E6%9D%B1%E8%8A%9D%E7%89%88%29%5BWAV%2BCUE%5D.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>71</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E5%88%9D%E7%99%BB%E5%A0%B4Live%20CD1.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>72</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E5%88%9D%E7%99%BB%E5%A0%B4Live%20CD2.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>73</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E5%88%80%E9%83%8E%20-%E3%80%8A%E8%AF%95%E9%9F%B3%E5%88%80%E9%83%8E%E2%91%A1%C2%B7%E6%9F%94%E6%83%85%E7%BB%8F%E5%85%B8DXD%E3%80%8B%E5%88%86%E8%BD%A8%202CD-2.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>74</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E8%BB%8C%E8%B7%A1%20BEST%20COLLECTION%EF%BC%8B.zip</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>75</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E5%92%8C%E6%A5%BD%E5%99%A8%E3%83%90%E3%83%B3%E3%83%89%20-%20%E8%BB%8C%E8%B7%A1%20BEST%20COLLECTION%2B.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>76</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E9%82%9D%E7%BE%8E%E4%BA%91%E3%80%8A1991-%E4%BA%B2%E8%BF%91%E6%88%91%5B%E6%97%A5%E6%9C%AC%E4%B8%9C%E8%8A%9D%E7%89%88%5D%E3%80%8B%5BWAV%5D.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>77</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E6%9C%A8%E6%9D%91%E5%A5%BD%E5%A4%AB%20-%202007.Best%20Collection%20%E2%85%A1.flac.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>78</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E7%94%A9%E8%91%B1%E6%AD%8CIevanPolkka%20-%E5%88%9D%E9%9F%B3%E3%83%9F%E3%82%AF.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>79</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E5%9B%9B%E5%AD%A3%E5%BD%A9-shikisai-.zip</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>80</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E7%AB%A5%E5%AE%89%E6%A0%BC1985-01-%E6%83%B3%E4%BD%A0%5B%E5%8F%B0%E6%B9%BE%E5%AE%9D%E4%B8%BD%E9%87%91%E5%94%B1%E7%89%87%E7%BE%8E%E5%9B%BDLP%E7%89%88%5D%5BWAV%2BCUE%5D.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>81</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E3%80%90%E5%B1%A0%E6%A6%9C%E7%B3%BB%E5%88%97%E3%80%91%E6%A5%B5%E6%A8%82%E6%B7%A8%E5%9C%9F%E3%80%90%E9%87%91%E4%B8%9D%E9%9B%80%E6%B4%9B%E5%A4%A9%E4%BE%9D%E3%80%91%20%5B720p%5D.mp4</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>82</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E3%80%8A%E4%BB%99%E5%89%91%E5%A5%87%E4%BE%A0%E4%BC%A0%E4%BA%94%E5%89%8D%E4%BC%A0%E3%80%8B%E5%85%B8%E8%97%8F%E9%9F%B3%E4%B9%90%E9%9B%86%28FLAC%E6%97%A0%E6%8D%9F%29.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>83</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E5%BE%90%E5%B0%8F%E5%87%A4%EF%BC%9A2000%E5%B9%B4%E3%80%8A%E5%BE%90%E5%B0%8F%E9%B3%B3%E6%AE%BF%E5%A0%8218%E9%A6%96%E3%80%8B%5B%E6%B0%B8%E6%81%92%E7%9C%9F%E5%AD%9824K%E9%87%91%E7%A2%9F%5D%5BWAV%E6%95%B4%E8%BD%A8%5D.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>84</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E5%BC%A0%E5%AD%A6%E5%8F%8B1994%2024K%20GOLD%20%E9%87%91%E8%97%8F%E9%9B%86%20CD1%20%E9%A6%99%E6%B8%AF%E7%89%88%20WAV%E6%95%B4%E8%BD%A8%20.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>85</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/DTS-%20%E9%82%93%E4%B8%BD%E5%90%9B%E3%80%8A%E5%A4%B1%E8%90%BD%E7%9A%84%E6%83%85%E6%AD%8C%E3%80%8BWAV%E5%88%86%E8%BD%A8.zip</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>86</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/GARNiDELiA%20-%20%E6%A5%B5%E6%A5%BD%E6%B5%84%E5%9C%9F.flac</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>87</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/GARNiDELiA_G.R.N.D._FLAC24bit.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>88</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%5BHi-Res%5D%5B180131%5D%20TV%E3%82%A2%E3%83%8B%E3%83%A1%E3%80%8CBEATLESS%E3%80%8DOP%E3%83%86%E3%83%BC%E3%83%9E%E3%80%8CError%E3%80%8D%EF%BC%8FGARNiDELiA%20%5BFLAC%2048kHz%EF%BC%8F24bit%5D.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>89</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/Linkage%20Ring.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>90</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E3%80%90MMD%E3%80%91%E6%A1%83%E6%BA%90%E6%81%8B%E6%AD%8C%E3%80%80tougenrenka%EF%BC%88motion%20DL%29%20%5B720p%5D.mp4</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>91</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/TOMORROW%20-%E6%97%A9%E8%A7%81%E6%B2%99%E7%BB%87%EF%BC%88%E9%AB%98%E5%B2%AD%E7%88%B1%E8%8A%B1%EF%BC%89%20-%20DS%E6%B8%B8%E6%88%8F%E3%80%8A%E3%83%A9%E3%83%96%E3%83%97%E3%83%A9%E3%82%B9%2B%E3%80%8B.wav</location>
+			<duration>291240</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>92</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/Yakusoku%20-%20Promise%20Code-%20-%20EP.rar</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>93</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>sftp://example@192.168.1.1/run/schroot/mount/bullseye-9eb55784-c966-4420-bbc3-35b9fb91f599/home/example/MyNas/MUSIC/%E3%81%82%E3%81%AE%E7%A9%BA%E3%81%AB%E9%82%84%E3%82%8B%E6%9C%AA%E6%9D%A5%E3%81%A7%20%20%20Buddy%20ComplexED.wav</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>94</vlc:id>
+			</extension>
+		</track>
+	</trackList>
+	<extension application="http://www.videolan.org/vlc/playlist/0">
+		<vlc:item tid="0"/>
+		<vlc:item tid="1"/>
+		<vlc:item tid="2"/>
+		<vlc:item tid="3"/>
+		<vlc:item tid="4"/>
+		<vlc:item tid="5"/>
+		<vlc:item tid="6"/>
+		<vlc:item tid="7"/>
+		<vlc:item tid="8"/>
+		<vlc:item tid="9"/>
+		<vlc:item tid="10"/>
+		<vlc:item tid="11"/>
+		<vlc:item tid="12"/>
+		<vlc:item tid="13"/>
+		<vlc:item tid="14"/>
+		<vlc:item tid="15"/>
+		<vlc:item tid="16"/>
+		<vlc:item tid="17"/>
+		<vlc:item tid="18"/>
+		<vlc:item tid="19"/>
+		<vlc:item tid="20"/>
+		<vlc:item tid="21"/>
+		<vlc:item tid="22"/>
+		<vlc:item tid="23"/>
+		<vlc:item tid="24"/>
+		<vlc:item tid="25"/>
+		<vlc:item tid="26"/>
+		<vlc:item tid="27"/>
+		<vlc:item tid="28"/>
+		<vlc:item tid="29"/>
+		<vlc:item tid="30"/>
+		<vlc:item tid="31"/>
+		<vlc:item tid="32"/>
+		<vlc:item tid="33"/>
+		<vlc:item tid="34"/>
+		<vlc:item tid="35"/>
+		<vlc:item tid="36"/>
+		<vlc:item tid="37"/>
+		<vlc:item tid="38"/>
+		<vlc:item tid="39"/>
+		<vlc:item tid="40"/>
+		<vlc:item tid="41"/>
+		<vlc:item tid="42"/>
+		<vlc:item tid="43"/>
+		<vlc:item tid="44"/>
+		<vlc:item tid="45"/>
+		<vlc:item tid="46"/>
+		<vlc:item tid="47"/>
+		<vlc:item tid="48"/>
+		<vlc:item tid="49"/>
+		<vlc:item tid="50"/>
+		<vlc:item tid="51"/>
+		<vlc:item tid="52"/>
+		<vlc:item tid="53"/>
+		<vlc:item tid="54"/>
+		<vlc:item tid="55"/>
+		<vlc:item tid="56"/>
+		<vlc:item tid="57"/>
+		<vlc:item tid="58"/>
+		<vlc:item tid="59"/>
+		<vlc:item tid="60"/>
+		<vlc:item tid="61"/>
+		<vlc:item tid="62"/>
+		<vlc:item tid="63"/>
+		<vlc:item tid="64"/>
+		<vlc:item tid="65"/>
+		<vlc:item tid="66"/>
+		<vlc:item tid="67"/>
+		<vlc:item tid="68"/>
+		<vlc:item tid="69"/>
+		<vlc:item tid="70"/>
+		<vlc:item tid="71"/>
+		<vlc:item tid="72"/>
+		<vlc:item tid="73"/>
+		<vlc:item tid="74"/>
+		<vlc:item tid="75"/>
+		<vlc:item tid="76"/>
+		<vlc:item tid="77"/>
+		<vlc:item tid="78"/>
+		<vlc:item tid="79"/>
+		<vlc:item tid="80"/>
+		<vlc:item tid="81"/>
+		<vlc:item tid="82"/>
+		<vlc:item tid="83"/>
+		<vlc:item tid="84"/>
+		<vlc:item tid="85"/>
+		<vlc:item tid="86"/>
+		<vlc:item tid="87"/>
+		<vlc:item tid="88"/>
+		<vlc:item tid="89"/>
+		<vlc:item tid="90"/>
+		<vlc:item tid="91"/>
+		<vlc:item tid="92"/>
+		<vlc:item tid="93"/>
+		<vlc:item tid="94"/>
+	</extension>
+</playlist>
