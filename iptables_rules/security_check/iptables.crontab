@@ -1,0 +1,1 @@
+/30 * * * * /bin/bash /root/crontab/drop_ip.sh

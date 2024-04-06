@@ -1,0 +1,16 @@
+#sudo vim /lib/systemd/system/aria.service
+[Unit]
+Description=Aria2 Service
+After=network.target
+
+[Service]
+User=dzc
+Type=forking
+ExecStart=/usr/bin/aria2c --conf-path=/home/dzc/.config/aria2/aria2.conf --daemon
+RemainAfterExit=yes
+ExecReload=/usr/bin/kill -HUP $MAINPID
+RestartSec=1min
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

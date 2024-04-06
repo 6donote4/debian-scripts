@@ -1,0 +1,12 @@
+[Unit]
+Description=btsync
+After=network.target
+
+[Service]
+User=pi
+Group=pi
+
+ExecStart=/home/pi/BTSync/btsync --config /home/pi/BTSync/btsync.conf --nodaemon
+
+[Install]
+WantedBy=multi-user.target

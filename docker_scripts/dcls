@@ -1,0 +1,14 @@
+#!/bin/sh
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
+#========================================
+#	Linux Distribution: Manjaro/Debian 8+/
+#	Author: 6donote4 <mailto:do_note@hotmail.com>
+#	Dscription: alias for docker container ls
+#	Version: 0.0.1
+#	Blog: https://www.donote.tk	https://6donote4.github.io
+#========================================
+echo "docker container ls"   
+docker container ls
+exit 0
+

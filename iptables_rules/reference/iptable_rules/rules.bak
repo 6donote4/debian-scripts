@@ -1,0 +1,76 @@
+-P PREROUTING ACCEPT
+-P OUTPUT ACCEPT
+
+-P PREROUTING ACCEPT
+-P INPUT ACCEPT
+-P FORWARD ACCEPT
+-P OUTPUT ACCEPT
+-P POSTROUTING ACCEPT
+-N LIBVIRT_PRT
+-A POSTROUTING -j LIBVIRT_PRT
+-A LIBVIRT_PRT -o virbr1 -p udp -m udp --dport 68 -j CHECKSUM --checksum-fill
+-A LIBVIRT_PRT -o virbr2 -p udp -m udp --dport 68 -j CHECKSUM --checksum-fill
+
+-P PREROUTING ACCEPT
+-P INPUT ACCEPT
+-P OUTPUT ACCEPT
+-P POSTROUTING ACCEPT
+-N DOCKER
+-N LIBVIRT_PRT
+-A PREROUTING -m addrtype --dst-type LOCAL -j DOCKER
+-A OUTPUT ! -d 127.0.0.0/8 -m addrtype --dst-type LOCAL -j DOCKER
+-A POSTROUTING -s 172.17.0.0/16 ! -o docker0 -j MASQUERADE
+-A POSTROUTING -j LIBVIRT_PRT
+-A DOCKER -i docker0 -j RETURN
+-A LIBVIRT_PRT -s 192.168.10.0/24 -d 224.0.0.0/24 -o wlp4s0 -j RETURN
+-A LIBVIRT_PRT -s 192.168.10.0/24 -d 255.255.255.255/32 -o wlp4s0 -j RETURN
+-A LIBVIRT_PRT -s 192.168.10.0/24 ! -d 192.168.10.0/24 -o wlp4s0 -p tcp -j MASQUERADE --to-ports 1024-65535
+-A LIBVIRT_PRT -s 192.168.10.0/24 ! -d 192.168.10.0/24 -o wlp4s0 -p udp -j MASQUERADE --to-ports 1024-65535
+-A LIBVIRT_PRT -s 192.168.10.0/24 ! -d 192.168.10.0/24 -o wlp4s0 -j MASQUERADE
+
+-P INPUT ACCEPT
+-P FORWARD DROP
+-P OUTPUT ACCEPT
+-N DOCKER
+-N DOCKER-ISOLATION-STAGE-1
+-N DOCKER-ISOLATION-STAGE-2
+-N DOCKER-USER
+-N LIBVIRT_FWI
+-N LIBVIRT_FWO
+-N LIBVIRT_FWX
+-N LIBVIRT_INP
+-N LIBVIRT_OUT
+-A INPUT -j LIBVIRT_INP
+-A FORWARD -j DOCKER-USER
+-A FORWARD -j DOCKER-ISOLATION-STAGE-1
+-A FORWARD -o docker0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+-A FORWARD -o docker0 -j DOCKER
+-A FORWARD -i docker0 ! -o docker0 -j ACCEPT
+-A FORWARD -i docker0 -o docker0 -j ACCEPT
+-A FORWARD -j LIBVIRT_FWX
+-A FORWARD -j LIBVIRT_FWI
+-A FORWARD -j LIBVIRT_FWO
+-A OUTPUT -j LIBVIRT_OUT
+-A DOCKER-ISOLATION-STAGE-1 -i docker0 ! -o docker0 -j DOCKER-ISOLATION-STAGE-2
+-A DOCKER-ISOLATION-STAGE-1 -j RETURN
+-A DOCKER-ISOLATION-STAGE-2 -o docker0 -j DROP
+-A DOCKER-ISOLATION-STAGE-2 -j RETURN
+-A DOCKER-USER -j RETURN
+-A LIBVIRT_FWI -d 192.168.10.0/24 -i wlp4s0 -o virbr1 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+-A LIBVIRT_FWI -o virbr1 -j REJECT --reject-with icmp-port-unreachable
+-A LIBVIRT_FWI -o virbr2 -j REJECT --reject-with icmp-port-unreachable
+-A LIBVIRT_FWO -s 192.168.10.0/24 -i virbr1 -o wlp4s0 -j ACCEPT
+-A LIBVIRT_FWO -i virbr1 -j REJECT --reject-with icmp-port-unreachable
+-A LIBVIRT_FWO -i virbr2 -j REJECT --reject-with icmp-port-unreachable
+-A LIBVIRT_FWX -i virbr1 -o virbr1 -j ACCEPT
+-A LIBVIRT_FWX -i virbr2 -o virbr2 -j ACCEPT
+-A LIBVIRT_INP -i virbr1 -p udp -m udp --dport 53 -j ACCEPT
+-A LIBVIRT_INP -i virbr1 -p tcp -m tcp --dport 53 -j ACCEPT
+-A LIBVIRT_INP -i virbr1 -p udp -m udp --dport 67 -j ACCEPT
+-A LIBVIRT_INP -i virbr1 -p tcp -m tcp --dport 67 -j ACCEPT
+-A LIBVIRT_INP -i virbr2 -p udp -m udp --dport 53 -j ACCEPT
+-A LIBVIRT_INP -i virbr2 -p tcp -m tcp --dport 53 -j ACCEPT
+-A LIBVIRT_INP -i virbr2 -p udp -m udp --dport 67 -j ACCEPT
+-A LIBVIRT_INP -i virbr2 -p tcp -m tcp --dport 67 -j ACCEPT
+-A LIBVIRT_OUT -o virbr1 -p udp -m udp --dport 68 -j ACCEPT
+-A LIBVIRT_OUT -o virbr2 -p udp -m udp --dport 68 -j ACCEPT

@@ -1,0 +1,110 @@
+{
+  "routing": {
+    "rules": [
+      {
+        "outboundTag": "blocked",
+        "type": "field",
+        "ip": [
+          "0.0.0.0/8",
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "169.254.0.0/16",
+          "172.16.0.0/12",
+          "192.0.0.0/24",
+          "192.0.2.0/24",
+          "192.168.0.0/16",
+          "198.18.0.0/15",
+          "198.51.100.0/24",
+          "203.0.113.0/24",
+          "::1/128",
+          "fc00::/7",
+          "fe80::/10"
+        ]
+      }
+    ]
+  },
+  "log": {
+    "error": "/var/log/v2ray/error.log",
+    "loglevel": "info",
+    "access": "/var/log/v2ray/access.log"
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "inbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "alterId": 16,
+            "id":id 
+          }
+        ]
+      },
+      "port": port,
+      "streamSettings": {
+        "network": "ws",
+        "tlsSettings": {},
+        "quicSettings": {},
+        "kcpSettings": {},
+        "wsSettings": {
+          "connectionReuse": true,
+          "path": "/NQWA/",
+          "headers": {
+            "Host": "www.host.com"
+          }
+        },
+        "security": "none",
+        "tcpSettings": {},
+        "httpSettings": {}
+      }
+    },
+    {
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "alterId": 16,
+            "id": "fc23540a-e52"
+          }
+        ]
+      },
+      "port": 353,
+      "streamSettings": {
+        "network": "ws",
+        "tlsSettings": {},
+        "quicSettings": {},
+        "kcpSettings": {},
+        "wsSettings": {
+          "connectionReuse": true,
+          "path": "/Hpb/",
+          "headers": {
+            "Host": "host.com"
+          }
+        },
+        "security": "none",
+        "tcpSettings": {},
+        "httpSettings": {}
+      },
+      "listen": "127.0.0.1"
+    },
+    {
+      "protocol": "shadowsocks",
+      "settings": {
+        "network": "tcp,udp",
+        "password": "x",
+        "method": "aes-256-gcm"
+      },
+      "port": 53761
+    }
+  ]
+}

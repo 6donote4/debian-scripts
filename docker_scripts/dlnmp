@@ -1,0 +1,13 @@
+#!/bin/sh
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
+#========================================
+#   Linux Distribution: Manjaro/Debian 8+/
+#   Author: 6donote4 <mailto:do_note@hotmail.com>
+#   Dscription: alias for docker run a lnmp environment 
+#   Version: 0.0.1
+#   Blog: https://www.donote.tk https://6donote4.github.io
+#========================================
+echo "docker run -p port_http:port_http https:https mysql:mysql baota:baota unknow:unknow ssh:ssh ftp:ftp" 
+docker run -d -p $1:$2 -p $3:$4 -p $5:$6 -p $7:$8 -p $9:$10 -p $11:$12 winstonpro/lnmp
+exit 0 

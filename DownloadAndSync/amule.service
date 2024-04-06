@@ -1,0 +1,12 @@
+[Unit]
+Description=amule daemon
+After=syslog.target network.target
+Wants=network.target
+[Service]
+User=pi
+TimeoutStartSec=30
+ExecStart=/usr/bin/amuled
+ExecStop=/usr/bin/kill $MAINPID 
+[Install]
+WantedBy=multi-user.target
+

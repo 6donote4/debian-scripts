@@ -1,0 +1,100 @@
+{
+  "Redirector": {
+    "FilterTCP": true,
+    "FilterUDP": true,
+    "FilterDNS": true,
+    "FilterParent": false,
+    "HandleOnlyDNS": true,
+    "DNSProxy": true,
+    "DNSHost": "1.1.1.1:53",
+    "ICMPDelay": 10,
+    "FilterICMP": false
+  },
+  "Server": [
+    {
+      "Type": "Trojan",
+      "Password": "password",
+      "Host": "trojan.host.com",
+      "TLSSecureType": "tls",
+      "Group": "NONE",
+      "Hostname": "trojan.host.com",
+      "Port": 443,
+      "Rate": 1,
+      "Remark": "MyTrojan"
+    },
+    {
+      "Type": "VMess",
+      "Port": 443,
+      "Hostname": "host.com",
+      "Group": "NONE",
+      "ServerName": "host.com",
+      "TLSSecureType": "tls",
+      "QUICSecret": "",
+      "QUICSecure": "none",
+      "Path": "/",
+      "Host": "host.com",
+      "FakeType": "none",
+      "PacketEncoding": "none",
+      "TransferProtocol": "ws",
+      "EncryptMethod": "zero",
+      "AlterID": 0,
+      "UserID": "",
+      "Rate": 1,
+      "Remark": "MyCDN"
+    }
+  ],
+  "AioDNS": {
+    "ChinaDNS": "tcp://223.5.5.5:53",
+    "OtherDNS": "tcp://1.1.1.1:53"
+  },
+  "CheckBetaUpdate": false,
+  "CheckUpdateWhenOpened": true,
+  "DetectionTick": 10,
+  "ExitWhenClosed": false,
+  "HTTPLocalPort": 2802,
+  "Language": "System",
+  "LocalAddress": "0.0.0.0",
+  "MinimizeWhenStarted": false,
+  "ModeComboBoxSelectedIndex": 11,
+  "ProfileCount": 4,
+  "Profiles": [],
+  "ProfileTableColumnCount": 5,
+  "RequestTimeout": 10000,
+  "RunAtStartup": false,
+  "ServerComboBoxSelectedIndex": 2,
+  "ServerTCPing": true,
+  "Socks5LocalPort": 2801,
+  "StartedPingInterval": -1,
+  "StartWhenOpened": false,
+  "StopWhenExited": false,
+  "STUN_Server": "stun.syncthing.net",
+  "STUN_Server_Port": 3478,
+  "Subscription": [],
+  "TUNTAP": {
+    "Address": "10.0.236.10",
+    "DNS": "1.1.1.1",
+    "Gateway": "10.0.236.1",
+    "Netmask": "255.255.255.0",
+    "ProxyDNS": false,
+    "UseCustomDNS": false,
+    "BypassIPs": []
+  },
+  "UpdateServersWhenOpened": false,
+  "V2RayConfig": {
+    "AllowInsecure": false,
+    "KcpConfig": {
+      "congestion": false,
+      "downlinkCapacity": 100,
+      "mtu": 1350,
+      "readBufferSize": 2,
+      "tti": 50,
+      "uplinkCapacity": 12,
+      "writeBufferSize": 2
+    },
+    "UseMux": false,
+    "V2rayNShareLink": true,
+    "XrayCone": true,
+    "TCPFastOpen": false
+  },
+  "NoSupportDialog": false
+}

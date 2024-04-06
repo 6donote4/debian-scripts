@@ -1,0 +1,60 @@
+# BTSync精品电子书资源汇集
+
+> 最近更新：20160917
+
+##【我就叫混沌】  
+
+> 我分享的书籍侧重 “数学 & 物理 & 金融” 
+> 微博：@这个混蛋叫混沌
+
+注意：
+
+* 刚加入BTSync, 如果出现无法下载的情况，可能是无人协同分享，并且我的电脑关机了（我的电脑的开机时间：6:00-23:00）。
+* 正是因为此共享计划刚刚启动，希望大家没事开启BT Sync同步，如果担心上传占宽带，建议设置限制上传速率，多少贡献一点流量。
+* 我这里是全速开启的上传速率是（1.7MB/s）
+* 有服务器资源的同学，建议在服务器上同步一份并保持同步，谢谢。
+
+只读密钥：
+
+* BQ36ZETYSW4SLJ2VMPIGXATAEMXYKXDHT	电子书库 1）丛书系列  74.2G
+* BZCTXN7QYCMXS5PINIEO3JU7C7YFI6GOR	电子书库 2）主题分类  19.5G 按学科及其分支分类，但不包括“电子书库 1）丛书系列”已有的书籍
+* B7ZJOFU5YGHTVQOT42JLGOULNTPTZ73FS	电子书库 3）科普读物  3.13G 不包括“电子书库 1）丛书系列”已有的书籍
+* BR5XUQVQL7QFJBIIKFSAETAFCPANTBRCO	电子书库 4）学习书单  0.98G 其中的书籍必然和 前述三类有重复。
+
+* BZ7VZSMPAORFQ2FP5PSJK4P2PAND6WD66	电子书库 5）网友荐书  只读密钥
+* AVTCAYB5WIOHPFETX3UYQKL2EPPQAINTT	电子书库 5）网友荐书  读写密钥
+
+## 【编程随想】   
+
+> 分享的书籍侧重 “文 & 史 & 哲 & IT”
+
+* BTLZ4A4UD3PEWKPLLWEOKH3W7OQJKFPLG	翻墙工具
+* B7P64IMWOCXWEYOXIMBX6HN5MHEULFS4V	编程随想博客的“离线浏览页面”和“博客电子书制作脚本”
+* BRSSYZTSAC6UGYTUOJ22L4GCO7QESPPBD	政治（含大量禁书）
+* BNZ6DOA6W577O6GUNH7C3MY6DWC6FTDQB	心理学
+* BSH7FXJFVWJTKWGSX5GTWX7PHZZ2D2M7Q	历史
+* B2FRYA6AXCDW6CF4YJVFWKH2HAXOFICOX	经济
+* B3WNBTAAFFAODFR6FQ3E3L5BBSJAFNBSJ	管理
+* BZR4TTYHT25QWUIE6YNMAKWUGBHKSGLC6	社会学
+* BMBB5YLBIJJAE5H6TP27OS7YCEUKCYHZK	文艺
+* B6WWVBXPMZDI5IL4KED6AAHA5FO4UNKQF	哲学
+* BMWWZALG4P56LREF47EE2WSWHZEM4E6BL	军事
+* BUPSDXFA3TP7KCMLHALRHLIX2FEJEUJFE	IT（信息技术）
+
+## 【Kindle图书馆】	
+
+> <https://www.douban.com/group/KindleLibrary/>
+
+* BPHMMPINQL2DQD4CXWOXFF4ZWNZOD7KJD	Kindle人社区—只读
+* ABG354PHQGAZ75LJGP4W53VWH2KXESAWD 	公共图书馆—读写
+* BG2UTQPLLHKWMFMLHBPRAM3AYIUS6NMBX	私人图书馆—只读： 
+
+
+##【BTSync 资源分享网站】
+
+* <http://btsynckeys.com/>		（可能要翻墙）
+ 
+
+精品BTSync电子书资源持续汇集中.......
+
+

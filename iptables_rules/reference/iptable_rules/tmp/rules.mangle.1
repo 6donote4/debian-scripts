@@ -1,0 +1,9 @@
+$IPT -t mangle -P PREROUTING ACCEPT
+$IPT -t mangle -P INPUT ACCEPT
+$IPT -t mangle -P FORWARD ACCEPT
+$IPT -t mangle -P OUTPUT ACCEPT
+$IPT -t mangle -P POSTROUTING ACCEPT
+$IPT -t mangle -N LIBVIRT_PRT
+$IPT -t mangle -A POSTROUTING -j LIBVIRT_PRT
+$IPT -t mangle -A LIBVIRT_PRT -o virbr1 -p udp -m udp --dport 68 -j CHECKSUM --checksum-fill
+$IPT -t mangle -A LIBVIRT_PRT -o virbr2 -p udp -m udp --dport 68 -j CHECKSUM --checksum-fill

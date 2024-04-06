@@ -1,0 +1,11 @@
+Description='A wireless connection using a custom network block configuration'
+Interface=wlp4s0
+Connection=wireless
+Security=wpa-configsection
+IP=dhcp
+WPAConfigSection=(
+    'ssid="f306"'
+    'key_mgmt=WPA-PSK'
+    'psk="fabc3805818"'
+    'priority=1'
+)

@@ -1,0 +1,248 @@
+{
+  "log": {
+    "level": "info"
+  },
+  "dns": {
+	  "servers": [
+		  {
+			  "tag": "google-tls",
+			  "address": "local",
+			  "address_strategy": "prefer_ipv4",
+			  "strategy": "ipv4_only",
+			  "detour": "direct"
+		  },
+		  {
+			  "tag": "google-udp",
+			  "address": "8.8.8.8",
+			  "address_strategy": "prefer_ipv4",
+			  "strategy": "prefer_ipv4",
+			  "detour": "direct"
+		  }
+	  ],
+	  "strategy": "prefer_ipv4",
+	  "disable_cache": false,
+	  "disable_expire": false
+  },
+  "inbounds": [
+    {
+      "type": "trojan",
+      "tag": "trojan-in",
+      "listen": "127.0.0.1",
+      "listen_port": 10000,
+      "tcp_fast_open": true,
+      "udp_fragment": true,
+      "sniff": true,
+      "sniff_override_destination": false,
+      "udp_timeout": 300,
+      "proxy_protocol": true,
+      "proxy_protocol_accept_no_header": false,
+      "users": [
+        {
+          "name": "USERS",
+          "password": ""
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "server_name": "trojan.example.com",
+        "alpn": [
+          "http/1.1"
+        ],
+        "min_version": "1.2",
+        "max_version": "1.3",
+	"certificate_path": "/root/cert/trojan.ca",
+	"key_path": "/root/cert/trojan.key"
+      }
+    },
+{
+      "type": "trojan",
+      "tag": "trojan-websocket-in",
+      "listen": "127.0.0.1",
+      "listen_port": 10001,
+      "tcp_fast_open": true,
+      "udp_fragment": true,
+      "sniff": true,
+      "sniff_override_destination": false,
+      "udp_timeout": 300,
+      "proxy_protocol": true,
+      "proxy_protocol_accept_no_header": false,
+      "users": [
+        {
+          "name": "USERS",
+          "password": "passwords"
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "server_name": "trojan-websocket.example.com",
+        "alpn": [
+          "http/1.1"
+        ],
+        "min_version": "1.2",
+        "max_version": "1.3",
+	"certificate_path": "/root/cert/trojan-websocket.ca",
+	"key_path": "/root/cert/trojan-websocket.key"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/debian",
+        "max_early_data": 0,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "vmess-in",
+      "listen": "127.0.0.1",
+      "listen_port": 10002,
+      "tcp_fast_open": true,
+      "udp_fragment": true,
+      "sniff": true,
+      "sniff_override_destination": false,
+      "proxy_protocol": true,
+      "proxy_protocol_accept_no_header": false,
+      "users": [
+        {
+          "name": "USERS",
+          "uuid": "",
+          "alterID": 0
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "server_name": "vmess.example.com",
+        "alpn": [
+          "http/1.1"
+        ],
+        "min_version": "1.2",
+        "max_version": "1.3",
+	"certificate_path": "/root/cert/vmess.ca",
+	"key_path": "/root/cert/vmess.key"
+      }
+    },
+{
+      "type": "vmess",
+      "tag": "vmess-websocket-in",
+      "listen": "127.0.0.1",
+      "listen_port": 10003,
+      "tcp_fast_open": true,
+      "udp_fragment": true,
+      "sniff": true,
+      "sniff_override_destination": false,
+      "proxy_protocol": true,
+      "proxy_protocol_accept_no_header": false,
+      "users": [
+        {
+          "name": "USERS",
+          "uuid": "",
+          "alterId": 0
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "server_name": "vmess-websocket.example.com",
+        "alpn": [
+          "http/1.1"
+        ],
+        "min_version": "1.2",
+        "max_version": "1.3",
+	"certificate_path": "/root/cert/vmess-websocket.ca",
+	"key_path": "/root/cert/vmess-websocket.key"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/nixos",
+        "max_early_data": 0,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+{
+      "type": "naive",
+      "tag": "naive-in",
+      "network": "tcp",
+      "listen": "127.0.0.1",
+      "listen_port": 10004,
+      "tcp_fast_open": true,
+      "sniff": true,
+      "sniff_override_destination": false,
+      "proxy_protocol": true,
+      "proxy_protocol_accept_no_header": false,
+      "users": [
+        {
+          "username": "USERS",
+          "password": "passwords"
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "server_name": "naive.example.com",
+	"certificate_path": "/root/cert/naive.ca",
+	"key_path": "/root/cert/naive.key"
+      }
+    },
+    {
+      "type": "shadowtls",
+      "listen": "::",
+      "listen_port": 8443,
+      "version": 2,
+      "handshake": {
+        "server": "paypal.com",
+        "server_port": 443 
+      },
+      "detour": "shadowsocks-in"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "shadowsocks-in",
+      "listen": "127.0.0.1",
+      "network": "tcp",
+      "method": "2022-blake3-aes-128-gcm",
+      "password": "dG"
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+	    "type": "block",
+	    "tag": "block"
+    },
+    {
+	    "type": "dns",
+	    "tag": "dns-out"
+    }
+  ],
+  "route": {
+	  "rules": [
+            {
+                "protocol": "dns",
+                "outbound": "dns-out"
+            },
+            {
+                "inbound": [
+		    "shadowsocks-in"
+                ],
+                "geosite": [
+                    "cn",
+                    "category-ads-all"
+                ],
+                "geoip": "cn",
+                "outbound": "block"
+            }
+        ],
+		  "geoip": {
+			    "path": "geoip.db",
+			    "download_url": "https://github.com/SagerNet/sing-geoip/releases/latest/download/geoip.db",
+			    "download_detour": "direct"	
+		  },
+		  "geosite": {
+			    "path": "geosite.db",
+			    "download_url": "https://github.com/SagerNet/sing-geosite/releases/latest/download/geosite.db",
+			    "download_detour": "direct"
+		  },
+		  "final": "direct",
+		  "auto_detect_interface": true
+	  }
+}

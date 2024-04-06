@@ -1,0 +1,14 @@
+        {
+            "method": "aes-256-cfb",
+            "password": "passwordddd",
+            "server": "11.11.11.11",
+            "server_port": 1111 ,
+	    "local_address": "0.0.0.0" ,
+	    "timeout" : 300 ,
+	    "fast_open": true ,
+	    "reuse_port": true ,
+	    "mode": "tcp_and_udp" ,
+	    "nameserver": "8.8.8.8" ,
+	    "tunnel_address": "8.8.8.8:53" ,
+            "local_port": 5300
+        }

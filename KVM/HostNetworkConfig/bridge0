@@ -1,0 +1,11 @@
+Description="Example Bridge connection"
+Interface=bridge0
+Connection=bridge
+BindsToInterfaces=(enp3s0)
+## Use the MAC address of eth1 (may also be set to a literal MAC address)
+#MACAddress=eth1
+#IP=dhcp
+IP=static
+Address='192.168.2.1/24'
+## Ignore (R)STP and immediately activate the bridge
+SkipForwardingDelay=yes

@@ -1,0 +1,108 @@
+{
+  "log": {
+    "level": "info",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "google",
+        "address": "tls://8.8.8.8"
+      },
+      {
+        "tag": "local",
+        "address": "223.5.5.5",
+        "detour": "direct"
+      }
+    ],
+    "rules": [
+      {
+        "domain": "vmess-websocket.example.com",
+        "geosite": "cn",
+        "server": "local"
+      }
+    ],
+    "strategy": "ipv4_only",
+    "disable_cache": true,
+    "disable_expire": true
+  },
+  "inbounds": [
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "::",
+      "listen_port": 1082,
+      "sniff": true,
+      "set_system_proxy": false
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "vmess",
+      "tag": "vmess-out",
+      "server": "vmess-websocket.example.com",
+      "server_port": 443,
+      "uuid": "","
+      "security": "auto",
+      "alter_id": 0,
+      "global_padding": false,
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "disable_sni": false,
+        "server_name": "vmess-websocket.example.com",
+        "insecure": false,
+        "alpn": [
+          "http/1.1"
+        ]
+      },
+      "multiplex": {
+        "enabled": true,
+        "protocol": "smux",
+        "max_connections": 5,
+        "min_streams": 4,
+        "max_streams": 0
+      },
+      "transport": {
+      	"type": "ws",
+      	"path": "/nixos",
+      	"max_early_data": 0,
+      	"early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "connect_timeout": "5s",
+      "tcp_fast_open": true,
+      "udp_fragment": true
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+        "type": "dns",
+        "tag": "dns-out"
+    }
+  ],
+  "route": {
+          "rules": [
+        {
+            "protocol": "dns",
+            "outbound": "dns-out"
+        },
+      {
+        "geosite": "cn",
+        "geoip": "cn",
+        "outbound": "direct"
+      },
+      {
+        "geosite": "category-ads-all",
+        "outbound": "block"
+      }
+    ],
+    "auto_detect_interface": true,
+    "final": "vmess-out"
+  }
+  }

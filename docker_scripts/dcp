@@ -1,0 +1,13 @@
+#!/bin/sh
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
+#========================================
+#   Linux Distribution: Manjaro/Debian 8+/
+#   Author: 6donote4 <mailto:do_note@hotmail.com>
+#   Dscription: alias for docker cp 
+#   Version: 0.0.1
+#   Blog: https://www.donote.tk https://6donote4.github.io
+#========================================
+echo "docker cp SRC_PATH DST_CONTAINER_ID_PATH or docker cp SRC_CONTAINER_ID_PATH DST_PATH" 
+docker cp $1 $2
+exit 0

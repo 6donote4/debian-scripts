@@ -1,0 +1,5 @@
+[frp]
+title=frp server
+description=frp server
+ports=7000,7001/udp|7000,7001,7500/tcp
+

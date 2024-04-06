@@ -1,0 +1,11 @@
+[Unit]
+Description=frpc daemon
+After=syslog.target network.target
+Wants=network.target
+[Service]
+TimeoutStartSec=30
+ExecStart=/usr/bin/frpc -c /etc/frp/frpc.ini
+ExecStop=/usr/bin/kill $MAINPID 
+[Install]
+WantedBy=multi-user.target
+

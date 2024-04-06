@@ -1,0 +1,102 @@
+{
+ "log": {
+  "access": "",
+  "loglevel": "info",
+  "error": ""
+ },
+ "inbounds": [
+  {
+   "protocol": "socks",
+   "listen": "0.0.0.0",
+   "settings": {
+    "auth": "noauth",
+    "udp": false
+   },
+   "port": 1088
+  }
+ ],
+  "inboundDetour":[
+	  {
+	  "port": 3120,
+	  "listen": "0.0.0.0",
+	  "protocol": "http",
+	  "settings": {"auth":"noauth"}
+	  }
+ ],
+ "outbounds": [
+  {
+   "protocol": "vmess",
+   "settings": {
+    "vnext": [
+     {
+      "address": "donote.tk",
+      "users": [
+       {
+        "alterId": 16,
+        "security": "aes-128-gcm",
+        "id": ""
+       }
+      ],
+      "port": port
+     }
+    ]
+   },
+   "mux": {
+    "enabled": false
+   }, "streamSettings": {
+    "network": "ws",
+    "wsSettings": {
+     "connectionReuse": true,
+     "path": "/path/"
+    },
+    "tlsSettings": {
+	    "serverName": "donote.tk"},
+    "security": "tls",
+    "tcpSettings": {},
+    "quicSettings": {},
+    "httpSettings": {},
+    "kcpSettings": {}
+   }
+  },
+  {
+   "protocol": "freedom",
+   "settings": {
+    "response": null
+   },
+   "tag": "direct"
+  }
+ ],
+ "dns": {
+  "servers": [
+   "8.8.8.8",
+   "8.8.4.4",
+   "localhost"
+  ]
+ },
+ "routing": {
+  "domainStrategy": "IPIfNonMatch",
+  "rules": [
+   {
+    "ip": [
+     "geoip:private"
+    ],
+    "type": "field",
+    "outboundTag": "direct"
+   },
+   {
+    "type": "field",
+    "outboundTag": "direct",
+    "domain": [
+     "geosite:cn"
+    ]
+   },
+   {
+    "type": "field",
+    "outboundTag": "direct",
+    "domain": [
+     "geoip:cn"
+    ]
+   }
+  ]
+ }
+}

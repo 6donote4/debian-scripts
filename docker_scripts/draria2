@@ -1,0 +1,20 @@
+#!/bin/sh
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
+#========================================
+#   Linux Distribution: Manjaro/Debian 8+/
+#   Author: 6donote4 <mailto:do_note@hotmail.com>
+#   Dscription: alias for docker run and aria2 container 
+#   Version: 0.0.1
+#   Blog: https://www.donote.tk https://6donote4.github.io
+#========================================
+echo "docker run -it network=container:container_id image"
+  docker run -d --name ariang \
+  -p $1:80 -p $2:6800 -p $3:443 \
+  -e ENABLE_AUTH=true \
+  -e RPC_SECRET=Hello \
+  -e ARIA2_USER=user \
+  -e ARIA2_PWD=pwd \
+  wahyd4/aria2-ui 
+exit 0 
+
