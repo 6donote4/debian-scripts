@@ -1,0 +1,9 @@
+[Steam]
+title=Steam Link
+description=Steam Link stream service
+ports=27036/tcp|4380,27031,27036/udp
+
+[Sunshine]
+title=Sunshine
+description=Sunshine stream service
+ports=47984,47989,48010/tcp|47998:48000,48002,48010/udp
